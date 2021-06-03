@@ -153,16 +153,25 @@ As we already know Collections which is nothing but collections of Objects which
 The ConcurrentModificationException occurs when an object is tried to be modified concurrently when it is not permissible. This exception usually comes when one is working with Java Collection classes.
 
 *How Concurrent Collection Solved the problems?*
-Concurrent Collection does not lock the entire collection, it does lock only one element at a time. In other words, each element has a separate lock. Multiple threads can access a concurrent collection concurrently. Multiple threads can access the collection at a time.
+Concurrent Collection does not lock the entire collection, it does lock only one element at a time. In other words, each element has a separate lock. Multiple threads can access a concurrent collection concurrently. Multiple threads can access the collection at a time. In this section, we will discuss on:
+- ConcurrentHashMap 
+- CopyOnWriteArrayList 
+- CopyOnWriteArraySet
 
-*ConcurrentHashMap*
+Concurrent Collection Example are demonstrated in ConcurrentCollectionExample class.
 
-
+*ConcurrentHashMap:*
+ConcurrentHashMap implements ConcurrentMap as well as to Serializable interface also. ConcurrentHashMap is an enhancement of HashMap as we know that while dealing with Threads in our application HashMap is not a good choice because performance-wise HashMap is not up to the mark. At a time any number of threads are applicable for a read operation without locking the ConcurrentHashMap object which is not there in HashMap. In ConcurrentHashMap, at a time any number of threads can perform retrieval operation but for updated in the object, the thread must lock the particular segment in which the thread wants to operate. This type of locking mechanism is known as Segment locking or bucket locking. At a time 16 update operations can be performed by threads by default. 
 
 *CopyOnWriteArrayList*
+It is an enhanced version of ArrayList in which all modifications (add, set, remove, etc) are implemented by making a fresh copy. It is found in java.util.concurrent package. It is a data structure created to be used in a concurrent environment. As the name indicates, CopyOnWriteArrayList creates a Cloned copy of underlying ArrayList, for every update operation at a certain point both will be synchronized automatically, which is taken care of by JVM. Therefore, there is no effect for threads that are performing read operation. The main important point about CopyOnWriteArrayList is the Iterator of CopyOnWriteArrayList can not perform remove operation otherwise we get Run-time exception saying UnsupportedOperationException. add() and set() methods on CopyOnWriteArrayList iterator also throws UnsupportedOperationException. Also, Iterator of CopyOnWriteArrayList will never throw ConcurrentModificationException.
 
 *CopyOnWriteArraySet*
+It is a Set that uses an internal CopyOnWriteArrayList for all of its operations. It is a thread-safe version of Set. To use this class, we need to import it from java.util.concurrent package. Multiple Threads are able to perform update operation simultaneously but for every update operation, a separate cloned copy is created. As, for every update a new cloned copy will be created which is costly. Hence, if multiple update operations are required then it is not recommended to use CopyOnWriteArraySet. Use CopyOnWriteArraySet in applications in which set sizes generally stay small, read-only operations vastly outnumber mutative operations, and you need to prevent interference among threads during traversal.
 
 ### OOPS concept
+
+
+
 
 _Please do let me know if I am missing any topic to cover in java_
