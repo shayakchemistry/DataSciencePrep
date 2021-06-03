@@ -81,88 +81,87 @@ All the Set in action is demonstrated in SetExample java class.
 Java HashSet class is used to create a collection that uses a hash table for storage. It inherits the AbstractSet class and implements Set interface. HashSet stores the elements by using a mechanism called hashing and contains unique elements only. It allows null value and is non synchronized. HashSet doesn't maintain the insertion order. Here, elements are inserted on the basis of their hashcode. The initial default capacity of HashSet is 16, and the load factor is 0.75.
 
 *LinkedHashSet:*
-The LinkedHashSet is an ordered version of HashSet that maintains a doubly-linked List across all elements. When the iteration order is needed to be maintained this class is used. When iterating through a HashSet the order is unpredictable, while a LinkedHashSet lets us iterate through the elements in the order in which they were inserted. When cycling through LinkedHashSet using an iterator, the elements will be returned in the order in which they were inserted.
+The LinkedHashSet is an ordered version of HashSet that maintains a doubly-linked List across all elements. When the iteration order is needed to be maintained this class is used. When iterating through a HashSet the order is unpredictable, while a LinkedHashSet lets us iterate through the elements in the order in which they were inserted. When cycling through LinkedHashSet using an iterator, the elements will be returned to the order in which they were inserted.
 
 *SortedSet:*
-The SortedSet interface extends Set and declares the behavior of a set sorted in an ascending order. In addition to those methods defined by Set, the SortedSet interface declares the methods summarized in the following table −
+The SortedSet interface extends Set and declares the behavior of a set sorted in ascending order. In addition to those methods defined by Set, the SortedSet interface declares the extra methods with certain restrictions.Several methods in SortedSet throw a NoSuchElementException when no items are contained in the invoking set. A ClassCastException is thrown when an object is incompatible with the elements in a set. A NullPointerException is thrown if an attempt is made to use a null object and null is not allowed in the set.
 
-Several methods throw a NoSuchElementException when no items are contained in the invoking set. A ClassCastException is thrown when an object is incompatible with the elements in a set.
+*NavigableSet:*
+NavigableSet represents a navigable set in Java Collection Framework. The NavigableSet interface inherits from the SortedSet interface. It behaves like a SortedSet with the exception that we have navigation methods available in addition to the sorting mechanisms of the SortedSet. For example, the NavigableSet interface can navigate the set in reverse order compared to the order defined in SortedSet. A NavigableSet may be accessed and traversed in either ascending or descending order.
 
-A NullPointerException is thrown if an attempt is made to use a null object and null is not allowed in the set.
+*TreeSet:*
+TreeSet class implements the Set interface that uses a tree for storage. It inherits AbstractSet class and implements the NavigableSet interface. The objects of the TreeSet class are stored in ascending order. Java TreeSet class contains unique elements only like HashSet. It's access and retrieval times are quiet fast. TreeSet class doesn't allow null element and is non synchronized. TreeSet class maintains ascending order.
 
-*NavigableSet*
-NavigableSet represents a navigable set in Java Collection Framework. The NavigableSet interface inherits from the SortedSet interface. It behaves like a SortedSet with the exception that we have navigation methods available in addition to the sorting mechanisms of the SortedSet.
-For example, the NavigableSet interface can navigate the set in reverse order compared to the order defined in SortedSet. A NavigableSet may be accessed and traversed in either ascending or descending order.
+*Comaparable:*
+Comparable interface is used to order the objects of the user-defined class. This interface is found in java.lang package and contains only one method named compareTo(Object). It provides a single sorting sequence only, i.e., you can sort the elements on the basis of single data member only.
 
-*TreeSet*
-ava TreeSet class implements the Set interface that uses a tree for storage. It inherits AbstractSet class and implements the NavigableSet interface. The objects of the TreeSet class are stored in ascending order.
-
-The important points about Java TreeSet class are:
-
-    Java TreeSet class contains unique elements only like HashSet.
-    Java TreeSet class access and retrieval times are quiet fast.
-    Java TreeSet class doesn't allow null element.
-    Java TreeSet class is non synchronized.
-    Java TreeSet class maintains ascending order.
-
-*Comaparable*
-*Comparator*
+*Comparator:*
+Comparator interface is found in java.util package and contains 2 methods compare(Object obj1,Object obj2) and equals(Object element). It provides multiple sorting sequences. Comparator is external to the element type we are comparing. It’s a separate class. We create multiple separate classes (that implement Comparator) to compare by different members.
 
 ##### Queues
-The queue interface is provided in java.util package and it implements the Collection interface. The queue implements FIFO i.e. First In First Out. This means that the elements entered first are the ones that are deleted first.
+The queue interface implements the Collection interface. The queue implements FIFO i.e. First In First Out. This means that the elements entered first are the ones that are deleted first. Here we only discuss one type of queue i.e. PriorityQueue. Queue examples are demonstrated bt QueueExample class.
 
 *PriorityQueue:*
 PriorityQueue is used when the objects are supposed to be processed based on the priority. It is known that a Queue follows the First-In-First-Out algorithm, but sometimes the elements of the queue are needed to be processed according to the priority, that’s when the PriorityQueue comes into play. The PriorityQueue is based on the priority heap. The elements of the priority queue are ordered according to the natural ordering, or by a Comparator provided at queue construction time, depending on which constructor is used.  
 
-Queue Interface
-04:20
-PriorityQueue
-06:48
-Summary
-
 ##### Maps
 
-The Map interface present in java.util package represents a mapping between a key and a value. The Map interface is not a subtype of the Collection interface. Therefore it behaves a bit differently from the rest of the collection types. A map contains unique keys.
+The Map interface present in java.util package represents a mapping between a key and a value. The Map interface is not a subtype of the Collection interface. Therefore, it behaves a bit differently from the rest of the collection types. In a map, the keys are always unique. Maps has the following implementations.
+- HashMap
+- LinkedHashMap
+- IdentityHashMap
+- WeakHashMap
+- SortedMap
+- NavigableMap
+- TreeMap
 
-*Hashing in collection*
-, a technique used (among other applications) to implement Java's common map and set classes. Hashing is designed to solve the problem of needing to efficiently find or store an item in a collection. For example, if we have a list of 10,000 words of English and we want to check if a given word is in the list, it would be inefficient to successively compare the word with all 10,000 items until we find a match. Hashing is a technique to make things more efficient by effectively narrowing down the search at the outset.
+Maps example is demonstrated in MapExample class.
 
-On the previous page, we introduced the notion of hashing, mapping a piece of data such as a string to some kind of a representative integer value. We can then create a map by using this hash as an index into an array of key/value pairs. Such a structure is generally called a hash table or, particularly in Java parlance, hash map1. We saw that using the string length to create the hash, and indexing a simple array, could work in some restricted cases, but is no good generally: for example, we have the problem of collisions (several keys with the same length) and wasted space if a few keys are vastly larger than the majority.
-Now, we can solve the problem of collisions by having an array of (references to) linked lists2 rather than simply an array of keys/values. Each little list is generally called a bucket.
+*HashMap:*
+HashMap provides the basic implementation of the Map interface of Java. It stores the data in (Key, Value) pairs, and you can access them by an index of another type (e.g. an Integer). One object is used as a key (index) to another object (value). If you try to insert the duplicate key, it will replace the element of the corresponding key. Hash map is not synchronized.ssss
 
-Then, we can solve the problem of having an array that is too large simply by taking the hash code modulo a certain array size3. So for example, if the array were 32 positions in size, going from 0-31, then rather than storing a key/value pair in the list at position 33, we store it at position (33 mod 32) = 1. (In simple terms, we "wrap round" when we reach the end of the array.) So we end up with a structure something like this:
+*HashMap vs HashTable:*
+HashMap is non synchronized. It is not-thread safe and can't be shared between many threads without proper synchronization code. HashMap allows one null key and multiple null values. HashMap is traversed by Iterator. Iterator in HashMap is fail-fast.
 
-https://www.javamex.com/tutorials/collections/hashmaps2.shtml
+Hashtable is synchronized. It is thread-safe and can be shared with many threads. Hashtable doesn't allow any null key or value. Hashtable is traversed by Enumerator and Iterator. Enumerator in Hashtable is not fail-fast.
 
-*HashMap*
+*LinkedHashMap:*
+LinkedHashMap is just like HashMap with an additional feature of maintaining an order of elements inserted into it. HashMap provided the advantage of quick insertion, search, and deletion, but it never maintained the track and order of insertion which the LinkedHashMap provides where the elements can be accessed in their insertion order.
 
-*HashMap vs HashTable*
+*IdentityHashMap:*
+The IdentityHashMap implements Map interface using Hashtable, using reference-equality in place of object-equality when comparing keys (and values). This class is not a general-purpose Map implementation. While this class implements the Map interface, it intentionally violates Map’s general contract, which mandates the use of the equals() method when comparing objects. This class is used when the user requires the objects to be compared via reference.
 
-*LinkedHashMap*
-*IdentityHashMap*
-*WeakHashMap*
-*SortedMap*
-*NavigableMap*
-*TreeMap*
+*WeakHashMap:*
+WeakHashMap is an implementation of the Map interface that stores only weak references to its keys. Storing only weak references allows a key-value pair to be garbage-collected when its key is no longer referenced outside WeakHashMap.
+
+*SortedMap:*
+SortedMap is an interface in the collection framework. This interface extends the Map interface and provides a total ordering of its elements (elements can be traversed in sorted order of keys).
+
+*NavigableMap:*
+It is an extension of SortedMap which provides convenient navigation methods like lowerKey, floorKey, ceilingKey and higherKey, and along with this popular navigation method. It also provide ways to create a Sub Map from existing Map in Java e.g. headMap whose keys are less than the specified key, tailMap whose keys are greater than the specified key, and a subMap which strictly contains keys which fall between toKey and fromKey.
+
+*TreeMap:*
+The TreeMap class implements the Map interface by using a tree. A TreeMap provides an efficient means of storing key/value pairs in sorted order, and allows rapid retrieval. You should note that, unlike a hash map, a tree map guarantees that its elements will be sorted in an ascending key order.
 
 ##### Concurrent Collections
-Section introduction
-00:49
-Need of Concurrent Collections
-04:54
-ConcurrentModificationException
-07:23
-How Concurrent Collection Solved the problems
-01:03
-ConcurrentHashMap Hierarchy and Methods
-10:39
-ConcurrentHashMap internal Implementation
-03:30
-ConcurrentHashMap in Multi-threading Environment Program Demo
-08:30
-CopyOnWriteArrayList
-07:36
-CopyOnWriteArraySet
+
+*Why do we need concurrent collections?*
+
+As we already know Collections which is nothing but collections of Objects which deals with the Objects using some pre-defined methods. With Collections there are several problems which occurs in multi-threading. The problems which occurs while using Collections in Multi-threaded application. Most of the Collections classes objects (like ArrayList, LinkedList, HashMap etc) are non-synchronized in nature i.e. multiple threads can perform on an object at a time simultaneously. Therefore, objects are not thread-safe. Very few Classes objects (like Vector, Stack, HashTable) are synchronized in nature i.e. at a time only one thread can perform on an Object. The catch here is the performance which is low because at a time single thread execute an object and rest thread has to wait. The main problem is when one thread is iterating a Collections object then if another thread can't modify the content of the object. If another thread try to modify the content of object then we will get RuntimeException saying ConcurrentModificationException. Because of the above reason Collections classes is not suitable for we can say that good choice for Multi-threaded applications. To overcome the above problem SUN microSystem introduced a new feature in JDK 1.5Version, which is nothing but Concurrent Collections.
+
+*ConcurrentModificationException:*
+The ConcurrentModificationException occurs when an object is tried to be modified concurrently when it is not permissible. This exception usually comes when one is working with Java Collection classes.
+
+*How Concurrent Collection Solved the problems?*
+Concurrent Collection does not lock the entire collection, it does lock only one element at a time. In other words, each element has a separate lock. Multiple threads can access a concurrent collection concurrently. Multiple threads can access the collection at a time.
+
+*ConcurrentHashMap*
+
+
+
+*CopyOnWriteArrayList*
+
+*CopyOnWriteArraySet*
 
 ### OOPS concept
 
