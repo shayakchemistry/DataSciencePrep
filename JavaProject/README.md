@@ -4,7 +4,6 @@ In this module we will explore the advanced concepts of java. We will not get in
 
 - Collection Framework
 - OOPS concept
-- String
 - Threading (multi threading and thread pooling)
 - Process and Future
 - Stream
@@ -147,7 +146,7 @@ The TreeMap class implements the Map interface by using a tree. A TreeMap provid
 
 *Why do we need concurrent collections?*
 
-As we already know Collections which is nothing but collections of Objects which deals with the Objects using some pre-defined methods. With Collections there are several problems which occurs in multi-threading. The problems which occurs while using Collections in Multi-threaded application. Most of the Collections classes objects (like ArrayList, LinkedList, HashMap etc) are non-synchronized in nature i.e. multiple threads can perform on an object at a time simultaneously. Therefore, objects are not thread-safe. Very few Classes objects (like Vector, Stack, HashTable) are synchronized in nature i.e. at a time only one thread can perform on an Object. The catch here is the performance which is low because at a time single thread execute an object and rest thread has to wait. The main problem is when one thread is iterating a Collections object then if another thread can't modify the content of the object. If another thread try to modify the content of object then we will get RuntimeException saying ConcurrentModificationException. Because of the above reason Collections classes is not suitable for we can say that good choice for Multi-threaded applications. To overcome the above problem SUN microSystem introduced a new feature in JDK 1.5Version, which is nothing but Concurrent Collections.
+As we already know Collections which is nothing but collections of Objects which deals with the Objects using some pre-defined methods. With Collections there are several problems which occurs in multi-threading. The problems which occurs while using Collections in Multi-threaded application. Most of the Collections classes objects (like ArrayList, LinkedList, HashMap etc) are non-synchronized in nature i.e. multiple threads can perform on an object at a time simultaneously. Therefore, objects are not thread-safe. Very few Classes objects (like Vector, Stack, HashTable) are synchronized in nature i.e. at a time only one thread can perform on an Object. The catch here is the performance which is low because at a time single thread execute an object and rest thread has to wait. The main problem is when one thread is iterating a Collections object then if another thread can't modify the content of the object. If another thread try to modify the content of object then we will get RuntimeException saying ConcurrentModificationException. Because of the above reason Collections classes is not suitable for we can say that good choice for Multi-threaded applications. To overcome the above problem SUN microSystem introduced a new feature in JDK 1.5, which is nothing but Concurrent Collections.
 
 *ConcurrentModificationException:*
 The ConcurrentModificationException occurs when an object is tried to be modified concurrently when it is not permissible. This exception usually comes when one is working with Java Collection classes.
@@ -171,6 +170,34 @@ It is a Set that uses an internal CopyOnWriteArrayList for all of its operations
 
 ### OOPS concept
 
+In this section, we will discuss object-oriented programming in Java. The main objective of  object-oriented programming is to implement real-word entities. Object means a real-world entity such as a pen, chair, table, computer, watch, etc. Object-Oriented Programming is a methodology or paradigm to design a program using classes and objects. It simplifies software development and maintenance by providing the following concepts:
+
+*Object:*
+An object is a software bundle of related state and behavior. Software objects are often used to model the real-world objects that you find in everyday life. 
+
+*Class:*
+A class is a blueprint or prototype from which objects are created. This section defines a class that models the state and behavior of a real-world object. It intentionally focuses on the basics, showing how even a simple class can cleanly model state and behavior.
+
+*Inheritance:*
+Inheritance provides a powerful and natural mechanism for organizing and structuring your software. This section explains how classes inherit state and behavior from their superclasses, and explains how to derive one class from another using the simple syntax provided by the Java programming language.
+
+*Interface:*
+An interface is a contract between a class and the outside world. When a class implements an interface, it promises to provide the behavior published by that interface. This section defines a simple interface and explains the necessary changes for any class that implements it.
+
+*Package:*
+A package is a namespace for organizing classes and interfaces logically. Placing your code into packages makes large software projects easier to manage. This section explains why this is useful, and introduces you to the Application Programming Interface (API) provided by the Java platform.
+
+### Threading
+
+
+
+
+
+### Process and future
+
+### Stream
+
+### Supplier, Consumer, Lambdas
 
 
 
