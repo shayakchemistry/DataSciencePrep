@@ -176,16 +176,16 @@ In this section, we will discuss object-oriented programming in Java. The main o
 An object is a software bundle of related state and behavior. Software objects are used to model the real-world objects that we find in everyday life. 
 
 *Class:*
-A class is a blueprint or prototype from which objects are created. This section defines a class that models the state and behavior of a real-world object. It intentionally focuses on the basics, showing how even a simple class can cleanly model state and behavior.
+A class is a blueprint or prototype from which objects are created.
 
 *Inheritance:*
-Inheritance provides a powerful and natural mechanism for organizing and structuring your software. This section explains how classes inherit state and behavior from their superclasses, and explains how to derive one class from another using the simple syntax provided by the Java programming language.
+Inheritance provides a powerful and natural mechanism for organizing and structuring your software. In inheritance, classes inherit state and behavior from their superclasses.
 
 *Interface:*
-An interface is a contract between a class and the outside world. When a class implements an interface, it promises to provide the behavior published by that interface. This section defines a simple interface and explains the necessary changes for any class that implements it.
+An interface is a contract between a class and the outside world. When a class implements an interface, it promises to provide the behavior published by that interface. 
 
 *Package:*
-A package is a namespace for organizing classes and interfaces logically. Placing your code into packages makes large software projects easier to manage. This section explains why this is useful, and introduces you to the Application Programming Interface (API) provided by the Java platform.
+A package is a namespace for organizing classes and interfaces logically. Placing your code into packages makes large software projects easier to manage.
 
 *Polymorphism:*
 Polymorphism is a concept by which we can perform a single action in different ways. There are two types of polymorphism in Java: compile-time polymorphism and runtime polymorphism. We can perform polymorphism in java by method overloading and method overriding.
@@ -250,21 +250,22 @@ Synchronization in java is the capability to control the access of multiple thre
 - To prevent consistency problem.
 
 Synchronized can be attached to a block or a method. Synchronized block can be used to perform synchronization on any specific resource of the method. Suppose you have 50 lines of code in your method, but you want to synchronize only 5 lines, you can use synchronized block. 
-If you put all the codes of the method in the synchronized block, it will work same as the synchronized method.
+If you put all the codes of the method in the synchronized block, it will work same as the synchronized method. This is demonstrated in SynchronizationExample class.
 
 ##### Wait, Notify, NotifyAll
 
 The java.lang.Object.wait() causes current thread to wait until another thread invokes the notify() method or the notifyAll() method for this object. The current thread must own this object's monitor. The thread releases ownership of this monitor and waits until another thread notifies threads waiting on this object's monitor to wake up either through a call to the notify method or the notifyAll method. The thread then waits until it can re-obtain ownership of the monitor and resumes execution. This method should only be called by a thread that is the owner of this object's monitor. See the notify method for a description of the ways in which a thread can become the owner of a monitor.
 
-The notify() method is used for waking up threads that are waiting for an access to this object's monitor. For all threads waiting on this object's monitor (by using any one of the wait() method), the method notify() notifies any one of them to wake up arbitrarily. The choice of exactly which thread to wake is non-deterministic and depends upon the implementation. Since notify() wakes up a single random thread it can be used to implement mutually exclusive locking where threads are doing similar tasks, but in most cases, it would be more viable to implement notifyAll().
+The notify() method is used for waking up threads that are waiting for an access to this object's monitor. For all threads waiting on this object's monitor (by using any one of the wait() method), the method notify() notifies any one of them to wake up arbitrarily. The choice of exactly which thread to wake is non-deterministic and depends upon the implementation. Since notify() wakes up a single random thread it can be used to implement mutually exclusive locking where threads are doing similar tasks, but in most cases, it would be more viable to implement notifyAll(). This is demonstrated in WaitNotifyExample.
+
 
 ##### Locks
 
-A lock is a thread synchronization mechanism like synchronized blocks except locks can be more sophisticated than Java's synchronized blocks. Locks (and other more advanced synchronization mechanisms) are created using synchronized blocks, so it is not like we can get totally rid of the synchronized keyword. Synchronized blocks in Java are reentrant. This means, that if a Java thread enters a synchronized block of code, and thereby take the lock on the monitor object the block is synchronized on, the thread can enter other Java code blocks synchronized on the same monitor object. 
+A lock is a thread synchronization mechanism like synchronized blocks except locks can be more sophisticated than Java's synchronized blocks. Locks (and other more advanced synchronization mechanisms) are created using synchronized blocks, so it is not like we can get totally rid of the synchronized keyword. Synchronized blocks in Java are reentrant. This means, that if a Java thread enters a synchronized block of code, and thereby take the lock on the monitor object the block is synchronized on, the thread can enter other Java code blocks synchronized on the same monitor object. This is demonstrated in LocksExample.
 
 ##### Semaphore
 
-Semaphore is used to control access to a shared resource that uses a counter variable. . In other words, it is a non-negative variable that is shared among the threads known as a counter. It sets the limit of the threads. A mechanism in which a thread is waiting on a semaphore can be signaled by other threads. Java also provides a Semaphore class that contains constructors and various methods to control access over the shared resource. There are four types of semaphores:
+Semaphore is used to control access to a shared resource that uses a counter variable. In other words, it is a non-negative variable that is shared among the threads known as a counter. It sets the limit of the threads. A mechanism in which a thread is waiting on a semaphore can be signaled by other threads. Java also provides a Semaphore class that contains constructors and various methods to control access over the shared resource. There are four types of semaphores:
 
 - Counting Semaphores
 - Bounded Semaphores
@@ -277,11 +278,11 @@ The Concurrency API introduces the concept of an ExecutorService as a higher lev
 
 ##### Executor With Runnable and Callable
 
-Runnable and Callable both functional interface. Classes which are implementing these interfaces are designed to be executed by another thread. Thread can be started with Ruunable and they are two ways to start a new thread: one is by subclassing Thread class and another is implementing Runnable interface. Thread class does not have constructor for callable so we should use ExecutorService class for executing thread. Callables are functional interfaces just like runnables but instead of being void they return a value.
+Runnable and Callable both functional interface. Classes which are implementing these interfaces are designed to be executed by another thread. Thread can be started with Ruunable and they are two ways to start a new thread: one is by subclassing Thread class and another is implementing Runnable interface. Thread class does not have constructor for callable so we should use ExecutorService class for executing thread. Callables are functional interfaces just like runnables but instead of being void they return a value. This is demonstrated in ExecutorExample class.
 
 ##### Callable & Future
 
-There are two ways of creating threads – one by extending the Thread class and other by creating a thread with a Runnable. However, one feature lacking in  Runnable is that we cannot make a thread return result when it terminates, i.e. when run() completes. For supporting this feature, the Callable interface is present in Java. Callable has a method called call() that needs to be implemented.
+There are two ways of creating threads – one by extending the Thread class and other by creating a thread with a Runnable. However, one feature lacking in  Runnable is that we cannot make a thread return result when it terminates, i.e., when run() completes. For supporting this feature, the Callable interface is present in Java. Callable has a method called call() that needs to be implemented.
 
 When the call() method completes, answer must be stored in an object known to the main thread, so that the main thread can know about the result that the thread returned. How will the program store and obtain this result later? For this, a Future object can be used. Think of a Future as an object that holds the result – it may not hold it right now, but it will do so in the future (once the Callable returns). Thus, a Future is basically one way the main thread can keep track of the progress and result from other threads. To implement this interface, 5 methods have to be overridden, but as the example below uses a concrete implementation from the library, only the important methods are listed here.
 
@@ -307,7 +308,6 @@ In this section we discuss about Process class in Java. Process class provides m
 
 This is an auxiliary class for the Process and is instantiated to manage a collection of process attributes. We can invoke the start method to create a new process with the attributes defined by the instance of the ProcessBuilder class. Repeated calls to the start method would create a new process with the same attributes. Note that ProcessBuilder is not a synchronized class; hence, if it is not synchronized explicitly, it not thread safe to access the instance of this class through multiple threads. As of Java 1.5, ProcessBuilder.start() is preferred way to create a process.
 
-
 ### Stream
 
 Introduced in Java 8, the Stream API is used to process collections of objects. A stream is a sequence of objects that supports various methods which can be pipelined to produce the desired result. The major features of Streams are listed below:
@@ -315,6 +315,8 @@ Introduced in Java 8, the Stream API is used to process collections of objects. 
 - A stream is not a data structure instead it takes input from the Collections, Arrays or I/O channels.
 - Streams don’t change the original data structure, they only provide the result as per the pipelined methods. 
 - Each intermediate operation is lazily executed and returns a stream as a result, hence various intermediate operations can be pipelined. Terminal operations mark the end of the stream and return the result.
+
+This is demonstrated in StreamExample class.
 
 ##### Collections vs Streams
 
@@ -345,17 +347,19 @@ To solve the problem to converting primitive numerical stream we use a box to ea
 *Unboxing*
 When we convert an object into primitive type on stream operation, we call this process as unboxing.
 
+Numerical Streams is demonstrated in NumericalStreamExample.
+
 ##### Parallel Streams
 
 Parallel Streams is a feature of Java 8 and higher, meant for utilizing multiple cores of the processor. Normally any java code has one stream of processing, where it is executed sequentially. Whereas by using parallel streams, we can divide the code into multiple streams that are executed in parallel on separate cores and the final result is the combination of the individual outcomes. The order of execution, however, is not under our control.
 
-Therefore, it is advisable to use parallel streams in cases where no matter what is the order of execution, the result is unaffected and the state of one element does not affect the other as well as the source of the data also remains unaffected.
+Therefore, it is advisable to use parallel streams in cases where no matter what is the order of execution, the result is unaffected and the state of one element does not affect the other as well as the source of the data also remains unaffected. This is demonstrated in ParallelStreamExample class.
 
 ##### Sequential vs Parallel Performance
 
 Sequential Streams are non-parallel streams that use a single thread to process the pipelining. Any stream operation without explicitly specified as parallel is treated as a sequential stream. Sequential stream’s objects are pipelined in a single stream on the same processing system hence it never takes the advantage of the multi-core system even though the underlying system supports parallel execution. Sequential stream performs operation one by one.
 
-Parallel Stream is a very useful feature of Java to use parallel processing, even if the whole program may not be parallelized. Parallel stream leverage multi-core processors, which increases its performance. Using parallel streams, our code gets divide into multiple streams which can be executed parallelly on separate cores of the system and the final result is shown as the combination of all the individual core’s outcomes. It is always not necessary that the whole program be parallelized, but at least some parts should be parallelized which handles the stream. The order of execution is not under our control and can give us unpredictably unordered results and like any other parallel programming, they are complex and error-prone.
+Parallel Stream is a very useful feature of Java to use parallel processing, even if the whole program may not be parallelized. Parallel stream leverage multi-core processors, which increases its performance. Using parallel streams, our code gets divide into multiple streams which can be executed parallelly on separate cores of the system and the final result is shown as the combination of all the individual core’s outcomes. It is always not necessary that the whole program be parallelized, but at least some parts should be parallelized which handles the stream. The order of execution is not under our control and can give us unpredictably unordered results and like any other parallel programming, they are complex and error-prone. 
 
 ### Supplier, Consumer, Lambdas
 
