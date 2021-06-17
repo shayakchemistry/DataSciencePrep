@@ -1,4 +1,4 @@
-##Python Project
+# Python Project
 
 In this module we will explore the key concepts of python. We are going to focus on the following topics:
 
@@ -11,9 +11,9 @@ In this module we will explore the key concepts of python. We are going to focus
  
 We have collated information for each of these above mentioned topics in an computational interactive jupyter notebooks.
 
-#Table of Contents
+## Table of Contents
  
- ####Object Types in Python
+ ### Object Types in Python
  
  - Dictionaries
     - Dictionary and their operations
@@ -31,7 +31,7 @@ We have collated information for each of these above mentioned topics in an comp
  - Tuples
     - Tuples and their operations
  
- ####Iterators and Comprehensions
+ ### Iterators and Comprehensions
 
  - Iterators
     - Iterator and its usages
@@ -49,7 +49,7 @@ We have collated information for each of these above mentioned topics in an comp
     - Filter
  - Building Custom Iterator
    
- ###OOPS Concepts
+ ### OOPS Concepts
   
   - Class 
   - Inheritance  
@@ -57,14 +57,14 @@ We have collated information for each of these above mentioned topics in an comp
   - Method Overloading
   - Method Override
   
- ####Modules
+ ### Modules
  
  - Creation and usages
  - Import
  - From
  - Reload
  
- ###Functions
+ ### Functions
  
  - Functions
     - Function and its usages
@@ -76,18 +76,18 @@ We have collated information for each of these above mentioned topics in an comp
     - Anonymous functions/ Lambda
  - Functions Gotchas
  
- ###Exception handling
+ ### Exception handling
  - Exception
  - Raising an exception
  - User defined exception 
  
- ###Closures
+ ### Closures
  
  - Nonlocal variables
  - Closures
  - When to use closures
  
- ###Decorators
+ ### Decorators
  
  - Prerequisites for Decorators
  - Decorators
