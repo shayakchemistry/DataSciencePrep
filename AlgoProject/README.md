@@ -50,7 +50,7 @@ Complexity theory attempts to make distinctions precise by proposing a formal cr
 
 ### Linked List
 
-Linked list is a linear collection of data elements whose order is not given by their physical placement in memory. Instead, each element points to the next. It is a data structure consisting of a collection of nodes which together represent a sequence. In its most basic form, each node contains: data, and a reference (in other words, a link) to the next node in the sequence. This structure allows for efficient insertion or removal of elements from any position in the sequence during iteration. More complex variants add additional links, allowing more efficient insertion or removal of nodes at arbitrary positions. A drawback of linked lists is th at access time is linear (and difficult to pipeline). Faster access, such as random access, is not feasible. Arrays have better cache locality compared to linked lists. Here we do discuss two types of linked list:
+Linked list is a linear collection of data elements whose order is not given by their physical placement in memory. Instead, each element points to the next. It is a data structure consisting of a collection of nodes which together represent a sequence. In its most basic form, each node contains: data, and a reference (in other words, a link) to the next node in the sequence. This structure allows for efficient insertion or removal of elements from any position in the sequence during iteration. More complex variants add additional links, allowing more efficient insertion or removal of nodes at arbitrary positions. A drawback of linked lists is th at access time is linear (and difficult to pipeline). Faster access, such as random access, is not feasible. Arrays have better cache locality compared to linked lists. Here we do discuss three types of linked list:
 
 ##### Singly Linked List
 
@@ -62,13 +62,16 @@ Each node in a list consists of at least two parts:
 *Sorting of Linked List:*
 As Linked List is a linear data structure, we can apply sorting techniques on it. 
 
+Singly Linked List is demonstrated in SingleLinkedList.cpp file.
+
+
 ##### Doubly Linked Lists
 
-A Doubly Linked List (DLL) contains an extra pointer, typically called previous pointer, together with next pointer and data which are there in singly linked list. It can be traversed in both forward and backward direction. The delete operation in DLL is more efficient if pointer to the node to be deleted is given. We can quickly insert a new node before a given node. In singly linked list, to delete a node, pointer to the previous node is needed. To get this previous node, sometimes the list is traversed. In DLL, we can get the previous node using previous pointer. It only takes extra memory for an extra pointer and all operation requires previous pointers to be maintained.
+A Doubly Linked List (DLL) contains an extra pointer, typically called previous pointer, together with next pointer and data which are there in singly linked list. It can be traversed in both forward and backward direction. The delete operation in DLL is more efficient if pointer to the node to be deleted is given. We can quickly insert a new node before a given node. In singly linked list, to delete a node, pointer to the previous node is needed. To get this previous node, sometimes the list is traversed. In DLL, we can get the previous node using previous pointer. It only takes extra memory for an extra pointer and all operation requires previous pointers to be maintained. This is demonstrated in DoublyLinkedList.cpp file.
 
 ##### Circular Linked List
 
-Circular Linked List is a variation of Linked list in which the first element points to the last element and the last element points to the first element. Both Singly Linked List and Doubly Linked List can be made into a circular linked list. 
+Circular Linked List is a variation of Linked list in which the first element points to the last element and the last element points to the first element. Both Singly Linked List and Doubly Linked List can be made into a circular linked list. This is demonstrated using Double Linked List in CircularLinkedList.cpp file.
 
 ### Stacks and Queues
 
@@ -81,9 +84,11 @@ Stack is a linear data structure which follows a particular order in which the o
 - Peek or Top: Returns top element of stack. 
 - isEmpty: Returns true if stack is empty, else false.
 
+This is demonstrated in Stack.cpp file.
+
 ##### Queues
 
-Queue is an abstract data structure, somewhat similar to Stacks. Unlike stacks, a queue is open at both its ends. One end is always used to insert data (enqueue) and the other is used to remove data (dequeue). Queue follows First-In-First-Out methodology, i.e., the data item stored first will be accessed first. A real-world example of queue can be a single-lane one-way road, where the vehicle enters first, exits first. More real-world examples can be seen as queues at the ticket windows and bus-stops.
+Queue is an abstract data structure, somewhat similar to Stacks. Unlike stacks, a queue is open at both its ends. One end is always used to insert data (enqueue) and the other is used to remove data (dequeue). Queue follows First-In-First-Out methodology, i.e., the data item stored first will be accessed first. A real-world example of queue can be a single-lane one-way road, where the vehicle enters first, exits first. More real-world examples can be seen as queues at the ticket windows and bus-stops. This is demonstrated in Queue.cpp file.
 
 ### Sorting
 
@@ -214,7 +219,7 @@ Double hashing is a collision resolving technique in Open Addressed Hash tables.
 
 ### Recursion
 
-In this section we mainly focus on recursions. The process in which a function calls itself directly or indirectly is called recursion and the corresponding function is called as recursive function. Using recursive algorithm, certain problems can be solved quite easily. In the recursive program, the solution to the base case is provided and the solution of the bigger problem is expressed in terms of smaller problems. The idea is to represent a problem in terms of one or more smaller problems, and add one or more base conditions that stop the recursion. In the following subsections, we discuss more into the solutions using recursions.
+In this section we mainly focus on recursions. The process in which a function calls itself directly or indirectly i s called recursion and the corresponding function is called as recursive function. Using recursive algorithm, certain problems can be solved quite easily. In the recursive program, the solution to the base case is provided and the solution of the bigger problem is expressed in terms of smaller problems. The idea is to represent a problem in terms of one or more smaller problems, and add one or more base conditions that stop the recursion. In the following subsections, we discuss more into the solutions using recursions.
 
 ##### Fibonacci Numbers
 
@@ -226,24 +231,6 @@ Tower of Hanoi is a mathematical puzzle which consist of 3 poles and number of d
 
 - Only one disc can be moved at a time
 - Larger disc cannot be placed on a smaller disc
-
-##### Koch Curves
-
-The Koch snowflake (also known as the Koch curve, Koch star, or Koch island) is a mathematical curve and one of the earliest fractal curves to have been described. The progression for the area of the snowflake converges to 8/5 times the area of the original triangle, while the progression for the snowflake’s perimeter diverges to infinity. Consequently, the snowflake has a finite area bounded by an infinitely long line. It's construction involves the following steps:
-
-- Draw an equilateral triangle.
-- Divide each side in three equal parts.
-- Draw an equilateral triangle on each middle part. Measure the length of the middle third to know the length of the sides of these new triangles.
-- Divide each outer side into thirds. You can see the 2nd generation of triangles covers a bit of the first. These three line segments shouldn’t be parted in three.
-- Draw an equilateral triangle on each middle part. We need to repeat these steps
-
-##### Hilbert Curves
-
-Hilbert curve is a type of space-filling curves that folds one dimensional axis into a two dimensional space, but still keeps the locality. 
-
-##### Sierpinski Gaskets
-
-The Sierpinski gasket, also known as the Sierpinski triangle, is the intersection of all the sets in this sequence, that is, the set of points that remain after this construction is repeated infinitely often. The concept behind this is the fact that the filled triangle is filled by an empty equilateral triangle in the center in such a way that this triangular space is congruent to the three triangles being formed around it.
 
 ##### Selections
 
@@ -323,6 +310,14 @@ The next thing we discuss is a special type of tree known as Binary tree. Binary
 
 The very first insertion creates the tree. Afterwards, whenever an element is to be inserted, first locate its proper location. Start searching from the root node, then if the data is less than the key value, search for the empty location in the left subtree and insert the data. Otherwise, search for the empty location in the right subtree and insert the data.
 
+
+
+
+
+A Heap i
+
+
+
 ##### Search
 
 Whenever an element is to be searched, start searching from the root node, then if the data is less than the key value, search for the element in the left subtree. Otherwise, search for the element in the right subtree. Follow the same algorithm for each node.
@@ -379,20 +374,8 @@ The AVL tree (named for its inventors Adelson-Velskii and Landis) should be view
 
 The key to making the AVL tree work is to alter the insert and delete routines so as to maintain the balance property. Of course, to be practical, we must be able to implement the revised update routines in Θ(log n) time.
 
-##### Decision Trees
-
-Decision tree is the most powerful and popular tool for classification and prediction. A Decision tree is a flowchart like tree structure, where each internal node denotes a test on an attribute, each branch represents an outcome of the test, and each leaf node (terminal node) holds a class label.
-
-A tree can be “learned” by splitting the source set into subsets based on an attribute value test. This process is repeated on each derived subset in a recursive manner called recursive partitioning. The recursion is completed when the subset at a node all has the same value of the target variable, or when splitting no longer adds value to the predictions. The construction of decision tree classifier does not require any domain knowledge or parameter setting, and therefore is appropriate for exploratory knowledge discovery. Decision trees can handle high dimensional data. In general decision tree classifier has good accuracy. Decision tree induction is a typical inductive approach to learn knowledge on classification.
-
-
-Definition
-05:36
-Exhaustive Search
-06:27
-Branch And Bound
-08:26
-Heuristics
+##### Red Black Trees
+##### Suffix tree
 
 Network Algorithm
 Network Terminology

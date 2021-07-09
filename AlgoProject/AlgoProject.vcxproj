@@ -19,7 +19,21 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="LinkedList\CircularLinkedList.cpp" />
+    <ClCompile Include="LinkedList\DoublyLinkedList.cpp" />
     <ClCompile Include="LinkedList\SingleLinkedList.cpp" />
+    <ClCompile Include="Queues\Queue.cpp" />
+    <ClCompile Include="Searching\BinarySearch.cpp" />
+    <ClCompile Include="Searching\InterpolationSearch.cpp" />
+    <ClCompile Include="Searching\LinearSearch.cpp" />
+    <ClCompile Include="Sorting\BubbleSort.cpp" />
+    <ClCompile Include="Sorting\CountingSort.cpp" />
+    <ClCompile Include="Sorting\HeapSort.cpp" />
+    <ClCompile Include="Sorting\InsertionSort.cpp" />
+    <ClCompile Include="Sorting\MergeSort.cpp" />
+    <ClCompile Include="Sorting\QuickSort.cpp" />
+    <ClCompile Include="Sorting\SelectionSort.cpp" />
+    <ClCompile Include="Stacks\Stack.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

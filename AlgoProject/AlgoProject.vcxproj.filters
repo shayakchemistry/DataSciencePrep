@@ -13,10 +13,67 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\LinkedList">
+      <UniqueIdentifier>{a59c90c0-644b-4f6f-ada9-89eec4260181}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Stacks">
+      <UniqueIdentifier>{3b9cb610-3e92-4112-ad4e-b1f50327697a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Queues">
+      <UniqueIdentifier>{d9fa90be-a5ee-4ff0-8f69-81a16241f234}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Sorting">
+      <UniqueIdentifier>{86a0aef0-8c0d-418a-9e38-70e98278eefb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Searching">
+      <UniqueIdentifier>{d68bb01b-a2eb-46e0-8ac4-2e2d139b6e0a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LinkedList\SingleLinkedList.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\LinkedList</Filter>
+    </ClCompile>
+    <ClCompile Include="LinkedList\DoublyLinkedList.cpp">
+      <Filter>Source Files\LinkedList</Filter>
+    </ClCompile>
+    <ClCompile Include="LinkedList\CircularLinkedList.cpp">
+      <Filter>Source Files\LinkedList</Filter>
+    </ClCompile>
+    <ClCompile Include="Stacks\Stack.cpp">
+      <Filter>Source Files\Stacks</Filter>
+    </ClCompile>
+    <ClCompile Include="Queues\Queue.cpp">
+      <Filter>Source Files\Queues</Filter>
+    </ClCompile>
+    <ClCompile Include="Sorting\BubbleSort.cpp">
+      <Filter>Source Files\Sorting</Filter>
+    </ClCompile>
+    <ClCompile Include="Sorting\CountingSort.cpp">
+      <Filter>Source Files\Sorting</Filter>
+    </ClCompile>
+    <ClCompile Include="Sorting\HeapSort.cpp">
+      <Filter>Source Files\Sorting</Filter>
+    </ClCompile>
+    <ClCompile Include="Sorting\InsertionSort.cpp">
+      <Filter>Source Files\Sorting</Filter>
+    </ClCompile>
+    <ClCompile Include="Sorting\MergeSort.cpp">
+      <Filter>Source Files\Sorting</Filter>
+    </ClCompile>
+    <ClCompile Include="Sorting\QuickSort.cpp">
+      <Filter>Source Files\Sorting</Filter>
+    </ClCompile>
+    <ClCompile Include="Sorting\SelectionSort.cpp">
+      <Filter>Source Files\Sorting</Filter>
+    </ClCompile>
+    <ClCompile Include="Searching\BinarySearch.cpp">
+      <Filter>Source Files\Searching</Filter>
+    </ClCompile>
+    <ClCompile Include="Searching\InterpolationSearch.cpp">
+      <Filter>Source Files\Searching</Filter>
+    </ClCompile>
+    <ClCompile Include="Searching\LinearSearch.cpp">
+      <Filter>Source Files\Searching</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

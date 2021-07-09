@@ -1,6 +1,6 @@
 /*
 
-This is a working C++ program to demonstrate Singly Linked List
+This is a working C++ program to demonstrate Doubly Linked List
 
 This program covers up the following operations:
 1. Push
@@ -13,23 +13,25 @@ This program covers up the following operations:
 
 using namespace std;
 
-class Node {
+class DNode {
 public:
 	int data;
-	Node* next;
+	DNode* prev;
+	DNode* next;
 };
 
-void pushNode(Node** headPtr, int value) {
-	Node* new_node = new Node();
+void pushNode(DNode** headPtr, int value) {
+	DNode* new_node = new DNode();
 	new_node->data = value;
 	new_node->next = NULL;
-	
+	new_node->prev = NULL;
+
 	if ((*headPtr) == NULL) {
 		(*headPtr) = new_node;
 	}
 	else {
 		bool flag1 = true;
-		Node* currentPtr = (*headPtr);
+		DNode* currentPtr = (*headPtr);
 		while (flag1)
 		{
 			if (currentPtr->next == NULL) {
@@ -41,18 +43,18 @@ void pushNode(Node** headPtr, int value) {
 			}
 		}
 		currentPtr->next = new_node;
+		new_node->prev = currentPtr;
 	}
 }
 
-int deleteNode(Node** headPtr, int pos) {
+int deleteNode(DNode** headPtr, int pos) {
 	if ((*headPtr) == NULL) {
 		return 0;
 	}
 
 	int cPos = 0;
 	bool flag1 = true;
-	Node* currentPtr = (*headPtr);
-	Node* prevPtr = NULL;
+	DNode* currentPtr = (*headPtr);
 	if (currentPtr->next == NULL) {
 		if (pos == 0) {
 			int data1 = currentPtr->data;
@@ -63,7 +65,7 @@ int deleteNode(Node** headPtr, int pos) {
 			return 0;
 		}
 	}
-	
+
 	while (flag1)
 	{
 		if (currentPtr->next == NULL || cPos == pos) {
@@ -72,13 +74,15 @@ int deleteNode(Node** headPtr, int pos) {
 		}
 		else {
 			cPos++;
-			prevPtr = currentPtr;
 			currentPtr = currentPtr->next;
 		}
 	}
 
 	if (cPos == pos) {
-		prevPtr->next = currentPtr->next;
+		currentPtr->prev->next = currentPtr->next;
+		if (currentPtr->next != NULL) {
+			currentPtr->next->prev = currentPtr->prev;
+		}
 		return currentPtr->data;
 	}
 	else {
@@ -86,13 +90,13 @@ int deleteNode(Node** headPtr, int pos) {
 	}
 }
 
-bool searchNode(Node** headPtr, int value) {
+bool searchNode(DNode** headPtr, int value) {
 	if ((*headPtr) == NULL) {
 		return false;
 	}
 
 	bool flag1 = true;
-	Node* currentPtr = (*headPtr);
+	DNode* currentPtr = (*headPtr);
 	while (flag1)
 	{
 		if (currentPtr->next == NULL || currentPtr->data == value) {
@@ -115,11 +119,11 @@ bool searchNode(Node** headPtr, int value) {
 
 
 
-int main1() {
+int main2() {
 
 	// Create a Head node to Linked list. 
 
-	Node* head = NULL;
+	DNode* head = NULL;
 
 	// Push data to the linked list
 
