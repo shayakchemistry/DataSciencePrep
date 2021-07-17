@@ -47,7 +47,7 @@ int interpolationSearch(int* arr, int len, int sVal) {
 	return -1;
 }
 
-int main() {
+int main15() {
 
 	// Let's create an array on which search will be performed
 

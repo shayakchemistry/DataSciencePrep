@@ -19,10 +19,18 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Backtracking\KnightsTour.cpp" />
+    <ClCompile Include="Backtracking\nQueens.cpp" />
+    <ClCompile Include="HashTable\ChainingHashTable.cpp" />
+    <ClCompile Include="HashTable\DHHashTable.cpp" />
+    <ClCompile Include="HashTable\LPHashTable.cpp" />
+    <ClCompile Include="HashTable\QPHashTable.cpp" />
     <ClCompile Include="LinkedList\CircularLinkedList.cpp" />
     <ClCompile Include="LinkedList\DoublyLinkedList.cpp" />
     <ClCompile Include="LinkedList\SingleLinkedList.cpp" />
     <ClCompile Include="Queues\Queue.cpp" />
+    <ClCompile Include="Recursion\Fibonacci.cpp" />
+    <ClCompile Include="Recursion\TowerOfHanoi.cpp" />
     <ClCompile Include="Searching\BinarySearch.cpp" />
     <ClCompile Include="Searching\InterpolationSearch.cpp" />
     <ClCompile Include="Searching\LinearSearch.cpp" />

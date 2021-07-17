@@ -28,6 +28,15 @@
     <Filter Include="Source Files\Searching">
       <UniqueIdentifier>{d68bb01b-a2eb-46e0-8ac4-2e2d139b6e0a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\HashTable">
+      <UniqueIdentifier>{6016b53b-d15b-4f30-af41-e7717a976a39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Recursion">
+      <UniqueIdentifier>{cc199177-f18f-4211-b3f5-77bbe143db30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Backtracking">
+      <UniqueIdentifier>{ecd9d20a-a534-49b8-89da-ce94f47c6b60}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LinkedList\SingleLinkedList.cpp">
@@ -74,6 +83,30 @@
     </ClCompile>
     <ClCompile Include="Searching\LinearSearch.cpp">
       <Filter>Source Files\Searching</Filter>
+    </ClCompile>
+    <ClCompile Include="HashTable\ChainingHashTable.cpp">
+      <Filter>Source Files\HashTable</Filter>
+    </ClCompile>
+    <ClCompile Include="HashTable\DHHashTable.cpp">
+      <Filter>Source Files\HashTable</Filter>
+    </ClCompile>
+    <ClCompile Include="HashTable\LPHashTable.cpp">
+      <Filter>Source Files\HashTable</Filter>
+    </ClCompile>
+    <ClCompile Include="HashTable\QPHashTable.cpp">
+      <Filter>Source Files\HashTable</Filter>
+    </ClCompile>
+    <ClCompile Include="Recursion\Fibonacci.cpp">
+      <Filter>Source Files\Recursion</Filter>
+    </ClCompile>
+    <ClCompile Include="Recursion\TowerOfHanoi.cpp">
+      <Filter>Source Files\Recursion</Filter>
+    </ClCompile>
+    <ClCompile Include="Backtracking\KnightsTour.cpp">
+      <Filter>Source Files\Backtracking</Filter>
+    </ClCompile>
+    <ClCompile Include="Backtracking\nQueens.cpp">
+      <Filter>Source Files\Backtracking</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

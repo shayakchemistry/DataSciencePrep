@@ -105,6 +105,8 @@ Insertion sort is a simple sorting algorithm that works similar to the way you s
 - Step 5 − Insert the value
 - Step 6 − Repeat until list is sorted
 
+This is implemented in InsertionSort.cpp file.
+
 ##### Selection sort
 
 The selection sort algorithm sorts an array by repeatedly finding the minimum element (considering ascending order) from unsorted part and putting it at the beginning. This sorting algorithm is an in-place comparison-based algorithm in which the list is divided into two parts, the sorted part at the left end and the unsorted part at the right end. Initially, the sorted part is empty and the unsorted part is the entire list. The smallest element is selected from the unsorted array and swapped with the leftmost element, and that element becomes a part of the sorted array. This process continues moving unsorted array boundary by one element to the right. The algorithm is given below:
@@ -114,6 +116,8 @@ The selection sort algorithm sorts an array by repeatedly finding the minimum el
 - Step 3 − Swap with value at location MIN 
 - Step 4 − Increment MIN to point to next element
 - Step 5 − Repeat until list is sorted
+
+This is implemented in SelectionSort.cpp file.
 
 ##### Quick sort
 
@@ -128,6 +132,8 @@ Quick sort is a highly efficient sorting algorithm and is based on partitioning 
 - Step 7 − if both step 5 and step 6 does not match swap left and right
 - Step 8 − if left ≥ right, the point where they met is new pivot
 
+This is implemented in QuickSort.cpp file.
+
 ##### Heap sort
 
 Heap is a data structure which is a complete binary tree. We derive a sorting out of this data structure. Heap sort is a comparison-based sorting technique based on Binary Heap data structure. It is similar to selection sort where we first find the minimum element and place the minimum element at the beginning. We repeat the same process for the remaining elements. Heap sort algorithm looks like:
@@ -135,6 +141,8 @@ Heap is a data structure which is a complete binary tree. We derive a sorting ou
 - Step 1 - Build a max heap from the input data.
 - Step 2 - At this point, the largest item is stored at the root of the heap. Replace it with the last item of the heap followed by reducing the size of heap by 1. Finally, heapify the root of the tree.
 - Step 3 - Repeat step 2 while the size of the heap is greater than 1.
+
+This is implemented in HeapSort.cpp file.
 
 ##### Merge sort
 
@@ -144,13 +152,15 @@ Merge sort is a sorting technique based on divide and conquer technique. Merge s
 - Step 2 − divide the list recursively into two halves until it can no more be divided.
 - Step 3 − merge the smaller lists into new list in sorted order.
 
+This is implemented in MergeSort.cpp file.
+
 ##### Bubble sort
 
-Bubble sort is a simple sorting algorithm. This sorting algorithm is comparison-based algorithm in which each pair of adjacent elements is compared and the elements are swapped if they are not in order.  
+Bubble sort is a simple sorting algorithm. This sorting algorithm is comparison-based algorithm in which each pair of adjacent elements is compared and the elements are swapped if they are not in order. This is implemented in BubbleSort.cpp file.
 
 ##### Counting sort 
 
-Counting sort is a sorting technique based on keys between a specific range. It works by counting the number of objects having distinct key values (kind of hashing). Then doing some arithmetic to calculate the position of each object in the output sequence.
+Counting sort is a sorting technique based on keys between a specific range. It works by counting the number of objects having distinct key values (kind of hashing). Then doing some arithmetic to calculate the position of each object in the output sequence. This is implemented in CountingSort.cpp file.
 
 
 ### Searching
@@ -172,9 +182,11 @@ Linear Search ( Array A, Value x)
 - Step 7: Print element not found
 - Step 8: Exit
 
+This is implemented in LinearSearch.cpp file.
+
 ##### Binary Search
 
-Binary search is a fast search algorithm with run-time complexity of Ο(log n). This search algorithm works on the principle of divide and conquer. For this algorithm to work properly, the data collection should be in the sorted form. Binary search looks for a particular item by comparing the middle most item of the collection. If a match occurs, then the index of item is returned. If the middle item is greater than the item, then the item is searched in the sub-array to the left of the middle item. Otherwise, the item is searched for in the sub-array to the right of the middle item. This process continues on the sub-array as well until the size of the subarray reduces to zero.
+Binary search is a fast search algorithm with run-time complexity of Ο(log n). This search algorithm works on the principle of divide and conquer. For this algorithm to work properly, the data collection should be in the sorted form. Binary search looks for a particular item by comparing the middle most item of the collection. If a match occurs, then the index of item is returned. If the middle item is greater than the item, then the item is searched in the sub-array to the left of the middle item. Otherwise, the item is searched for in the sub-array to the right of the middle item. This process continues on the sub-array as well until the size of the subarray reduces to zero. This is implemented in BinarySearch.cpp file.
 
 ##### Interpolation Search
 
@@ -188,13 +200,15 @@ Interpolation search is an improved variant of binary search. This search algori
 - Step 6 − If data is smaller than middle, search in lower sub-list.
 - Step 7 − Repeat until match.
 
+This is implemented in InterpolationSearch.cpp file.
+
 ### Hash Tables
 
-Hash Table is a data structure which stores data in an associative manner. In a hash table, data is stored in an array format, where each data value has its own unique index value. Access of data becomes very fast if we know the index of the desired data. Thus, it becomes a data structure in which insertion and search operations are very fast irrespective of the size of the data. Hash Table uses an array as a storage medium and uses hash technique to generate an index where an element is to be inserted or is to be located from. Hashing techniques are used to find one-to-one correspondence between a key and an index in a hash table. One of the most important issue facing is to avoid collision. Collision happens when we try to insert two elements in the same index. There are many important collision avoidance techniques
+Hash Table is a data structure which stores data in an associative manner. In a hash table, data is stored in an array format, where each data value has its own unique index value. Access of data becomes very fast if we know the index of the desired data. Thus, it becomes a data structure in which insertion and search operations are very fast irrespective of the size of the data. Hash Table uses an array as a storage medium and uses hash technique to generate an index where an element is to be inserted or is to be located from. Hashing techniques are used to find one-to-one correspondence between a key and an index in a hash table. One of the most important issue that we face is collision. Collision happens when we try to insert two elements in the same index. To avoid collision, there are many important collision avoidance techniques of which some of them are given below:
 
 ##### Chaining
 
-Chaining is a way to avoid collision. In the chaining approach, the hash table is an array of linked lists i.e., each index has its own linked list. All key-value pairs mapping to the same index will be stored in the linked list of that index.
+Chaining is a way to avoid collision. In the chaining approach, the hash table is an array of linked lists i.e., each index has its own linked list. All key-value pairs mapping to the same index will be stored in the linked list of that index. This is demonstrated in ChainingHashTable.cpp.
 
 ##### Open Addressing 
 
@@ -202,28 +216,36 @@ Open addressing, or closed hashing, is a method of collision resolution in hash 
 
 ##### Open Addressing - Linear Probing
 
-Linear probing is a scheme categorized under open addressing. When the hash function causes a collision by mapping a new key to a cell of the hash table that is already occupied by another key, linear probing searches the table for the closest following free location and inserts the new key there. Lookups are performed in the same way, by searching the table sequentially starting at the position given by the hash function, until finding a cell with a matching key or an empty cell.
+Linear probing is a scheme categorized under open addressing. When the hash function causes a collision by mapping a new key to a cell of the hash table that is already occupied by another key, linear probing searches the table for the closest following free location and inserts the new key there. Lookups are performed in the same way, by searching the table sequentially starting at the position given by the hash function, until finding a cell with a matching key or an empty cell. This method looks like:
+
+- If slot hash(x) % S is full, then we try (hash(x) + 1) % S
+- If (hash(x) + 1) % S is also full, then we try (hash(x) + 2) % S
+- If (hash(x) + 2) % S is also full, then we try (hash(x) + 3) % S 
+
+This is demonstrated in LPHashTable.cpp
 
 ##### Open Addressing - Quadratic Probing
 
-Quadratic probing is an open-addressing scheme where we look for i2‘th slot in i’th iteration if the given hash value x collides in the hash table. It is done using the following method. Let hash(x) be the slot index computed using the hash function for an value x.
+Quadratic probing is an open-addressing scheme where we look for i^2‘th slot in i’th iteration if the given hash value x collides in the hash table. It is done using the following method. Let hash(x) be the slot index computed using the hash function for an value x.
 
 - If the slot hash(x) % S is full, then we try (hash(x) + 1*1) % S.
 - If (hash(x) + 1*1) % S is also full, then we try (hash(x) + 2*2) % S.
 - If (hash(x) + 2*2) % S is also full, then we try (hash(x) + 3*3) % S.
 - This process is repeated for all the values of i until an empty slot is found.
 
+This is demonstrated in QPHashTable.cpp
+
 ##### Open Addressing - Double Hashing
 
-Double hashing is a collision resolving technique in Open Addressed Hash tables. Double hashing uses the idea of applying a second hash function to key when a collision occurs. 
+Double hashing is a collision resolving technique in Open Addressed Hash tables. Double hashing uses the idea of applying a second hash function to key when a collision occurs. This iterates for all i iterations until an empty slot is found. This is demonstrated in DHHashTable.cpp
 
 ### Recursion
 
-In this section we mainly focus on recursions. The process in which a function calls itself directly or indirectly i s called recursion and the corresponding function is called as recursive function. Using recursive algorithm, certain problems can be solved quite easily. In the recursive program, the solution to the base case is provided and the solution of the bigger problem is expressed in terms of smaller problems. The idea is to represent a problem in terms of one or more smaller problems, and add one or more base conditions that stop the recursion. In the following subsections, we discuss more into the solutions using recursions.
+In this section we focus on recursions. The process in which a function calls itself directly or indirectly is called recursion and the corresponding function is called as recursive function. Using recursive algorithm, certain problems can be solved quite easily. In the recursive program, the solution to the base case is provided and the solution of the bigger problem is expressed in terms of smaller problems. The idea is to represent a problem in terms of one or more smaller problems, and add one or more base conditions that stop the recursion. In the following subsections, we explore into ways to use recurrion strategy to solve some common problems.
 
 ##### Fibonacci Numbers
 
-Fibonacci series is a series of numbers formed by the addition of the preceding two numbers in the series. The first two terms are zero and one respectively. The terms after this are generated by simply adding the previous two terms. Using this as a recursive method we do solve this problem.
+Fibonacci series is a series of numbers formed by the addition of the preceding two numbers in the series. The first two terms are zero and one respectively. The terms after this are generated by simply adding the previous two terms. Using this as a recursive method we do solve this problem. This is demonstrated in Fibonacci.cpp
 
 ##### Tower Of Hanoi
 
@@ -232,9 +254,7 @@ Tower of Hanoi is a mathematical puzzle which consist of 3 poles and number of d
 - Only one disc can be moved at a time
 - Larger disc cannot be placed on a smaller disc
 
-##### Selections
-
-Selection Algorithm is an algorithm for finding the kth smallest (or largest) number in a list or an array. That number is called the kth order statistic. It includes the various cases for finding the minimum, maximum and median elements in a list or an array. For finding the minimum (or maximum) element by iterating through the list, we keep the track of current minimum (or maximum) elements that occur so far and it is related to the selection sort.
+We can solve this problem using recursion. If we follow the pattern closely we can see the for n th disk we first move the previous disk to the intermediatory pole and the move the n th disk to the the target pole. Using this pattern we can build an recurssion as demonstrated in TowerOfHanoi.cpp
 
 ### Backtracking
 
@@ -309,14 +329,6 @@ The next thing we discuss is a special type of tree known as Binary tree. Binary
 ##### Insert
 
 The very first insertion creates the tree. Afterwards, whenever an element is to be inserted, first locate its proper location. Start searching from the root node, then if the data is less than the key value, search for the empty location in the left subtree and insert the data. Otherwise, search for the empty location in the right subtree and insert the data.
-
-
-
-
-
-A Heap i
-
-
 
 ##### Search
 
