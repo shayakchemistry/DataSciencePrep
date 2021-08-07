@@ -37,6 +37,9 @@
     <Filter Include="Source Files\Backtracking">
       <UniqueIdentifier>{ecd9d20a-a534-49b8-89da-ce94f47c6b60}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Trees">
+      <UniqueIdentifier>{9f9ebb78-6769-48b8-bcc7-25fe857880d1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LinkedList\SingleLinkedList.cpp">
@@ -107,6 +110,18 @@
     </ClCompile>
     <ClCompile Include="Backtracking\nQueens.cpp">
       <Filter>Source Files\Backtracking</Filter>
+    </ClCompile>
+    <ClCompile Include="Trees\AVLTree.cpp">
+      <Filter>Source Files\Trees</Filter>
+    </ClCompile>
+    <ClCompile Include="Trees\BinaryTree.cpp">
+      <Filter>Source Files\Trees</Filter>
+    </ClCompile>
+    <ClCompile Include="Trees\BTrees.cpp">
+      <Filter>Source Files\Trees</Filter>
+    </ClCompile>
+    <ClCompile Include="Trees\RedBlackTree.cpp">
+      <Filter>Source Files\Trees</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

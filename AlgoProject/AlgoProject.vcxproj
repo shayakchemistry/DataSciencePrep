@@ -42,6 +42,10 @@
     <ClCompile Include="Sorting\QuickSort.cpp" />
     <ClCompile Include="Sorting\SelectionSort.cpp" />
     <ClCompile Include="Stacks\Stack.cpp" />
+    <ClCompile Include="Trees\AVLTree.cpp" />
+    <ClCompile Include="Trees\BinaryTree.cpp" />
+    <ClCompile Include="Trees\BTrees.cpp" />
+    <ClCompile Include="Trees\RedBlackTree.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

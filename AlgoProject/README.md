@@ -387,13 +387,13 @@ The AVL tree (named for its inventors Adelson-Velskii and Landis) should be view
 The key to making the AVL tree work is to alter the insert and delete routines so as to maintain the balance property. Of course, to be practical, we must be able to implement the revised update routines in Θ(log n) time.
 
 ##### Red Black Trees
-##### Suffix tree
+
 
 Network Algorithm
 Network Terminology
 03:31
 Network Classes
-04:52
+04:52 
 Depth-First Traversal
 05:21
 Breadth-First Traversal
