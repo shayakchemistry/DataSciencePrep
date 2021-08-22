@@ -19,7 +19,7 @@ In this module we will explore the algorithm concepts. We will not start from ve
 
 Complexity theory is a subfield of theoretical computer science one of whose primary goals is to classify and compare the practical difficulty of solving problems about finite combinatorial objects. Let's consider a problem where we are given two natural numbers n and m, and we have to find if they are relatively prime. This type of problems are equally difficult from the standpoint of classical computability theory in the sense that they are all effectively decidable. Yet they still appear to differ significantly in practical difficulty. In such scenario, with the supplied pair of numbers m>n>0 it is possible to determine their relative primality by a method (Euclid’s algorithm) which requires a number of steps proportional to log(n). On the other hand, all known methods for solving the problem require a ‘brute force’ search through a large class of cases which increase at least exponentially in the size of the problem instance.
 
-In computational complexity theory, a problem X is considered to be complex in proportion to the difficulty of carrying out the most efficient algorithm by which it may be decided. Similarly, one problem X is understood to be more complex (or harder) than another problem Y just in case Y possesses a more efficient decision algorithm than the most efficient algorithm for deciding X. In order to make these definitions precise, a number of technical conventions are employed. With reference to the above statements, we now define complexity class to be the set of problems for which there exists a decision procedure with a given running time or running space complexity. Thus, we can estimate algorithm using space and time complexity. Here we do discuss two major things: 
+In computational complexity theory, a problem X is considered to be complex in proportion to the difficulty of carrying out the most efficient algorithm by which it may be decided. Similarly, one problem X is understood to be more complex (or harder) than another problem Y just in case Y possesses a more efficient decision algorithm than the most efficient algorithm for deciding X. In order to make these definitions precise, a number of technical conventions are employed. With reference to the above statements, we now define complexity class to be the set of problems for which there exists a decision procedure with a given running time or running space complexity. Thus, we can estimate algorithm using space and time complexity. Here we do discuss two major things:
 
 - Asymptotic Notations
 - P and NP
@@ -29,7 +29,7 @@ In computational complexity theory, a problem X is considered to be complex in p
 In this subsection, we will understand the complexity notations for Algorithms along with Big-O, Big-Omega, Big-Theta and Little-O and see how we can calculate the complexity of any algorithm. The notations we use to describe the asymptotic running time of an algorithm are defined in terms of functions whose domains are the set of natural numbers ℕ = 0,1,2,.... such notations are convenient to describing the worst-case running time function T(n), which usually is defined only on integer input sizes. Computer scientists make heavy use of a specialized asymptotic notation to describe the growth of functions approximately. The individual asymptotic notation description are given below.
 
 *Big O:*
-Big-O notation indicates maximum time required by an algorithm for all input values. Let us consider Let T(n) as a function on n = 1, 2, 3,... (usually, the worst-case running time of an algorithm). 
+Big-O notation indicates maximum time required by an algorithm for all input values. Let us consider Let T(n) as a function on n = 1, 2, 3,... (usually, the worst-case running time of an algorithm).
 
 T(n) = O(f(n)) if and only if T(n) is eventually bounded above by a constant multiple of f(n) (asymptotic upper bound).
 
@@ -40,7 +40,7 @@ T(n) is big-omega of another function f(n) if and only if T(n) is eventually bou
 Big-theta notation, or simply theta notation, is analogous to “equal to.” Saying that T(n) = Θ(f(n)) just means that both T(n) = Ω(f(n)) and T(n) = O(f(n)). Equivalently, T(n) is eventually sandwiched between two different constant multiples (c1,c2) of f(n).
 
 *Little O:*
-Big-O notation is analogous to “less than or equal to,” little-o notation is analogous to “strictly less than". 
+Big-O notation is analogous to “less than or equal to,” little-o notation is analogous to “strictly less than".
 
 T(n) = o(f(n)) if and only if ∃ positive constants c,n0 such that T(n) ≤ c.f(n)
 
@@ -50,17 +50,17 @@ Complexity theory attempts to make distinctions precise by proposing a formal cr
 
 ### Linked List
 
-Linked list is a linear collection of data elements whose order is not given by their physical placement in memory. Instead, each element points to the next. It is a data structure consisting of a collection of nodes which together represent a sequence. In its most basic form, each node contains: data, and a reference (in other words, a link) to the next node in the sequence. This structure allows for efficient insertion or removal of elements from any position in the sequence during iteration. More complex variants add additional links, allowing more efficient insertion or removal of nodes at arbitrary positions. A drawback of linked lists is th at access time is linear (and difficult to pipeline). Faster access, such as random access, is not feasible. Arrays have better cache locality compared to linked lists. Here we do discuss three types of linked list:
+Linked list is a linear collection of data elements whose order is not given by their physical placement in memory. Instead, each element points to the next. It is a data structure consisting of a collection of nodes which together represent a sequence. In its most basic form, each node contains: data, and a reference (in other words, a link) to the next node in the sequence. This structure allows for efficient insertion or removal of elements from any position in the sequence during iteration. More complex variants add additional links, allowing more efficient insertion or removal of nodes at arbitrary positions. A drawback of linked lists is that access time is linear (and difficult to pipeline). Faster access, such as random access, is not feasible. Arrays have better cache locality compared to linked lists. Here we do discuss three types of linked list:
 
 ##### Singly Linked List
 
-A singly linked list is represented by a pointer to the first node of the linked list. The first node is called the head. If the linked list is empty, then the value of the head is NULL. 
+A singly linked list is represented by a pointer to the first node of the linked list. The first node is called the head. If the linked list is empty, then the value of the head is NULL.
 Each node in a list consists of at least two parts:
 1. Data
 2. Pointer (Or Reference) to the next node
 
 *Sorting of Linked List:*
-As Linked List is a linear data structure, we can apply sorting techniques on it. 
+As Linked List is a linear data structure, we can apply sorting techniques on it.
 
 Singly Linked List is demonstrated in SingleLinkedList.cpp file.
 
@@ -81,7 +81,7 @@ Stack is a linear data structure which follows a particular order in which the o
 
 - Push: Adds an item in the stack. If the stack is full, then it is said to be an Overflow condition.
 - Pop: Removes an item from the stack. The items are popped in the reversed order in which they are pushed. If the stack is empty, then it is said to be an Underflow condition.
-- Peek or Top: Returns top element of stack. 
+- Peek or Top: Returns top element of stack.
 - isEmpty: Returns true if stack is empty, else false.
 
 This is demonstrated in Stack.cpp file.
@@ -113,7 +113,7 @@ The selection sort algorithm sorts an array by repeatedly finding the minimum el
 
 - Step 1 − Set MIN to location 0
 - Step 2 − Search the minimum element in the list
-- Step 3 − Swap with value at location MIN 
+- Step 3 − Swap with value at location MIN
 - Step 4 − Increment MIN to point to next element
 - Step 5 − Repeat until list is sorted
 
@@ -158,7 +158,7 @@ This is implemented in MergeSort.cpp file.
 
 Bubble sort is a simple sorting algorithm. This sorting algorithm is comparison-based algorithm in which each pair of adjacent elements is compared and the elements are swapped if they are not in order. This is implemented in BubbleSort.cpp file.
 
-##### Counting sort 
+##### Counting sort
 
 Counting sort is a sorting technique based on keys between a specific range. It works by counting the number of objects having distinct key values (kind of hashing). Then doing some arithmetic to calculate the position of each object in the output sequence. This is implemented in CountingSort.cpp file.
 
@@ -210,7 +210,7 @@ Hash Table is a data structure which stores data in an associative manner. In a 
 
 Chaining is a way to avoid collision. In the chaining approach, the hash table is an array of linked lists i.e., each index has its own linked list. All key-value pairs mapping to the same index will be stored in the linked list of that index. This is demonstrated in ChainingHashTable.cpp.
 
-##### Open Addressing 
+##### Open Addressing
 
 Open addressing, or closed hashing, is a method of collision resolution in hash tables. With this method a hash collision is resolved by probing, or searching through alternative locations in the array (the probe sequence) until either the target record is found, or an unused array slot is found, which indicates that there is no such key in the table. Well-known probe sequences are discussed in the following subsections.
 
@@ -220,7 +220,7 @@ Linear probing is a scheme categorized under open addressing. When the hash func
 
 - If slot hash(x) % S is full, then we try (hash(x) + 1) % S
 - If (hash(x) + 1) % S is also full, then we try (hash(x) + 2) % S
-- If (hash(x) + 2) % S is also full, then we try (hash(x) + 3) % S 
+- If (hash(x) + 2) % S is also full, then we try (hash(x) + 3) % S
 
 This is demonstrated in LPHashTable.cpp
 
@@ -254,11 +254,11 @@ Tower of Hanoi is a mathematical puzzle which consist of 3 poles and number of d
 - Only one disc can be moved at a time
 - Larger disc cannot be placed on a smaller disc
 
-We can solve this problem using recursion. If we follow the pattern closely we can see the for n th disk we first move the previous disk to the intermediatory pole and the move the n th disk to the the target pole. Using this pattern we can build an recurssion as demonstrated in TowerOfHanoi.cpp
+We can solve this problem using recursion. If we follow the pattern closely we can see the for n th disk we first move the previous disk to the intermediatory pole and the move the n th disk to the target pole. Using this pattern we can build an recursion as demonstrated in TowerOfHanoi.cpp
 
 ### Backtracking
 
-Backtracking is an algorithmic-technique for solving problems recursively by trying to build a solution incrementally, one piece at a time, removing those solutions that fail to satisfy the constraints of the problem at any point of time (by time, here, is referred to the time elapsed till reaching any level of the search tree). We discuss some solution that are discussed in the following subsections. 
+Backtracking is an algorithmic-technique for solving problems recursively by trying to build a solution incrementally, one piece at a time, removing those solutions that fail to satisfy the constraints of the problem at any point of time (by time, here, is referred to the time elapsed till reaching any level of the search tree). We discuss some solution that are discussed in the following subsections.
 
 ##### The Eight Queens Problem
 
@@ -290,7 +290,7 @@ Dynamic programming is used where we have problems, which can be divided into si
 
 ### Tree Algorithms
 
-A tree is non-linear and a hierarchical data structure consisting of a collection of nodes such that each node of the tree stores a value, a list of references to nodes (the “children”). A tree consists of a root, and zero or more subtrees T1, T2, ...., Tk such that there is an edge from the root of the tree to the root of each subtree. There are some tree terminologies that are described below: 
+A tree is non-linear and a hierarchical data structure consisting of a collection of nodes such that each node of the tree stores a value, a list of references to nodes (the “children”). A tree consists of a root, and zero or more subtrees T1, T2, ...., Tk such that there is an edge from the root of the tree to the root of each subtree. Some terminologies that are used in the context of trees is described below:
 
 *Parent Node :* The node which is a predecessor of a node is called the parent node of that node.
 
@@ -300,7 +300,7 @@ A tree is non-linear and a hierarchical data structure consisting of a collectio
 
 *Degree of a Node :* The total count of subtrees attached to that node is called the degree of the node. The degree of a leaf node must be 0. The degree of a tree is the degree of its root.
 
-*Leaf Node or External Node :* The nodes which do not have any child nodes are called leaf nodes. 
+*Leaf Node or External Node :* The nodes which do not have any child nodes are called leaf nodes.
 
 *Ancestor of a Node :* Any predecessor nodes on the path of the root to that node are called Ancestors of that node.
 
@@ -310,15 +310,15 @@ A tree is non-linear and a hierarchical data structure consisting of a collectio
 
 *Depth of a node :* The count of edges from the root to the node.
 
-*Height of a node :* The height of a tree is the height of the root node i.e the count of edges from the root to the deepest node.
+*Height of a Tree :* The height of a tree is the height of the root node i.e the count of edges from the root to the deepest node.
 
 *Level of a node :* The count of edges on the path from the root node to that node. The root node has level 0.
 
 *Internal node :* A node with at least one child is called Internal Node.
-    
+
 *Neighbor of a Node :* Parent or child nodes of that node are called neighbors of that node.
 
-The next thing we discuss is a special type of tree known as Binary tree. Binary Tree is a special data structure used for data storage purposes. A binary tree has a special condition that each node can have a maximum of two children. A binary tree has the benefits of both an ordered array and a linked list as search is as quick as in a sorted array and insertion or deletion operation are as fast as in linked list. There are some binary tree operations that are discussed below:
+The next thing we discuss is a special type of tree known as Binary tree. Binary Tree is a special data structure used for data storage purposes. A binary tree has a special condition that each node can have a maximum of two children. A binary tree has the benefits of both an ordered array and a linked list as search is as quick as in a sorted array and insertion or deletion operation are as fast as in linked list. Binary tree is demonstrated in BinaryTree.cpp file. There are some binary tree operations that are discussed below:
 
 - *Insert:* Inserts an element in a tree/create a tree.
 - *Search:* Searches an element in a tree.
@@ -361,55 +361,162 @@ Tree sort is a sorting algorithm that is based on Binary Search Tree data struct
 
 ### Balanced Trees
 
-In this section we mainly discuss about Balanced Trees. In the previous section we have discussed Binary Search Trees and are excelent data structure, but they only work if they are balanced---if moving from a tree to its left or right subtree reduces the size by a constant fraction. Balanced binary trees add some extra mechanism to the basic binary search tree to ensure balance. Finding efficient ways to balance a tree has been studied for decades, and several good mechanisms are known. We'll try to hit the high points of all of them. The problem is that as we insert new nodes, some paths through the tree may become very long. So we need to be able to shrink the long paths by moving nodes elsewhere in the tree. One solution to this problem is to adopt another search tree structure instead of using a BST at all. An example of such an alternative tree structure are B-trees and AVL Trees. We discuss them in the following sub-sections.
-
-##### B-trees
-
-This section presents the B-tree. B-trees are usually attributed to R. Bayer and E. McCreight who described the B-tree in a 1972 paper. By 1979, B-trees had replaced virtually all large-file access methods other than hashing. B-trees, or some variant of B-trees, are the standard file organization for applications requiring insertion, deletion, and key range searches. They are used to implement most modern file systems. B-trees address effectively all of the major problems encountered when implementing disk-based search trees:
-
-1. B-trees are always height balanced, with all leaf nodes at the same level.
-2. Update and search operations affect only a few disk blocks. The fewer the number of disk blocks affected, the less disk I/O is required.
-3. B-trees keep related records (that is, records with similar key values) on the same disk block, which helps to minimize disk I/O on searches due to locality of reference.
-4. B-trees guarantee that every node in the tree will be full at least to a certain minimum percentage. This improves space efficiency while reducing the typical number of disk fetches necessary during a search or update operation.
-
-A B-tree of order m is defined to have the following shape properties:
-
-- The root is either a leaf or has at least two children.
-- Each internal node, except for the root, has between ⌈m/2⌉ and m children.
-- All leaves are at the same level in the tree, so the tree is always height balanced.
-
-The B-tree is a generalization of the 2-3 tree. Put another way, a 2-3 tree is a B-tree of order three. Normally, the size of a node in the B-tree is chosen to fill a disk block. A B-tree node implementation typically allows 100 or more children. Thus, a B-tree node is equivalent to a disk block, and a "pointer" value stored in the tree is actually the number of the block containing the child node (usually interpreted as an offset from the beginning of the corresponding disk file). In a typical application, the B-tree's access to the disk file will be managed using a buffer pool and a block-replacement scheme such as LRU.
-
-##### AVL Trees
-
-The AVL tree (named for its inventors Adelson-Velskii and Landis) should be viewed as a BST with the following additional property: For every node, the heights of its left and right subtrees differ by at most 1. As long as the tree maintains this property, if the tree contains n nodes, then it has a depth of at most O(log n). As a result, search for any node will cost O(logn), and if the updates can be done in time proportional to the depth of the node inserted or deleted, then updates will also cost O(log n), even in the worst case.
-
-The key to making the AVL tree work is to alter the insert and delete routines so as to maintain the balance property. Of course, to be practical, we must be able to implement the revised update routines in Θ(log n) time.
+In this section we mainly discuss about Balanced Trees. In the previous section we have discussed Binary (Search) Trees and are excelent data structure, but they only work if they are balanced ie. . Balanced binary trees add some extra mechanism to the basic binary search tree to ensure balance. Finding efficient ways to balance a tree has been studied for decades, and several good mechanisms are known. We'll try to hit the high points of all of them. The problem is that as we insert new nodes, some paths through the tree may become very long. So we need to be able to shrink the long paths by moving nodes elsewhere in the tree. One solution to this problem is to adopt another search tree structure instead of using a BST at all. An example of such an alternative tree structure are Red-Back tree, AVL Trees and B-trees. We discuss them in the following sub-sections.
 
 ##### Red Black Trees
 
+A red-black tree T is a binary search tree having following five additional properties (invariants).
 
-Network Algorithm
-Network Terminology
-03:31
-Network Classes
-04:52 
-Depth-First Traversal
-05:21
-Breadth-First Traversal
-02:43
-Spanning Trees - Part 1
-04:12
-Spanning Trees - Part 2
-03:58
-Shortest Paths - Part 1
-07:27
-Shortest Paths - Part 2
-08:41
-All Pairs Shortest Path - Part 1
-03:38
-All Pairs Shortest Path - Part 2
+- Every node in T is either red or black.
+- The root node of T is black.
+- Every NULL node is black. (NULL nodes are the leaf nodes. They do not contain any keys. When we search for a key that is not present in the tree, we reach the NULL node.)
+- If a node is red, both of its children are black. This means no two nodes on a path can be red nodes
+- Every path from a root node to a NULL node has the same number of black nodes
 
+Failure to preserve any of the above five properties makes T a non-red-black tree. All operations except insertion and deletion are same as of Binary Search Tree. This is extensively demonstrated in RedBlackTree.cpp
 
+##### AVL Trees
+
+AVL trees are height balanced binary search trees. This means the height of the AVL tree is in the order of log(n). AVL tree keeps the height balanced using the following property:
+
+The heights of the left and right subtrees differ by at most 1. If hl be the height of the left subtree and hr be the height of the right subtree, then,
+
+|hl−hr| ≤ 1
+
+Every node should follow the above property and the resulting tree is the AVL tree. If any of the node violates this property, the tree should be re-balanced to maintain the property.  AVL property guarantees the height of the tree to be in the order of log(n). In AVL Trees we do use the concept of balance factor. In a binary tree the balanced factor (BF) of the node x is the height (h) difference between left (LS) and right subtree (RS) of x. In an AVL tree, the balance factor must be -1, 0, or 1. If the balance factor of a node is greater than 1 (right heavy) or less than -1 (left heavy), the node needs to be rebalanced. This is extensively demonstrated in AVLTree.cpp.
+
+##### B-trees
+
+B Tree is a tree where a node in these balanced search trees have more than 1 keys.  In B-tree, a node can have n keys where n is the positive integer ≥2. A node with n keys have n+1 child nodes. A typical B-tree node x has following information.
+
+- The number of keys x.n
+- The array of keys [x.key1,x.key2,…,x.keyx.n] . These keys are sorted in ascending order i.e. x.key1 ≤ x.key2 ≤ ... ≤ x.keyx.n
+- The array of pointers to the x.n+1 child nodes [x.c1, x.c2, ..... , x.cx.n+1]. If x is a leaf node, this array is empty as leaf nodes do not have children.
+- An identifier x.leaf that gives if x is a leaf node.
+
+Besides the regular search tree invariants, B-tree has following additional invariants.
+
+- All the leaf nodes must be on the same level (perfect balance).
+- All the nodes except the root node must have at t−1 keys where t is called minimum order. If t=3, all the nodes except root nodes must have at least 2 keys. The value of t should be at least 2.
+- All the nodes can have at most 2t−1 keys.
+- A node with n keys must have n+1 child nodes.
+- If a root node is a non-leaf node, it must have at least 2 child nodes.
+
+Since it is a perfectly balanced search tree, all the operations run in O(logn) time. The base of the logarithm is higher than 2. The in-order traversal of the B-tree should yield keys in sorted order. For this, keys in a subtree ci must be between ki−1 and ki inclusive. The operations on B Trees are different from binary trees and is demonstrated in BTrees.cpp.
+
+### Graph Algorithms
+
+A graph is a pictorial representation of a set of objects where some pairs of objects are connected by links. The interconnected objects are represented by points termed as vertices, and the links that connect the vertices are called edges. Formally, a graph is a pair of sets (V, E), where V is the set of vertices and E is the set of edges, connecting the pairs of vertices. Trees discussed in previous section are graphs that do not contain even a single cycle.
+
+Mathematical graphs can be represented in data structure. We can represent a graph using an array of vertices and a two-dimensional array of edges. Before we proceed further, let's familiarize ourselves with some important terms:
+
+*Vertex*
+Each node of the graph is represented as a vertex.
+
+*Edge*
+Edge represents a path between two vertices or a line between two vertices.
+
+*Adjacency*
+Two node or vertices are adjacent if they are connected to each other through an edge.
+
+*Path*
+Path represents a sequence of edges between the two vertices.
+
+There are various types of graphs depending upon the number of vertices, number of edges, interconnectivity, and their overall structure. Some of the important ones are listed below:
+
+- Null Graph: A graph having no edges is called a Null Graph.
+- Trivial Graph: A graph with only one vertex is called a Trivial Graph.
+- Non-Directed Graph: A non-directed graph contains edges but the edges are not directed ones.
+- Directed Graph: In a directed graph, each edge has a direction.
+- Simple Graph: A graph with no loops and no parallel edges is called a simple graph.
+- Connected Graph: A graph G is said to be connected if there exists a path between every pair of vertices. There should be at least one edge for every vertex in the graph. So that we can say that it is connected to some other vertex at the other side of the edge.
+- Disconnected Graph: A graph G is disconnected, if it does not contain at least two connected vertices.
+- Regular Graph: A graph G is said to be regular, if all its vertices have the same degree. In a graph, if the degree of each vertex is ‘k’, then the graph is called a ‘k-regular graph’.
+- Complete Graph: A simple graph with ‘n’ mutual vertices is called a complete graph and it is denoted by ‘Kn’. In the graph, a vertex should have edges with all other vertices, then it called a complete graph. In other words, if a vertex is connected to all other vertices in a graph, then it is called a complete graph.
+- Cycle Graph: A simple graph with ‘n’ vertices (n >= 3) and ‘n’ edges is called a cycle graph if all its edges form a cycle of length ‘n’. If the degree of each vertex in the graph is two, then it is called a Cycle Graph.
+- Wheel Graph: A wheel graph is obtained from a cycle graph Cn-1 by adding a new vertex. That new vertex is called a Hub which is connected to all the vertices of Cn.
+- Cyclic Graph: A graph with at least one cycle is called a cyclic graph.
+- Acyclic Graph: A graph with no cycles is called an acyclic graph.
+- Bipartite Graph: A simple graph G = (V, E) with vertex partition V = {V1, V2} is called a bipartite graph if every edge of E joins a vertex in V1 to a vertex in V2. In general, a Bipertite graph has two sets of vertices, let us say, V1 and V2, and if an edge is drawn, it should connect any vertex in set V1 to any vertex in set V2.
+- Complete Bipartite Graph: A bipartite graph ‘G’, G = (V, E) with partition V = {V1, V2} is said to be a complete bipartite graph if every vertex in V1 is connected to every vertex of V2. In general, a complete bipartite graph connects each vertex from set V1 to each vertex from set V2.
+
+In the next subsections, we do discuss more on graph traversals and finding shortest path.
+
+##### Depth-First Traversal
+
+Depth First Search (DFS) algorithm traverses a graph in a depthward motion and uses a stack to remember to get the next vertex to start a search, when a dead end occurs in any iteration.  It employs the following rules.
+
+- Rule 1 − Visit the adjacent unvisited vertex. Mark it as visited. Display it. Push it in a stack.
+- Rule 2 − If no adjacent vertex is found, pop up a vertex from the stack. (It will pop up all the vertices from the stack, which do not have adjacent vertices.)
+- Rule 3 − Repeat Rule 1 and Rule 2 until the stack is empty.
+
+##### Breadth-First Traversal
+
+Breadth First Search (BFS) algorithm traverses a graph in a breadthward motion and uses a queue to remember to get the next vertex to start a search, when a dead end occurs in any iteration. It employs the following rules.
+
+- Rule 1 − Visit the adjacent unvisited vertex. Mark it as visited. Display it. Insert it in a queue.
+- Rule 2 − If no adjacent vertex is found, remove the first vertex from the queue.
+- Rule 3 − Repeat Rule 1 and Rule 2 until the queue is empty.
+
+##### Spanning Trees
+
+A spanning tree is an undirected and connected graph. A spanning tree of the graph G = (V, E) is a tree that spans G (that is, it includes every vertex of G) and is a subgraph G of (every edge in the tree belongs to G). The cost of the spanning tree is the sum of the weights of all the edges in the tree. There can be many spanning trees. Minimum spanning tree is the spanning tree where the cost is minimum among all the spanning trees. There also can be many minimum spanning trees. There are two famous algorithms for finding the Minimum Spanning Tree:
+
+*Kruskal’s Algorithm*
+
+Kruskal’s Algorithm builds the spanning tree by adding edges one by one into a growing spanning tree. Kruskal's algorithm follows greedy approach as in each iteration it finds an edge which has least weight and add it to the growing spanning tree. The algorithm steps are given below:
+
+- Sort the graph edges with respect to their weights.
+- Start adding edges to the MST from the edge with the smallest weight until the edge of the largest weight.
+- Only add edges which doesn't form a cycle , edges which connect only disconnected components.
+
+So now the question is how to check if 2 vertices are connected or not ? This could be done using DFS which starts from the first vertex, then check if the second vertex is visited or not. But DFS will make time complexity large as it has an order of O(V + E) where V is the number of vertices, E is the number of edges. So the best solution is "Disjoint Sets". Disjoint sets are sets whose intersection is the empty set so it means that they don't have any element in common.
+
+*Prim’s Algorithm*
+
+Prim’s Algorithm also use Greedy approach to find the minimum spanning tree. In Prim’s Algorithm we grow the spanning tree from a starting position. Unlike an edge in Kruskal's, we add vertex to the growing spanning tree in Prim's. The algorithm steps are given below:
+
+- Maintain two disjoint sets of vertices. One containing vertices that are in the growing spanning tree and other that are not in the growing spanning tree.
+- Select the cheapest vertex that is connected to the growing spanning tree and is not in the growing spanning tree and add it into the growing spanning tree. This can be done using Priority Queues. Insert the vertices, that are connected to growing spanning tree, into the Priority Queue.
+- Check for cycles. To do that, mark the nodes which have been already selected and insert only those nodes in the Priority Queue that are not marked.
+
+In Prim’s Algorithm, we will start with an arbitrary node (it doesn’t matter which one) and mark it. In each iteration we will mark a new vertex that is adjacent to the one that we have already marked. As a greedy algorithm, Prim’s algorithm will select the cheapest edge and mark the vertex.
+
+##### Shortest Paths
+
+The shortest path problem is about finding a path between two vertices in a graph such that the total sum of the edges weights is minimum. This problem could be solved easily using (BFS) if all edge weights were (1), but here weights can take any value. Three different algorithms are discussed below depending on the use-case.
+
+*Bellman Ford's Algorithm*
+
+Bellman Ford's algorithm is used to find the shortest paths from the source vertex to all other vertices in a weighted graph. It depends on the following concept: Shortest path contains at most n - 1 edges, because the shortest path couldn't have a cycle. So why shortest path shouldn't have a cycle ? There is no need to pass a vertex again, because the shortest path to all other vertices could be found without the need for a second visit for any vertices. The algorithm steps are listed below:
+
+- The outer loop traverses from 0 : n-1.
+- Loop over all edges, check if the next node distance > current node distance + edge weight, in this case update the next node distance to "current node distance + edge weight".
+
+This algorithm depends on the relaxation principle where the shortest distance for all vertices is gradually replaced by more accurate values until eventually reaching the optimum solution. In the beginning all vertices have a distance of "Infinity", but only the distance of the source vertex = 0, then update all the connected vertices with the new distances (source vertex distance + edge weights), then apply the same concept for the new vertices with new distances and so on.
+
+*Dijkstra's Algorithm*
+
+Dijkstra's algorithm has many variants but the most common one is to find the shortest paths from the source vertex to all other vertices in the graph. The algorithm steps are listed below:
+
+- Set all vertices distances = infinity except for the source vertex, set the source distance = 0.
+- Push the source vertex in a min-priority queue in the form (distance , vertex), as the comparison in the min-priority queue will be according to vertices distances.
+- Pop the vertex with the minimum distance from the priority queue (at first the popped vertex = source).
+- Update the distances of the connected vertices to the popped vertex in case of "current vertex distance + edge weight < next vertex distance", then push the vertex with the new distance to the priority queue.
+- If the popped vertex is visited before, just continue without using it.
+- Apply the same algorithm again until the priority queue is empty.
+
+*Floyd-Warshall's Algorithm*
+
+Floyd-Warshall's Algorithm is used to find the shortest paths between between all pairs of vertices in a graph, where each edge in the graph has a weight which is positive or negative. The biggest advantage of using this algorithm is that all the shortest distances between any two vertices could be calculated in O(V^3), where V is the number of vertices in a graph. The algorithm steps are listed below:
+
+For a graph with N vertices:
+
+- Initialize the shortest paths between any two vertices with Infinity.
+- Find all pair shortest paths that use 0 intermediate vertices, then find the shortest paths that use 1 intermediate vertex and so on.. until using all N vertices as intermediate nodes.
+- Minimize the shortest paths between any two pairs in the previous operation.
+- For any two vertices (i, j), one should actually minimize the distances between this pair using the first K nodes, so the shortest path will be: min(dist[i][k] + dist[k][j], dist[i][j])
+
+dist[i][k] represents the shortest path that only uses the first K vertices, dist[k][j] represents the shortest path between the pair k, j . As the shortest path will be a concatenation of the shortest path from i to k, then from k to j.
 
 _Please do let me know if I am missing any topic to cover in algorithm_

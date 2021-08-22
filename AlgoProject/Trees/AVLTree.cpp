@@ -1,4 +1,7 @@
 /*
+* 
+* C++ Program to implement AVL Tree
+* 
 */
 
 #include<iostream>
@@ -15,9 +18,9 @@ public:
 	int balanceFactor;
 };
 
-AVLTreeNode* rootPtr;
+AVLTreeNode* rootPtr; // Root Node pointer
 
-void rotateLeft3(AVLTreeNode* nodePtr) {
+void rotateLeft3(AVLTreeNode* nodePtr) { // Left rotation
 	AVLTreeNode* tmpPtr1 = nodePtr->rightPtr;
 	nodePtr->rightPtr = tmpPtr1->leftPtr;
 
@@ -38,12 +41,14 @@ void rotateLeft3(AVLTreeNode* nodePtr) {
 	tmpPtr1->leftPtr = nodePtr;
 	nodePtr->parentPtr = tmpPtr1;
 
+	// Recalculate Balance factor to make it balanced
+
 	nodePtr->balanceFactor = nodePtr->balanceFactor - 1 - max(0, tmpPtr1->balanceFactor);
 	tmpPtr1->balanceFactor = tmpPtr1->balanceFactor - 1 + min(0, nodePtr->balanceFactor);
 }
 
 
-void rotateRight3(AVLTreeNode* nodePtr) {
+void rotateRight3(AVLTreeNode* nodePtr) { // Right rotation
 	AVLTreeNode* tmpPtr1 = nodePtr->leftPtr;
 	nodePtr->leftPtr = tmpPtr1->rightPtr;
 
@@ -65,6 +70,7 @@ void rotateRight3(AVLTreeNode* nodePtr) {
 	tmpPtr1->rightPtr = nodePtr;
 	nodePtr->parentPtr = tmpPtr1;
 
+	// Recalculate Balance factor to make it balanced
 	nodePtr->balanceFactor = nodePtr->balanceFactor + 1 - min(0, tmpPtr1->balanceFactor);
 	tmpPtr1->balanceFactor = tmpPtr1->balanceFactor + 1 - max(0, nodePtr->balanceFactor);
 }
@@ -80,7 +86,7 @@ AVLTreeNode* minNode3(AVLTreeNode* currentNode) {
 
 
 void inorderTraversal3() {
-
+	// Same as Binary Search Tree
 	cout << "Printing inorder traversal of the tree : ";
 
 	stack<AVLTreeNode*> inorderStack;
@@ -104,7 +110,7 @@ void inorderTraversal3() {
 }
 
 void preorderTraversal3() {
-
+	// Same as Binary Search Tree
 	cout << "Printing preorder traversal of the tree : ";
 
 	stack<AVLTreeNode*> preorderStack;
@@ -130,7 +136,7 @@ void preorderTraversal3() {
 }
 
 void postorderTraversal3() {
-
+	// Same as Binary Search Tree
 	cout << "Printing postorder traversal of the tree : ";
 
 	stack<AVLTreeNode*> postorderStack, stack2;
@@ -161,7 +167,7 @@ void postorderTraversal3() {
 }
 
 string searchTree3(int data) {
-
+	// Same as Binary Search Tree
 	bool flag1 = true;
 	bool isFound = false;
 	AVLTreeNode* currentPtr = rootPtr;
@@ -202,6 +208,8 @@ string searchTree3(int data) {
 }
 
 void rebalanceTree(AVLTreeNode* nodePtr) {
+	// This is to make sure that the Tree is balanced
+	// This is invoked when the balance factor doesn't fall in the range from -1 to 1
 	if (nodePtr->balanceFactor > 0) {
 		if (nodePtr->rightPtr->balanceFactor < 0) {
 			rotateRight3(nodePtr->rightPtr);
@@ -224,12 +232,12 @@ void rebalanceTree(AVLTreeNode* nodePtr) {
 
 
 void updateBalance(AVLTreeNode* nodePtr) {
-	if (nodePtr->balanceFactor < -1 || nodePtr->balanceFactor > 1) {
+	if (nodePtr->balanceFactor < -1 || nodePtr->balanceFactor > 1) { // If the balance factor is not -1 , 0 or 1
 		rebalanceTree(nodePtr);
 		return;
 	}
 
-	if (nodePtr->parentPtr != nullptr) {
+	if (nodePtr->parentPtr != nullptr) { // Recalculate until we reach the root
 		if (nodePtr == nodePtr->parentPtr->leftPtr) {
 			nodePtr->parentPtr->balanceFactor -= 1;
 		}
@@ -246,7 +254,7 @@ void updateBalance(AVLTreeNode* nodePtr) {
 
 
 void insertNode3(int data) {
-
+	// Do a simple isert according to the data value
 	AVLTreeNode* newNode = new AVLTreeNode();
 	newNode->parentPtr = nullptr;
 	newNode->leftPtr = nullptr;
@@ -278,6 +286,7 @@ void insertNode3(int data) {
 	else {
 		prevPtr->rightPtr = newNode;
 	}
+	// After insertion recalculate the balance factor of the tree
 	updateBalance(newNode);
 }
 
@@ -285,7 +294,7 @@ void insertNode3(int data) {
 void deleteNode3(int data) {
 	AVLTreeNode* currentPtr = rootPtr;
 
-	while (currentPtr != nullptr) {
+	while (currentPtr != nullptr) { // First find the node to delete
 		if (currentPtr->data == data) {
 			break;
 		}
@@ -302,8 +311,8 @@ void deleteNode3(int data) {
 	if (currentPtr == nullptr) {
 		cout << "No node found with data " << data << endl << endl;
 	}
-	else {
-		// case 1
+	else {// To delete the node if ....
+		// When the node to delete is a child node
 		if (currentPtr->leftPtr == nullptr && currentPtr->rightPtr == nullptr) {
 			if (currentPtr == currentPtr->parentPtr->leftPtr) {
 				currentPtr->parentPtr->leftPtr = nullptr;
@@ -312,7 +321,7 @@ void deleteNode3(int data) {
 				currentPtr->parentPtr->rightPtr = nullptr;
 			}
 		}
-		else if (currentPtr->leftPtr == nullptr) {
+		else if (currentPtr->leftPtr == nullptr) { // If it is a single parent
 			if (currentPtr == currentPtr->parentPtr->leftPtr) {
 				currentPtr->parentPtr->leftPtr = currentPtr->rightPtr;
 			}
@@ -320,7 +329,7 @@ void deleteNode3(int data) {
 				currentPtr->parentPtr->rightPtr = currentPtr->rightPtr;
 			}
 		}
-		else if (currentPtr->rightPtr == nullptr) {
+		else if (currentPtr->rightPtr == nullptr) { // If it is a single parent
 			if (currentPtr == currentPtr->parentPtr->leftPtr) {
 				currentPtr->parentPtr->leftPtr = currentPtr->leftPtr;
 			}
@@ -328,18 +337,19 @@ void deleteNode3(int data) {
 				currentPtr->parentPtr->rightPtr = currentPtr->leftPtr;
 			}
 		}
-		else {
+		else { // If it has two children
 			AVLTreeNode* tmpPtr = minNode3(currentPtr->rightPtr);
 			int tmpData = tmpPtr->data;
 			deleteNode3(tmpData);
 			currentPtr->data = tmpData;
 		}
+		// After deletion recalculate the balance factor of the tree
 		updateBalance(currentPtr->parentPtr);
 	}
 }
 
 
-int main() {
+int main24() {
 	// Inserting new nodes to the tree
 
 	insertNode3(15);

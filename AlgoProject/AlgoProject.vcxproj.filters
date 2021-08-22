@@ -40,6 +40,9 @@
     <Filter Include="Source Files\Trees">
       <UniqueIdentifier>{9f9ebb78-6769-48b8-bcc7-25fe857880d1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Graphs">
+      <UniqueIdentifier>{d25848bc-1bc4-4353-a22b-4e0bb5bcf8b9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LinkedList\SingleLinkedList.cpp">
@@ -122,6 +125,27 @@
     </ClCompile>
     <ClCompile Include="Trees\RedBlackTree.cpp">
       <Filter>Source Files\Trees</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphs\BellmanFord.cpp">
+      <Filter>Source Files\Graphs</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphs\BFS.cpp">
+      <Filter>Source Files\Graphs</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphs\DFS.cpp">
+      <Filter>Source Files\Graphs</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphs\Dijkstra.cpp">
+      <Filter>Source Files\Graphs</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphs\FloydWarshall.cpp">
+      <Filter>Source Files\Graphs</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphs\Kruskal.cpp">
+      <Filter>Source Files\Graphs</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphs\Prim.cpp">
+      <Filter>Source Files\Graphs</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

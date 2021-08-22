@@ -1,4 +1,5 @@
 /*
+* C++ program to implement Binary Sratch Tree.
 */
 
 #include<iostream>
@@ -28,7 +29,7 @@ void insertNode(TreeNode** rootPtr, int data) {
 		TreeNode* currentPtr = *rootPtr;
 		bool flag1 = true;
 
-		while (flag1) {
+		while (flag1) { // Looping to find the right position to insert the node
 			if (currentPtr->data > data) {
 				if (currentPtr->leftPtr == nullptr) {
 					currentPtr->leftPtr = newNode;
@@ -61,7 +62,7 @@ string searchTree(TreeNode** rootPtr, int data) {
 	bool isFound = false;
 	TreeNode* currentPtr = *rootPtr;
 	if ((*rootPtr) != nullptr) {
-		while (flag1) {
+		while (flag1) { // Loop untill the node is found
 			if (currentPtr->data == data) {
 				isFound = true;
 				flag1 = false;
@@ -97,7 +98,7 @@ string searchTree(TreeNode** rootPtr, int data) {
 }
 
 TreeNode* inorderSuccessor(TreeNode** rootPtr, TreeNode** valPtr) {
-	
+	// Inorder succcessor using stack instead of recursion
 	stack<TreeNode*> inorderStack;
 	TreeNode* currentPtr = *rootPtr;
 	TreeNode* tempPtr = nullptr;
@@ -134,7 +135,7 @@ void deleteNode(TreeNode** rootPtr, int data) {
 	TreeNode* currentPtr = *rootPtr;
 	TreeNode* parentPtr = nullptr;
 
-	while (flag1) {
+	while (flag1) { // Loop to search the right position of the node
 		if (currentPtr->data == data) {
 			isFound = true;
 			flag1 = false;
@@ -162,7 +163,7 @@ void deleteNode(TreeNode** rootPtr, int data) {
 		}
 	}
 
-	if (isFound) {
+	if (isFound) { // If found Delete
 		cout << "Deleting " << data << " from the tree " << endl << endl;
 		if (currentPtr->leftPtr == nullptr && currentPtr->rightPtr == nullptr) {
 			if (parentPtr->leftPtr == currentPtr) {
@@ -213,7 +214,7 @@ void deleteNode(TreeNode** rootPtr, int data) {
 }
 
 void inorderTraversal(TreeNode** rootPtr) {
-
+	// Inorder traversal using stack instead of recursion
 	cout << "Printing inorder traversal of the tree : ";
 
 	stack<TreeNode*> inorderStack;
@@ -223,13 +224,13 @@ void inorderTraversal(TreeNode** rootPtr) {
 	while (!inorderStack.empty() || currentPtr != nullptr) {
 		if (currentPtr != nullptr) {
 			inorderStack.push(currentPtr);
-			currentPtr = currentPtr->leftPtr;
+			currentPtr = currentPtr->leftPtr; // left
 		}
 		if (!inorderStack.empty() && currentPtr == nullptr) {
 			tempPtr = inorderStack.top();
 			inorderStack.pop();
-			cout << tempPtr->data << " ";
-			currentPtr = tempPtr->rightPtr;
+			cout << tempPtr->data << " "; // root
+			currentPtr = tempPtr->rightPtr; // right
 		}
 	}
 
@@ -237,7 +238,7 @@ void inorderTraversal(TreeNode** rootPtr) {
 }
 
 void preorderTraversal(TreeNode** rootPtr) {
-
+	// Preorder traversal using stack instead of recursion
 	cout << "Printing preorder traversal of the tree : ";
 
 	stack<TreeNode*> preorderStack;
@@ -248,13 +249,14 @@ void preorderTraversal(TreeNode** rootPtr) {
 	while (!preorderStack.empty()) {
 		tempPtr = preorderStack.top();
 		preorderStack.pop();
-		cout << tempPtr->data << " ";
+		cout << tempPtr->data << " "; // root
 
+		// Pushed in a reverse order as we want to get left first. 
 		if (tempPtr->rightPtr != nullptr) {
-			preorderStack.push(tempPtr->rightPtr);
+			preorderStack.push(tempPtr->rightPtr); // right
 		}
 		if (tempPtr->leftPtr != nullptr) {
-			preorderStack.push(tempPtr->leftPtr);
+			preorderStack.push(tempPtr->leftPtr); // left
 		}
 	}
 
@@ -263,14 +265,14 @@ void preorderTraversal(TreeNode** rootPtr) {
 }
 
 void postorderTraversal(TreeNode** rootPtr) {
-
+	// Postorder traversal using stack instead of recursion
 	cout << "Printing postorder traversal of the tree : ";
 
 	stack<TreeNode*> postorderStack, stack2;
 	TreeNode* tempPtr = nullptr;
 	postorderStack.push(*rootPtr);
 
-	while (!postorderStack.empty()) {
+	while (!postorderStack.empty()) { // Compute post order in reverse order
 		tempPtr = postorderStack.top();
 		postorderStack.pop();
 
@@ -284,7 +286,7 @@ void postorderTraversal(TreeNode** rootPtr) {
 		}
 	}
 
-	while (!stack2.empty()) {
+	while (!stack2.empty()) { // As it is in reverse order we resverse it to get the actual order
 		tempPtr = stack2.top();
 		cout << tempPtr->data << " ";
 		stack2.pop();

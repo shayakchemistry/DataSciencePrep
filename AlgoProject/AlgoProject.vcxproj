@@ -21,6 +21,13 @@
   <ItemGroup>
     <ClCompile Include="Backtracking\KnightsTour.cpp" />
     <ClCompile Include="Backtracking\nQueens.cpp" />
+    <ClCompile Include="Graphs\BellmanFord.cpp" />
+    <ClCompile Include="Graphs\BFS.cpp" />
+    <ClCompile Include="Graphs\DFS.cpp" />
+    <ClCompile Include="Graphs\Dijkstra.cpp" />
+    <ClCompile Include="Graphs\FloydWarshall.cpp" />
+    <ClCompile Include="Graphs\Kruskal.cpp" />
+    <ClCompile Include="Graphs\Prim.cpp" />
     <ClCompile Include="HashTable\ChainingHashTable.cpp" />
     <ClCompile Include="HashTable\DHHashTable.cpp" />
     <ClCompile Include="HashTable\LPHashTable.cpp" />

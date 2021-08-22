@@ -1,3 +1,7 @@
+/*
+C++ program to Demonstrate Red-Black Tree
+*/
+
 #include <iostream>
 #include <stack>
 
@@ -346,15 +350,15 @@ void deleteNode2(int data) {
 	tmpPtr2 = dataNode;
 
 	string originalColorPtr2 = tmpPtr2->color;
-	if (dataNode->leftPtr == nullptr) {
+	if (dataNode->leftPtr == nullptr) { // Only single parent
 		tmpPtr1 = dataNode->rightPtr;
 		removeSingleChildParent(dataNode, dataNode->rightPtr);
 	}
-	else if (dataNode->rightPtr == nullptr) {
+	else if (dataNode->rightPtr == nullptr) { // Only single parent
 		tmpPtr1 = dataNode->leftPtr;
 		removeSingleChildParent(dataNode, dataNode->leftPtr);
 	}
-	else {
+	else { // Otherwise
 		tmpPtr2 = minNode(dataNode->rightPtr);
 		originalColorPtr2 = tmpPtr2->color;
 		tmpPtr1 = tmpPtr2->rightPtr;
@@ -382,7 +386,7 @@ void deleteNode2(int data) {
 }
 
 void inorderTraversal2() {
-
+	// Same as Binary Search Tree
 	cout << "Printing inorder traversal of the tree : ";
 
 	stack<RBTreeNode*> inorderStack;
@@ -406,7 +410,7 @@ void inorderTraversal2() {
 }
 
 void preorderTraversal2() {
-
+	// Same as Binary Search Tree
 	cout << "Printing preorder traversal of the tree : ";
 
 	stack<RBTreeNode*> preorderStack;
@@ -432,7 +436,7 @@ void preorderTraversal2() {
 }
 
 void postorderTraversal2() {
-
+	// Same as Binary Search Tree
 	cout << "Printing postorder traversal of the tree : ";
 
 	stack<RBTreeNode*> postorderStack, stack2;
@@ -463,7 +467,7 @@ void postorderTraversal2() {
 }
 
 string searchTree2(int data) {
-
+	// Same as Binary Search Tree
 	bool flag1 = true;
 	bool isFound = false;
 	RBTreeNode* currentPtr = rootPtr;
