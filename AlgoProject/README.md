@@ -264,13 +264,13 @@ Backtracking is an algorithmic-technique for solving problems recursively by try
 
 The eight queens puzzle is the problem of placing eight chess queens on an 8×8 chessboard so that no two queens threaten each other; thus, a solution requires that no two queens share the same row, column, or diagonal. The eight queens puzzle is an example of the more general n queens problem of placing n non-attacking queens on an n×n chessboard, for which solutions exist for all natural numbers n with the exception of n = 2 and n = 3. The eight queens puzzle has 92 distinct solutions. If solutions that differ only by the symmetry operations of rotation and reflection of the board are counted as one, the puzzle has 12 solutions. These are called fundamental solutions.
 
-A fundamental solution usually has eight variants (including its original form) obtained by rotating 90, 180, or 270° and then reflecting each of the four rotational variants in a mirror in a fixed position. However, should a solution be equivalent to its own 90° rotation (as happens to one solution with five queens on a 5×5 board), that fundamental solution will have only two variants (itself and its reflection). Should a solution be equivalent to its own 180° rotation (but not to its 90° rotation), it will have four variants (itself and its reflection, its 90° rotation and the reflection of that). If n > 1, it is not possible for a solution to be equivalent to its own reflection because that would require two queens to be facing each other. Of the 12 fundamental solutions to the problem with eight queens on an 8×8 board, exactly one (solution 12 below) is equal to its own 180° rotation, and none is equal to its 90° rotation; thus, the number of distinct solutions is 11×8 + 1×4 = 92.
+A fundamental solution usually has eight variants (including its original form) obtained by rotating 90, 180, or 270° and then reflecting each of the four rotational variants in a mirror in a fixed position. However, should a solution be equivalent to its own 90° rotation (as happens to one solution with five queens on a 5×5 board), that fundamental solution will have only two variants (itself and its reflection). Should a solution be equivalent to its own 180° rotation (but not to its 90° rotation), it will have four variants (itself and its reflection, its 90° rotation and the reflection of that). If n > 1, it is not possible for a solution to be equivalent to its own reflection because that would require two queens to be facing each other. Of the 12 fundamental solutions to the problem with eight queens on an 8×8 board, exactly one (solution 12 below) is equal to its own 180° rotation, and none is equal to its 90° rotation; thus, the number of distinct solutions is 11×8 + 1×4 = 92. This is demonstrated in nQueen.cpp program.
 
 ##### The Knights Tour
 
 A knight's tour is a sequence of moves of a knight on a chessboard such that the knight visits every square exactly once. If the knight ends on a square that is one knight's move from the beginning square (so that it could tour the board again immediately, following the same path), the tour is closed; otherwise, it is open.
 
-The knight's tour problem is the mathematical problem of finding a knight's tour. Creating a program to find a knight's tour is a common problem given to computer science students. Variations of the knight's tour problem involve chessboards of different sizes than the usual 8 × 8, as well as irregular (non-rectangular) boards.
+The knight's tour problem is the mathematical problem of finding a knight's tour. Creating a program to find a knight's tour is a common problem given to computer science students. Variations of the knight's tour problem involve chessboards of different sizes than the usual 8 × 8, as well as irregular (non-rectangular) boards. This is demonstrated in KnightTour.cpp program.
 
 ### Greedy Algorithm
 
@@ -464,6 +464,8 @@ Depth First Search (DFS) algorithm traverses a graph in a depthward motion and u
 - Rule 2 − If no adjacent vertex is found, pop up a vertex from the stack. (It will pop up all the vertices from the stack, which do not have adjacent vertices.)
 - Rule 3 − Repeat Rule 1 and Rule 2 until the stack is empty.
 
+This is demonstrated in DFS.cpp program.
+
 ##### Breadth-First Traversal
 
 Breadth First Search (BFS) algorithm traverses a graph in a breadthward motion and uses a queue to remember to get the next vertex to start a search, when a dead end occurs in any iteration. It employs the following rules.
@@ -471,6 +473,8 @@ Breadth First Search (BFS) algorithm traverses a graph in a breadthward motion a
 - Rule 1 − Visit the adjacent unvisited vertex. Mark it as visited. Display it. Insert it in a queue.
 - Rule 2 − If no adjacent vertex is found, remove the first vertex from the queue.
 - Rule 3 − Repeat Rule 1 and Rule 2 until the queue is empty.
+
+This is demonstrated in BFS.cpp program.
 
 ##### Spanning Trees
 
@@ -484,7 +488,7 @@ Kruskal’s Algorithm builds the spanning tree by adding edges one by one into a
 - Start adding edges to the MST from the edge with the smallest weight until the edge of the largest weight.
 - Only add edges which doesn't form a cycle , edges which connect only disconnected components.
 
-So now the question is how to check if 2 vertices are connected or not ? This could be done using DFS which starts from the first vertex, then check if the second vertex is visited or not. But DFS will make time complexity large as it has an order of O(V + E) where V is the number of vertices, E is the number of edges. So the best solution is "Disjoint Sets". Disjoint sets are sets whose intersection is the empty set so it means that they don't have any element in common.
+So now the question is how to check if 2 vertices are connected or not ? This could be done using DFS which starts from the first vertex, then check if the second vertex is visited or not. But DFS will make time complexity large as it has an order of O(V + E) where V is the number of vertices, E is the number of edges. So the best solution is "Disjoint Sets". Disjoint sets are sets whose intersection is the empty set so it means that they don't have any element in common. This is demonstrated in Kruskal.cpp program.
 
 *Prim’s Algorithm*
 
@@ -494,7 +498,7 @@ Prim’s Algorithm also use Greedy approach to find the minimum spanning tree. I
 - Select the cheapest vertex that is connected to the growing spanning tree and is not in the growing spanning tree and add it into the growing spanning tree. This can be done using Priority Queues. Insert the vertices, that are connected to growing spanning tree, into the Priority Queue.
 - Check for cycles. To do that, mark the nodes which have been already selected and insert only those nodes in the Priority Queue that are not marked.
 
-In Prim’s Algorithm, we will start with an arbitrary node (it doesn’t matter which one) and mark it. In each iteration we will mark a new vertex that is adjacent to the one that we have already marked. As a greedy algorithm, Prim’s algorithm will select the cheapest edge and mark the vertex.
+In Prim’s Algorithm, we will start with an arbitrary node (it doesn’t matter which one) and mark it. In each iteration we will mark a new vertex that is adjacent to the one that we have already marked. As a greedy algorithm, Prim’s algorithm will select the cheapest edge and mark the vertex. This is demonstrated in Prim.cpp program.
 
 ##### Shortest Paths
 
@@ -507,7 +511,7 @@ Bellman Ford's algorithm is used to find the shortest paths from the source vert
 - The outer loop traverses from 0 : n-1.
 - Loop over all edges, check if the next node distance > current node distance + edge weight, in this case update the next node distance to "current node distance + edge weight".
 
-This algorithm depends on the relaxation principle where the shortest distance for all vertices is gradually replaced by more accurate values until eventually reaching the optimum solution. In the beginning all vertices have a distance of "Infinity", but only the distance of the source vertex = 0, then update all the connected vertices with the new distances (source vertex distance + edge weights), then apply the same concept for the new vertices with new distances and so on.
+This algorithm depends on the relaxation principle where the shortest distance for all vertices is gradually replaced by more accurate values until eventually reaching the optimum solution. In the beginning all vertices have a distance of "Infinity", but only the distance of the source vertex = 0, then update all the connected vertices with the new distances (source vertex distance + edge weights), then apply the same concept for the new vertices with new distances and so on. This is demonstrated in BellmanFord.cpp program.
 
 *Dijkstra's Algorithm*
 
@@ -520,6 +524,8 @@ Dijkstra's algorithm has many variants but the most common one is to find the sh
 - If the popped vertex is visited before, just continue without using it.
 - Apply the same algorithm again until the priority queue is empty.
 
+This is demonstrated in Dijkstra.cpp program.
+
 *Floyd-Warshall's Algorithm*
 
 Floyd-Warshall's Algorithm is used to find the shortest paths between between all pairs of vertices in a graph, where each edge in the graph has a weight which is positive or negative. The biggest advantage of using this algorithm is that all the shortest distances between any two vertices could be calculated in O(V^3), where V is the number of vertices in a graph. The algorithm steps are listed below:
@@ -531,6 +537,6 @@ For a graph with N vertices:
 - Minimize the shortest paths between any two pairs in the previous operation.
 - For any two vertices (i, j), one should actually minimize the distances between this pair using the first K nodes, so the shortest path will be: min(dist[i][k] + dist[k][j], dist[i][j])
 
-dist[i][k] represents the shortest path that only uses the first K vertices, dist[k][j] represents the shortest path between the pair k, j . As the shortest path will be a concatenation of the shortest path from i to k, then from k to j.
+dist[i][k] represents the shortest path that only uses the first K vertices, dist[k][j] represents the shortest path between the pair k, j . As the shortest path will be a concatenation of the shortest path from i to k, then from k to j. This is demonstrated in FloydWarshall.cpp program.
 
 _Please do let me know if I am missing any topic to cover in algorithm_
