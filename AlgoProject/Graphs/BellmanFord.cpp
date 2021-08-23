@@ -43,6 +43,7 @@ void Graph5::addEdge(int from, int to, int weight) {
     newEdge->weight = weight;
 
     edgeArr[tmpCounter] = newEdge;
+    tmpCounter += 1;
 }
 
 void Graph5::bellmanFord(int src) {

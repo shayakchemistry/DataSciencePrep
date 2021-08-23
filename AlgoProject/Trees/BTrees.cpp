@@ -21,6 +21,7 @@ public:
 };
 
 BTreeNode* rootPtr = nullptr;
+void removeFromNode(int data, BTreeNode* nodePtr);
 
 BTreeNode* createNode() { // Utility to create a new node
     int i;
@@ -54,7 +55,7 @@ void traverseTree(BTreeNode* nodePtr) {
 }
 
 
-int splitNode(int pos, BTreeNode* nodePtr1, BTreeNode* nodePtr2) {
+void splitNode(int pos, BTreeNode* nodePtr1, BTreeNode* nodePtr2) {
     // Utility to split the node if we try to insert a value more than the 2*Tree_order
 
     int j;
@@ -63,7 +64,7 @@ int splitNode(int pos, BTreeNode* nodePtr1, BTreeNode* nodePtr2) {
     newNode->numKeys = TREE_ORDER - 1;
     
 
-    // Copy the last (TREE_ORDER - 1) keys of y to newNode
+    // Copy the last (TREE_ORDER - 1) keys of nodePtr2 to newNode
     for (j = 0; j < TREE_ORDER - 1; j++) {
         newNode->data[j] = nodePtr2->data[j + TREE_ORDER];
     }
@@ -76,7 +77,7 @@ int splitNode(int pos, BTreeNode* nodePtr1, BTreeNode* nodePtr2) {
         }
     }
 
-    // Reduce the number of keys in y
+    // Reduce the number of keys in nodePtr2
     nodePtr2->numKeys = TREE_ORDER - 1;
 
     // Since this node is going to have a new child,
@@ -88,12 +89,12 @@ int splitNode(int pos, BTreeNode* nodePtr1, BTreeNode* nodePtr2) {
     // Link the new child to this node
     nodePtr1->childPtr[pos + 1] = newNode;
 
-    // A key of y will move to this node. Find the location of
+    // A key of nodePtr2 will move to this node. Find the location of
     // new key and move all greater keys one space ahead
     for (j = nodePtr1->numKeys - 1; j >= pos; j--)
         nodePtr1->data[j + 1] = nodePtr1->data[j];
 
-    // Copy the middle key of y to this node
+    // Copy the middle key of nodePtr2 to this node
     nodePtr1->data[pos] = nodePtr2->data[TREE_ORDER - 1];
 
     // Increment count of keys in this node
@@ -134,8 +135,8 @@ void insertNonFull(int data, BTreeNode* nodePtr) {
             // If the child is full, then split it
             splitNode(i + 1, nodePtr, nodePtr->childPtr[i + 1]);
 
-            // After split, the middle key of C[i] goes up and
-            // C[i] is splitted into two.  See which of the two
+            // After split, the middle key of childPtr[i] goes up and
+            // childPtr[i] is splitted into two.  See which of the two
             // is going to have the new key
             if (nodePtr->data[i + 1] < data) {
                 i++;
@@ -146,7 +147,7 @@ void insertNonFull(int data, BTreeNode* nodePtr) {
 }
 
 
-void insert(int data) {
+void insertNode4(int data) {
     // If tree is empty
     if (rootPtr == NULL)
     {
@@ -187,9 +188,6 @@ void insert(int data) {
     }
 }
 
-
-
-
 int findKey(int data, BTreeNode* nodePtr) {
     int index = 0;
     while (index < nodePtr->numKeys && nodePtr->data[index] < data) {
@@ -227,7 +225,7 @@ int getPred(int idx, BTreeNode* nodePtr)
 int getSucc(int idx, BTreeNode* nodePtr)
 {
 
-    // Keep moving the left most node starting from C[index+1] until we reach a leaf
+    // Keep moving the left most node starting from childPtr[index+1] until we reach a leaf
     BTreeNode* cur = nodePtr->childPtr[idx + 1];
     while (!cur->isLeaf)
         cur = cur->childPtr[0];
@@ -236,23 +234,23 @@ int getSucc(int idx, BTreeNode* nodePtr)
     return cur->data[0];
 }
 
-// A function to borrow a key from C[index-1] and insert it
-// into C[index]
+// A function to borrow a key from childPtr[index-1] and insert it
+// into childPtr[index]
 void borrowFromPrev(int idx, BTreeNode* nodePtr)
 {
 
     BTreeNode* child = nodePtr->childPtr[idx];
     BTreeNode* sibling = nodePtr->childPtr[idx - 1];
 
-    // The last key from C[index-1] goes up to the parent and key[index-1]
-    // from parent is inserted as the first key in C[index]. Thus, the  loses
+    // The last key from childPtr[index-1] goes up to the parent and key[index-1]
+    // from parent is inserted as the first key in childPtr[index]. Thus, the  loses
     // sibling one key and child gains one key
 
-    // Moving all key in C[index] one step ahead
+    // Moving all key in childPtr[index] one step ahead
     for (int i = child->numKeys - 1; i >= 0; --i)
         child->data[i + 1] = child->data[i];
 
-    // If C[index] is not a leaf, move all its child pointers one step ahead
+    // If childPtr[index] is not a leaf, move all its child pointers one step ahead
     if (!child->isLeaf)
     {
         for (int i = child->numKeys; i >= 0; --i)
@@ -262,7 +260,7 @@ void borrowFromPrev(int idx, BTreeNode* nodePtr)
     // Setting child's first key equal to keys[index-1] from the current node
     child->data[0] = nodePtr->data[idx - 1];
 
-    // Moving sibling's last child as C[index]'s first child
+    // Moving sibling's last child as childPtr[index]'s first child
     if (!child->isLeaf)
         child->childPtr[0] = sibling->childPtr[sibling->numKeys];
 
@@ -276,23 +274,23 @@ void borrowFromPrev(int idx, BTreeNode* nodePtr)
     return;
 }
 
-// A function to borrow a key from the C[index+1] and place
-// it in C[index]
+// A function to borrow a key from the childPtr[index+1] and place
+// it in childPtr[index]
 void borrowFromNext(int idx, BTreeNode* nodePtr)
 {
 
     BTreeNode* child = nodePtr->childPtr[idx];
     BTreeNode* sibling = nodePtr->childPtr[idx + 1];
 
-    // keys[index] is inserted as the last key in C[index]
+    // data[index] is inserted as the last key in childPtr[index]
     child->data[(child->numKeys)] = nodePtr->data[idx];
 
     // Sibling's first child is inserted as the last child
-    // into C[index]
+    // into childPtr[index]
     if (!(child->isLeaf))
         child->childPtr[(child->numKeys) + 1] = sibling->childPtr[0];
 
-    //The first key from sibling is inserted into keys[index]
+    //The first key from sibling is inserted into data[index]
     nodePtr->data[idx] = sibling->data[0];
 
     // Moving all keys in sibling one step behind
@@ -306,28 +304,28 @@ void borrowFromNext(int idx, BTreeNode* nodePtr)
             sibling->childPtr[i - 1] = sibling->childPtr[i];
     }
 
-    // Increasing and decreasing the key count of C[index] and C[index+1]
+    // Increasing and decreasing the key count of childPtr[index] and childPtr[index+1]
     // respectively
     child->numKeys += 1;
     sibling->numKeys -= 1;
 }
 
-// A function to merge C[index] with C[index+1]
-// C[index+1] is freed after merging
+// A function to merge childPtr[index] with childPtr[index+1]
+// childPtr[index+1] is freed after merging
 void merge(int idx, BTreeNode* nodePtr)
 {
     BTreeNode* child = nodePtr->childPtr[idx];
     BTreeNode* sibling = nodePtr->childPtr[idx + 1];
 
-    // Pulling a key from the current node and inserting it into (t-1)th
-    // position of C[index]
+    // Pulling a key from the current node and inserting it into (TREE_ORDER-1)th
+    // position of childPtr[index]
     child->data[TREE_ORDER - 1] = nodePtr->data[idx];
 
-    // Copying the keys from C[index+1] to C[index] at the end
+    // Copying the keys from childPtr[index+1] to childPtr[index] at the end
     for (int i = 0; i < sibling->numKeys; ++i)
         child->data[i + TREE_ORDER] = sibling->data[i];
 
-    // Copying the child pointers from C[index+1] to C[index]
+    // Copying the child pointers from childPtr[index+1] to childPtr[index]
     if (!child->isLeaf)
     {
         for (int i = 0; i <= sibling->numKeys; ++i)
@@ -335,7 +333,7 @@ void merge(int idx, BTreeNode* nodePtr)
     }
 
     // Moving all keys after index in the current node one step before -
-    // to fill the gap created by moving keys[index] to C[index]
+    // to fill the gap created by moving data[index] to childPtr[index]
     for (int i = idx + 1; i < nodePtr->numKeys; ++i)
         nodePtr->data[i - 1] = nodePtr->data[i];
 
@@ -357,12 +355,12 @@ void merge(int idx, BTreeNode* nodePtr)
 void fill(int idx, BTreeNode* nodePtr)
 {
 
-    // If the previous child(C[index-1]) has more than t-1 keys, borrow a key
+    // If the previous child(childPtr[index-1]) has more than t-1 keys, borrow a key
     // from that child
     if (idx != 0 && nodePtr->childPtr[idx - 1]->numKeys >= TREE_ORDER)
         borrowFromPrev(idx, nodePtr);
 
-    // If the next child(C[index+1]) has more than t-1 keys, borrow a key
+    // If the next child(childPtr[index+1]) has more than TREE_ORDER-1 keys, borrow a key
     // from that child
     else if (idx != nodePtr->numKeys && nodePtr->childPtr[idx + 1]->numKeys >= TREE_ORDER)
         borrowFromNext(idx, nodePtr);
@@ -386,10 +384,10 @@ void removeFromNonLeaf(int idx, BTreeNode* nodePtr)
 
     int k = nodePtr->data[idx];
 
-    // If the child that precedes data (C[index]) has atleast t keys,
+    // If the child that precedes data (childPtr[index]) has atleast t keys,
     // find the predecessor 'pred' of data in the subtree rooted at
-    // C[index]. Replace data by pred. Recursively delete pred
-    // in C[index]
+    // childPtr[index]. Replace data by pred. Recursively delete pred
+    // in childPtr[index]
     if (nodePtr->childPtr[idx]->numKeys >= TREE_ORDER)
     {
         int pred = getPred(idx, nodePtr);
@@ -398,7 +396,7 @@ void removeFromNonLeaf(int idx, BTreeNode* nodePtr)
     }
 
     // If the child C[index] has less that t keys, examine C[index+1].
-    // If C[index+1] has atleast t keys, find the successor 'succ' of data in
+    // If childPtr[index+1] has atleast t keys, find the successor 'succ' of data in
     // the subtree rooted at C[index+1]
     // Replace data by succ
     // Recursively delete succ in C[index+1]
@@ -409,10 +407,10 @@ void removeFromNonLeaf(int idx, BTreeNode* nodePtr)
         removeFromNode(succ, nodePtr->childPtr[idx + 1]);
     }
 
-    // If both C[index] and C[index+1] has less that t keys,merge data and all of C[index+1]
-    // into C[index]
-    // Now C[index] contains 2t-1 keys
-    // Free C[index+1] and recursively delete data from C[index]
+    // If both childPtr[index] and childPtr[index+1] has less that TREE_ORDER keys,merge data and all of childPtr[index+1]
+    // into childPtr[index]
+    // Now childPtr[index] contains 2t-1 keys
+    // Free childPtr[index+1] and recursively delete data from childPtr[index]
     else
     {
         merge(idx, nodePtr);
@@ -442,7 +440,7 @@ void removeFromNode(int data, BTreeNode* nodePtr) {
         // If this node is a leaf node, then the key is not present in tree
         if (nodePtr->isLeaf)
         {
-            cout << "The key " << data << " is does not exist in the tree\n";
+            cout << "The key " << data << " is does not exist in the tree" << endl;
             return;
         }
 
@@ -472,9 +470,11 @@ void removeFromNode(int data, BTreeNode* nodePtr) {
 void deleteKey(int data ) {
     if (rootPtr == nullptr)
     {
-        cout << "The tree is empty\n";
+        cout << "The tree is empty" << endl;
         return;
     }
+
+    cout << endl << "Starting to delete " << data << endl;
 
     // Call the remove function for root
     removeFromNode(data, rootPtr);
@@ -497,9 +497,31 @@ void deleteKey(int data ) {
 }
 
 
-int main25() {
+int main25() { 
+
+    insertNode4(15);
+    insertNode4(10);
+    insertNode4(20);
+    insertNode4(8);
+    insertNode4(12);
+    insertNode4(17);
+    insertNode4(25);
 
 
+    // Traversal operations 
+    cout << "Traversing the tree :" << endl;
+    traverseTree(rootPtr);
+    cout << endl;
+
+    // Delete operations
+    deleteKey(20);
+    cout << endl << endl << "Traversing the tree :" << endl;
+    traverseTree(rootPtr);
+    cout << endl;
+    deleteKey(88);
+    cout << endl << endl << "Traversing the tree :" << endl;
+    traverseTree(rootPtr);
+    cout << endl;
 
 	return 0;
 }

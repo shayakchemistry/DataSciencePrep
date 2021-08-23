@@ -47,6 +47,7 @@ void Graph6::addEdge(int from, int to, int weight) {
 	newEdge->weight = weight;
 
 	edgeArr[tmpCounter] = newEdge;
+	tmpCounter += 1;
 }
 
 int Graph6::getEdgeCost(int from, int to) {

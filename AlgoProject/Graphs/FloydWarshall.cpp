@@ -45,6 +45,7 @@ void Graph7::addEdge(int from, int to, int weight) {
     newEdge->weight = weight;
 
     edgeArr[tmpCounter] = newEdge;
+    tmpCounter += 1;
 }
 
 
@@ -96,11 +97,14 @@ void Graph7::floydWarshall() {
 
     for (i = 0; i < this->nV; i++) {
         for (j = 0; j < this->nV; j++) {
-            {
+            if (dist[i][j] == INT16_MAX) {
+                cout << "INF\t";
+            }
+            else {
                 cout << dist[i][j] << "\t";
             }
-            cout << endl;
         }
+        cout << endl;
     }
 }
 

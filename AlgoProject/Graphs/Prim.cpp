@@ -92,8 +92,7 @@ int Graph4::primMST() {
     }
 
     int minVal = 0;
-    for (int a = 0; a < this->nV; ++j)
-    {
+    for (int a = 0; a < this->nV; ++a) {
         minVal += key[a];
     }
 
