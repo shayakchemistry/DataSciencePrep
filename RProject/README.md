@@ -113,7 +113,7 @@ There is always a confusion between a package and a library, and we find people 
 
 In this section we will discuss on vectors. We have covered a very brief description of it in the previous section. In this section, we will dig deep into the functionality of vectors. They are all demonstrated in Vectors.R. It is covered in the following sub-sections:
 
-#####  Sequences and Repetitions in Vector
+##### Sequences and Repetitions in Vector
 
 In order to avoid repetitiveness and tediously filling the elements of a vector, we may use the seq() and rep() functions. Often, we desire more control over a sequence we are creating than what the : operator will give us. The seq() function serves this purpose and is a generalization of the : operator, which creates a sequence of numbers with a specified arithmetic progression.
 
@@ -135,9 +135,8 @@ Filtering a vector means getting the values from the vector by removing the othe
 
 - Using %in% operator
 - Using condition from the index operator
-- Using operators like all(), any(), which(), subset()
 
-There is also usage of dplyr package but that is used for data frames.
+There is also usage of dplyr package but that is used for data frames. Also do note that operators like all(), any(), which(), subset() are useful for comparisons.
 
 ##### Binning
 
