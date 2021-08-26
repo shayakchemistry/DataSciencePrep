@@ -13,10 +13,139 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\LinkedList">
+      <UniqueIdentifier>{a59c90c0-644b-4f6f-ada9-89eec4260181}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Stacks">
+      <UniqueIdentifier>{3b9cb610-3e92-4112-ad4e-b1f50327697a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Queues">
+      <UniqueIdentifier>{d9fa90be-a5ee-4ff0-8f69-81a16241f234}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Sorting">
+      <UniqueIdentifier>{86a0aef0-8c0d-418a-9e38-70e98278eefb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Searching">
+      <UniqueIdentifier>{d68bb01b-a2eb-46e0-8ac4-2e2d139b6e0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\HashTable">
+      <UniqueIdentifier>{6016b53b-d15b-4f30-af41-e7717a976a39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Recursion">
+      <UniqueIdentifier>{cc199177-f18f-4211-b3f5-77bbe143db30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Backtracking">
+      <UniqueIdentifier>{ecd9d20a-a534-49b8-89da-ce94f47c6b60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Trees">
+      <UniqueIdentifier>{9f9ebb78-6769-48b8-bcc7-25fe857880d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphs">
+      <UniqueIdentifier>{d25848bc-1bc4-4353-a22b-4e0bb5bcf8b9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LinkedList\SingleLinkedList.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\LinkedList</Filter>
+    </ClCompile>
+    <ClCompile Include="LinkedList\DoublyLinkedList.cpp">
+      <Filter>Source Files\LinkedList</Filter>
+    </ClCompile>
+    <ClCompile Include="LinkedList\CircularLinkedList.cpp">
+      <Filter>Source Files\LinkedList</Filter>
+    </ClCompile>
+    <ClCompile Include="Stacks\Stack.cpp">
+      <Filter>Source Files\Stacks</Filter>
+    </ClCompile>
+    <ClCompile Include="Queues\Queue.cpp">
+      <Filter>Source Files\Queues</Filter>
+    </ClCompile>
+    <ClCompile Include="Sorting\BubbleSort.cpp">
+      <Filter>Source Files\Sorting</Filter>
+    </ClCompile>
+    <ClCompile Include="Sorting\CountingSort.cpp">
+      <Filter>Source Files\Sorting</Filter>
+    </ClCompile>
+    <ClCompile Include="Sorting\HeapSort.cpp">
+      <Filter>Source Files\Sorting</Filter>
+    </ClCompile>
+    <ClCompile Include="Sorting\InsertionSort.cpp">
+      <Filter>Source Files\Sorting</Filter>
+    </ClCompile>
+    <ClCompile Include="Sorting\MergeSort.cpp">
+      <Filter>Source Files\Sorting</Filter>
+    </ClCompile>
+    <ClCompile Include="Sorting\QuickSort.cpp">
+      <Filter>Source Files\Sorting</Filter>
+    </ClCompile>
+    <ClCompile Include="Sorting\SelectionSort.cpp">
+      <Filter>Source Files\Sorting</Filter>
+    </ClCompile>
+    <ClCompile Include="Searching\BinarySearch.cpp">
+      <Filter>Source Files\Searching</Filter>
+    </ClCompile>
+    <ClCompile Include="Searching\InterpolationSearch.cpp">
+      <Filter>Source Files\Searching</Filter>
+    </ClCompile>
+    <ClCompile Include="Searching\LinearSearch.cpp">
+      <Filter>Source Files\Searching</Filter>
+    </ClCompile>
+    <ClCompile Include="HashTable\ChainingHashTable.cpp">
+      <Filter>Source Files\HashTable</Filter>
+    </ClCompile>
+    <ClCompile Include="HashTable\DHHashTable.cpp">
+      <Filter>Source Files\HashTable</Filter>
+    </ClCompile>
+    <ClCompile Include="HashTable\LPHashTable.cpp">
+      <Filter>Source Files\HashTable</Filter>
+    </ClCompile>
+    <ClCompile Include="HashTable\QPHashTable.cpp">
+      <Filter>Source Files\HashTable</Filter>
+    </ClCompile>
+    <ClCompile Include="Recursion\Fibonacci.cpp">
+      <Filter>Source Files\Recursion</Filter>
+    </ClCompile>
+    <ClCompile Include="Recursion\TowerOfHanoi.cpp">
+      <Filter>Source Files\Recursion</Filter>
+    </ClCompile>
+    <ClCompile Include="Backtracking\KnightsTour.cpp">
+      <Filter>Source Files\Backtracking</Filter>
+    </ClCompile>
+    <ClCompile Include="Backtracking\nQueens.cpp">
+      <Filter>Source Files\Backtracking</Filter>
+    </ClCompile>
+    <ClCompile Include="Trees\AVLTree.cpp">
+      <Filter>Source Files\Trees</Filter>
+    </ClCompile>
+    <ClCompile Include="Trees\BinaryTree.cpp">
+      <Filter>Source Files\Trees</Filter>
+    </ClCompile>
+    <ClCompile Include="Trees\BTrees.cpp">
+      <Filter>Source Files\Trees</Filter>
+    </ClCompile>
+    <ClCompile Include="Trees\RedBlackTree.cpp">
+      <Filter>Source Files\Trees</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphs\BellmanFord.cpp">
+      <Filter>Source Files\Graphs</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphs\BFS.cpp">
+      <Filter>Source Files\Graphs</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphs\DFS.cpp">
+      <Filter>Source Files\Graphs</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphs\Dijkstra.cpp">
+      <Filter>Source Files\Graphs</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphs\FloydWarshall.cpp">
+      <Filter>Source Files\Graphs</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphs\Kruskal.cpp">
+      <Filter>Source Files\Graphs</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphs\Prim.cpp">
+      <Filter>Source Files\Graphs</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

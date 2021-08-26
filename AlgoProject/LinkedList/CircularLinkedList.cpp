@@ -1,6 +1,6 @@
 /*
 
-This is a working C++ program to demonstrate Singly Linked List
+This is a working C++ program to demonstrate Circular Linked List
 
 This program covers up the following operations:
 1. Push
@@ -13,26 +13,28 @@ This program covers up the following operations:
 
 using namespace std;
 
-class Node {
+class CNode {
 public:
 	int data;
-	Node* next;
+	CNode* prev;
+	CNode* next;
 };
 
-void pushNode(Node** headPtr, int value) {
-	Node* new_node = new Node();
+void pushNode(CNode** headPtr, int value) {
+	CNode* new_node = new CNode();
 	new_node->data = value;
 	new_node->next = NULL;
-	
+	new_node->prev = NULL;
+
 	if ((*headPtr) == NULL) {
 		(*headPtr) = new_node;
 	}
 	else {
 		bool flag1 = true;
-		Node* currentPtr = (*headPtr);
+		CNode* currentPtr = (*headPtr);
 		while (flag1)
 		{
-			if (currentPtr->next == NULL) {
+			if (currentPtr->next == (*headPtr) || currentPtr->next == NULL) {
 				flag1 = false;
 				break;
 			}
@@ -41,18 +43,20 @@ void pushNode(Node** headPtr, int value) {
 			}
 		}
 		currentPtr->next = new_node;
+		new_node->prev = currentPtr;
+		new_node->next = (*headPtr);
+		(*headPtr)->prev = new_node;
 	}
 }
 
-int deleteNode(Node** headPtr, int pos) {
+int deleteNode(CNode** headPtr, int pos) {
 	if ((*headPtr) == NULL) {
 		return 0;
 	}
 
 	int cPos = 0;
 	bool flag1 = true;
-	Node* currentPtr = (*headPtr);
-	Node* prevPtr = NULL;
+	CNode* currentPtr = (*headPtr);
 	if (currentPtr->next == NULL) {
 		if (pos == 0) {
 			int data1 = currentPtr->data;
@@ -63,22 +67,22 @@ int deleteNode(Node** headPtr, int pos) {
 			return 0;
 		}
 	}
-	
+
 	while (flag1)
 	{
-		if (currentPtr->next == NULL || cPos == pos) {
+		if (currentPtr->next == (*headPtr) || cPos == pos) {
 			flag1 = false;
 			break;
 		}
 		else {
 			cPos++;
-			prevPtr = currentPtr;
 			currentPtr = currentPtr->next;
 		}
 	}
 
 	if (cPos == pos) {
-		prevPtr->next = currentPtr->next;
+		currentPtr->prev->next = currentPtr->next;
+		currentPtr->next->prev = currentPtr->prev;
 		return currentPtr->data;
 	}
 	else {
@@ -86,16 +90,16 @@ int deleteNode(Node** headPtr, int pos) {
 	}
 }
 
-bool searchNode(Node** headPtr, int value) {
+bool searchNode(CNode** headPtr, int value) {
 	if ((*headPtr) == NULL) {
 		return false;
 	}
 
 	bool flag1 = true;
-	Node* currentPtr = (*headPtr);
+	CNode* currentPtr = (*headPtr);
 	while (flag1)
 	{
-		if (currentPtr->next == NULL || currentPtr->data == value) {
+		if (currentPtr->next == (*headPtr) || currentPtr->next == NULL || currentPtr->data == value) {
 			flag1 = false;
 			break;
 		}
@@ -115,11 +119,11 @@ bool searchNode(Node** headPtr, int value) {
 
 
 
-int main1() {
+int main3() {
 
 	// Create a Head node to Linked list. 
 
-	Node* head = NULL;
+	CNode* head = NULL;
 
 	// Push data to the linked list
 

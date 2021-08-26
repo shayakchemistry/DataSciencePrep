@@ -1,0 +1,9 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+.vs
+.idea
+.ipynb_checkpoints
+.gradle
+build
