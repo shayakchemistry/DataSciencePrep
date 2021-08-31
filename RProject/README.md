@@ -169,7 +169,7 @@ We can delete the vector just by assigning the variable to NULL
 
 ### Lists
 
-In this section we focus on various aspects of lists. They are discussed in the following subsections:
+In this section we focus on various aspects of lists. This is demonstrated in Lists.R. They are discussed in the following subsections:
 
 ##### Creating and using Lists
 
@@ -187,7 +187,7 @@ The lapply() function is used to apply function to all list elements. The sapply
 
 ### Matrices
 
-Matrices are the R objects in which the elements are arranged in a two-dimensional rectangular layout. They contain elements of the same atomic types. Though we can create a matrix containing only characters or only logical values, they are not of much use. We use matrices containing numeric elements to be used in mathematical calculations. A Matrix is created using the matrix() function. In this section, we will dig deep into the functionality of matrices. They are given in the subsection below:
+Matrices are the R objects in which the elements are arranged in a two-dimensional rectangular layout. They contain elements of the same atomic types. Though we can create a matrix containing only characters or only logical values, they are not of much use. We use matrices containing numeric elements to be used in mathematical calculations. A Matrix is created using the matrix() function. In this section, we will dig deep into the functionality of matrices. This is demonstrated in Matrix.R. We discuss them in the subsection below:
 
 ##### Naming Dimensions, Column names and Row names
 
@@ -233,7 +233,7 @@ There are various types of matrices that we can create. Some of them are listed 
 
 - Unit Matrix: Matrix will all elements as 1. Create this using matrix(1, rows, cols)
 - Zero Matrix: Matrix will all elements as 0. Create this using matrix(0, rows, cols)
-- Diagonal Matrix: Matrix with all elements other than the diagonal elements as 0. Covert a materix to diagonal matrix using diag() function.
+- Diagonal Matrix: Matrix with all elements other than the diagonal elements as 0. Covert a matrix to diagonal matrix using diag() function.
 - Identity Matrix: Matrix with diagonal elements as 1 and all elements other than the diagonal elements as 0. Create this using diag() function on unit matrix. 
 
 ##### Visualizing With Matplot()
@@ -244,108 +244,198 @@ Matplot in R is most concise way to superimpose the data series. Matplot plots t
 
 Subsetting matrices consists on obtaining a subsample of the original matrix, in order to obtain specific elements based on some condition. We can do this in three different ways:
 - Using square brackets ([] and [[]] operators).
-- Using the dollar sign ($) if the elements are named.
 - With functions, like the subset command for conditional or logical subsets.
 
 
 ### Data Frames
 
-##### Introduction
+A data frame is a table or a two-dimensional array-like structure in which each column contains values of one variable and each row contains one set of values from each column. Following are the characteristics of a data frame:
 
-##### Importing data into R
+- The column names should be non-empty.
+- The row names should be unique.
+- The data stored in a data frame can be of numeric, factor or character type.
+- Each column should contain same number of data items.
 
-##### Exploring your dataset
+The structure of the data frame can be seen by using str() function.Also the statistical summary and nature of the data can be obtained by applying summary() function. We demonstrate dataframes in Dataframe.R. In this section we dig deep into dataframes and are given by the following subsections:
 
+##### Importing data into Dataframe
+
+In R, we can read data from files stored outside the R environment. We can also write data into files which will be stored and accessed by the operating system. R can read and write into various file formats like csv, excel, xml etc. In R we can use utility functions like read.csv() to read a file and put it to a dataframe. We do use this dataframe to get summary, number of rows / columns and other ways to explore into the dataset.
 
 ##### Using the $ sign
 
+$ is an important symbol in context of dataframe. We do use this to access the named indexes in the dataframe.
 
-##### Basic operations with a Data Frame
+##### Operations with Data Frame
 
+In Dataframes, we can apply operations on either elements or on the dataframe as a whole. There are many operations that can be applied to dataframe:
 
-##### Filtering a Data Frame
+*Sort a dataframe*
+
+We can use the order() function directly without resorting to add-on tools.
+
+*Merge/Join data frames*
+
+We can do join / merge by using the merge function and its optional parameters.
+
+*Drop data frame columns by name*
+
+We can drop a column using the filtering and specifying drop=TRUE when filtering out indexes.
+
+*Remove rows with NAs in data.frame*
+
+We can remove NA's using complete.cases() and na.omit() in indexes. We can also use is.na() to check whether an element is an NA.
+
+*Extracting specific columns from a data frame*
+
+Using the dplyr package we can use the select() function to select multiple columns
+
+##### Filtering in Data Frame
+
+Dataframe columns can be subjected to constraints, and produce smaller subsets. However, while the conditions are applied, the following properties are maintained:
+
+- Rows are considered to be a subset of the input.
+- Rows in the subset appear in the same order as the original dataframe.
+- Columns remain unmodified.
+- The number of groups may be reduced, based on conditions.
+- Dataframe attributes are preserved during data filter.
+
+There are two ways of filtering dataframes namely:
+
+- Using dataframe indexing 
+- Using dplyr library
 
 ##### Handling missing values
 
+Often you may want to replace missing values in the columns of a data frame with some meaningful values. The most commonly used are mean or median of a column. Also if the column is a critical one we do often clear the rows that contains NA or NaN.
+
+##### Visualizing With Qplot
+
+qplot is the short form of quick plot in R. The ggplot2 system offers two functions. One is qplot for the quick or faster plotting and another is ggplot, which is for more customized plots. It is a very easy-to-use plotting function. To use this function, you need to install the ‘ggplot2‘ package. We can explore the dataset to understand the datatypes and the data points as well by plotting them off. We do have extensively demonstrated this in Dataframe.R.
+
+### Visualizations with GGPLOT2
+
+In this section we will mostly discuss about plotting graphs in an extensive level. We would start with the base graphics and then move to ggplot2. They are all discussed in the following subsections:
+
+##### Base Graphics 
+
+One of the best parts of R is its plotting capabilities. Most model output has an associated plot method which allows one to quickly visualize the results of an analysis using a consistent interface. Base graphics are the oldest systems in R. Although higher-level graphics packages like lattice and ggplot2, which are built on grid graphics have displaced base graphics, but base graphics do come in handy.
+
+##### Base Graphics Plots
+
+Base R graphics functions (known as high-level plotting functions) can be customized adding legends, texts, grids, modifying the axes, among other functions (known as low-level plotting functions). We can also customize graphical parameters via the arguments of the par function. The latter will allow us to combine plots, change the background color or the margins, for instance. We do discuss them in details below:
+
+*Scatter plot*
+
+A scatter plot can be created using the function plot(x, y). The function lm() will be used to fit linear models between y and x. A regression line can be added on the plot using the function abline(), which takes the output of lm() as an argument. You can also add a smoothing line using the function loess(). 
+
+*Legend*
+
+The legend() function allows adding legends to base R plots. 
+
+*Saving plot components*
+
+It is possible to save plot components by specifying files to save your image using a function such as jpeg(), png(), svg() or pdf(). Additional argument indicating the width and the height of the image can be also used. We then create the plot asn save it to the file using dev.off().
+
+*Line plot*
+
+We can do line plots using plot() function and lines() function. Note that lines() cannot plot without using plot() function. The function has the following parameters:
+
+- x, y: coordinate vectors of points to join
+- type: character indicating the type of plotting. Allowed values are:
+  - “p” for points
+  - “l” for lines
+  - “b” for both points and lines
+  - “c” for empty points joined by lines
+  - “o” for overplotted points and lines
+  - “s” and “S” for stair steps
+  - “n” does not produce any points or lines
+- lty: line types. Line types can either be specified as an integer (0=blank, 1=solid (default), 2=dashed, 3=dotted, 4=dotdash, 5=longdash, 6=twodash) or as one of the character strings “blank”, “solid”, “dashed”, “dotted”, “dotdash”, “longdash”, or “twodash”, where “blank” uses ‘invisible lines’ (i.e., does not draw them).
+
+*Par settings*
+
+We can put multiple graphs in a single plot by setting some graphical parameters with the help of par() function. R programming has a lot of graphical parameters which control the way our graphs are displayed.
+
+The par() function helps us in setting or inquiring about these parameters. For example, you can look at all the parameters and their value by calling the function without any argument.
+
+*Histogram and bar charts*
+
+A histogram is an approximate representation of the distribution of numerical data. We can represent this with bar plots. Bar plots are obtained by using the barplot() function.
+
+*Box plot*
+
+A box plot or boxplot is a method for graphically depicting groups of numerical data through their quartiles. Box plots may also have lines extending from the boxes indicating variability outside the upper and lower quartiles. This is achieved in R using the boxplot() function.
+
+*Dot plot*
+
+A dot plot, also known as a strip plot or dot chart, is a simple form of data visualization that consists of data points plotted as dots on a graph with an x- and y-axis. These types of charts are used to graphically depict certain data trends or groupings. We use dotchart() function in R to do it.
+
+*Histogram and and density plot*
+
+A histogram is the most commonly used graph to show frequency distributions. It looks very much like a bar chart, but there are important differences between them. This helpful data collection and analysis tool is considered one of the seven basic quality tools. We do this using the hist() function.
+
+A Density Plot visualizes the distribution of data over a continuous interval or time period. This chart is a variation of a Histogram that uses kernel smoothing to plot values, allowing for smoother distributions by smoothing out the noise. We do this by using the density() function to calculate the density data and display it using the plot() function.
 
 
-##### Introduction to qplot
+##### Introduction to ggplot2
+
+ggplot2 also termed as Grammer of Graphics is a free, opensource and easy to use visualization package widely used in R. It includes several layers on which it is governed. The layers are as follows:
+
+- Data: Dataset to be plotted
+- Aesthetics: The scale into which the data is mapped to.
+- Geometric: The visual elements in the data
+- Facets: Plotting small multiples
+- Statistics: Representation of the data to aid understanding
+- Coordinates: The space on which the data is to be plotted
+- Themes: All non data link
+
+Layers with variables of interest are as follows:
+
+- Aesthetics: x axis, y axis, color, fill, size, labels, alpha, shape, line width, line type
+- Geometrics: point, line, histogram, bar, boxplot
+- Facets: Columns, rows
+- Statistics: Binning, smoothing, descriptive, intermediate
+- Coordinates: Cartesian, fixed, polar, limits
+- Themes: Non data link
+
+We discuss them in the section below:
+
+##### Aesthetics
+
+There are different aesthetics that are used in ggplot2 and are listed below:
+
+- Color and fill: Almost every geom has either color, fill, or both. We can specify colors by it's name or by RGB specification.
+- Lines: We can modify lines like colors. The appearance of a line is affected by size, linetype, linejoin and lineend.
+- Polygons: The border of the polygon is controlled by the colour, linetype, and size aesthetics as described above. The inside is controlled by fill.
+- Point: We use points to represent a data poin tin the chart. They do varry in size, type and color.
+- Text: We can varry font face (type) and size accordingly.
+- Justification: Justification controlls allignment. Horizontal and vertical justification have the same parameterisation, either a string (“top”, “middle”, “bottom”, “left”, “center”, “right”) or a number between 0 and 1.
+
+##### Histograms and Density Charts
+
+We have explored histogram previously in base graphics. The function geom_histogram() is used to create histogram. 
+
+We have explored Density plots previously in base graphics. The function geom_density() is used to create Density plots. 
+
+##### Building plots by Layers
+
+One of the key ideas behind ggplot2 is that it allows you to easily iterate, building up a complex plot a layer at a time. Each layer can come from a different dataset and have a different aesthetic mapping, making it possible to create sophisticated plots that display data from multiple sources.
+
+##### Statistical Transformations
 
 
-##### Visualizing with Qplot
 
+##### Using Facets
 
-##### Building Dataframes
+##### Coordinates
 
-
-##### Merging Data Frames
-
-
-##### Visualizing With Qplot: Part II
-
-Base Graphics 
-Section overview
-01:37
-Base Graphics basics
-02:23
-Scatterplot
-01:09
-Adding plot components
-08:13
-Legend
-01:25
-Saving plot components and challenge
-02:56
-Line plot with secondary Y axis
-06:37
-Par settings
-04:16
-Histogram and bar charts
-06:09
-Box plot
-03:29
-Dot plot and density plot
-05:19
-Multiple plots and custom layouts
+##### Adding Themes
 
 
 
 
 
-Advanced visualization with GGPLOT2
-Welcome to this section. This is what you will learn!
-01:23
-Project Brief: Movie Ratings
-04:02
-Grammars of Graphics ggplot2
-Preview11:26
-What is a Factor?
-07:13
-Aesthetics
-06:54
-Plotting With Layers
-05:18
-Overriding Aesthetics
-07:49
-Mapping vs Setting
-08:09
-Histograms and Density Charts
-07:08
-Starting Layer Tips
-08:41
-Statistical Transformations
-10:38
-Using Facets
-09:30
-Coordinates
-10:28
-Perfecting By Adding Themes
-11:04
-Section Recap
-09:50
-HOMEWORK: Movie Domestic % Gross
-07:05
-Advanced Visualization With GGPlot2
+
 
 Advanced R programming
 Intro to stringr
@@ -368,5 +458,3 @@ lapply, sapply, vapply
 04:03
 mapply
 
-
-https://www.udemy.com/course/r-programming-datascience/
