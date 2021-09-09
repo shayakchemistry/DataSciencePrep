@@ -16,7 +16,7 @@ if __name__ == "__main__":
     df = spark.read\
         .option("header", "true")\
         .option("inferSchema", "true")\
-        .csv("HelloWorld/data/sample.csv")
+        .csv("data/sample.csv")
     # Printing the contents of df.
     df.show()
     # Stopping spark session.

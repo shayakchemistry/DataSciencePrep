@@ -1,4 +1,4 @@
-#Spark Project
+# Spark Project
 
 In this module we will explore the key concepts of spark. We are going to focus on following topics. 
 
@@ -10,7 +10,7 @@ In this module we will explore the key concepts of spark. We are going to focus 
 - Spark Graphs
 - Spark MLib
 
-##An Introduction and Overview
+## An Introduction and Overview
 
 Definition:
 Apache spark is a distributed data processing framework for big data workloads. It offers development API in Scala, 
@@ -50,7 +50,7 @@ Azure Blob, GCP (Google cloud storage), CFS (Cassandra file system).
 
 Spark compute engine runs and manages data processing work and provides user a seamless experience.   
  
-##Spark Architecture  
+## Spark Architecture  
 
 ![Spark Architecture](resources/architecture.png) 
 
@@ -61,7 +61,7 @@ The Spark architecture depends upon two abstractions:
 - Resilient Distributed Dataset(RDD)
 - Directed Acyclic graph.
 
-#####Resilient Distributed Dataset (RDD) 
+##### Resilient Distributed Dataset (RDD) 
 RDD are fault-tolerant collections of elements that can be distributed among multiple nodes in a cluster and worked on 
 in parallel. RDDs are a fundamental structure in Apache Spark.
 
@@ -75,13 +75,13 @@ Each dataset in an RDD is divided into logical partitions, which may be computed
  create a new RDD. Actions are used to instruct Apache Spark to apply computation and pass the result back to the 
  driver.
 
-#####Directed Acyclic Graph (DAG)
+##### Directed Acyclic Graph (DAG)
 Spark creates a Directed Acyclic Graph (DAG) to schedule tasks and the orchestration of worker nodes across the cluster.
  As Spark acts and transforms data in the task execution processes, the DAG scheduler facilitates efficiency by 
  orchestrating the worker nodes across the cluster. This task-tracking makes fault tolerance possible, as it reapplies 
  the recorded operations to the data from a previous state.
 
-#####The main components of spark architecture are as follow:
+##### The main components of spark architecture are as follow:
 
 Spark Driver: Spark Driver controls the execution of spark application and maintains states of spark cluster(states and 
 tasks of cluster). Spark Driver contains various components – DAGScheduler, TaskScheduler, BackendScheduler and 
@@ -114,7 +114,7 @@ deallocation of various physical resources such as memory for client spark jobs,
  Mesos or the simple standalone spark cluster manager either of them can be launched on-premise or in the cloud for a 
  spark application to run
   
-#####Key takeaways from Spark architecture:
+##### Key takeaways from Spark architecture:
 - Each application gets its own executor processes, which stay up for the duration of the whole application and run 
 tasks in multiple threads.This has the benefit of isolating applications from each other, on both the scheduling side
  (each driver schedules its own tasks) and executor side (tasks from different applications run in different JVMs).
@@ -130,13 +130,13 @@ from the worker nodes.
  local area network. If you’d like to send requests to the cluster remotely, it’s better to open an RPC to the driver
   and have it submit operations from nearby than to run a driver far away from the worker nodes.
   
-#####Spark programs execution methods:
- - Interactive clients: spark-shell, notebooks.
- - Submit job: spark-submit, Data bricks notebooks, Rest APIs.
+##### Spark programs execution methods:
+ - Interactive clients: spark-shell, notebooks(zeppelin, databricks).
+ - Submit job: spark-submit, Rest APIs.
 
 In real time most of the application code is packaged and submitted to spark cluster for execution through spark-submit.
 
-#####Execution Modes:
+##### Execution Modes:
 An execution mode gives you the power to determine where the aforementioned resources are physically located when you
  go running your application. You have three modes to choose from:
 
@@ -164,9 +164,9 @@ machine. It achieves parallelism through threads on that single machine. This is
 Refer to Hello world dir under spark project, where we create a spark session, read a csv file via dataframe reader and 
 print the content of files.
  
-##Spark Core
+## Spark Core
 
-#####RDD
+##### RDD
 Resilient Distributed Dataset is an immutable collection object. Its a fundamental data structure in spark.
 Each dataset in RDD is divided into logical partitions, which can be computed on different nodes of cluster.
 
@@ -175,12 +175,12 @@ Each dataset in RDD is divided into logical partitions, which can be computed on
 - Distributed: Each RDD is divided into multiple partitions which resides on multiple nodes.
 - Dataset: Its hold data inform a dataset - a named column collection object. 
 
-#####Creating an RDD:
+##### Creating an RDD:
 - Parallelizing already existing collection in driver program.
 - Referencing a dataset in an external storage system (e.g. HDFS, Hbase, shared file system).
 - Creating RDD from already existing RDDs.
 
-#####When to use RDDs:
+##### When to use RDDs:
 - You want low-level transformation and actions and control on your dataset;
 - Your data is unstructured, such as media streams or streams of text;
 - You want to manipulate your data with functional programming constructs than domain specific expressions;
@@ -189,21 +189,21 @@ Each dataset in RDD is divided into logical partitions, which can be computed on
 - You can forgo some optimization and performance benefits available with DataFrames and Datasets for structured and 
 semi-structured data.
 
-#####Operation on RDD:
+##### Operation on RDD:
 - Transformations
 - Actions
 
 Refer to Rdd Operations.py for examples.
 
-#####Transformations: 
+##### Transformations: 
 Transformations are functions that take an RDD as the input and produce one or many RDDs as the output.
 Transformation is a lazy operation on RDD. They don't change the input RDD, but create a new one or multiple RDD's. 
 
-#####Transformation are of two types: 
+##### Transformation are of two types: 
 - Narrow transformation
 - Wide transformation
 
-#####Narrow Transformation: 
+##### Narrow Transformation: 
 Transformation consisting of narrow dependencies i.e. Data from single partition is enough to 
 produce output. Each input partition will contribute to only one output partition. This is often referred as pipelining.
 Examples: Map, FlatMap, MapPartition, Filter, Sample, Union.
@@ -212,16 +212,16 @@ Map: Map transformation takes an each element and process it according to the fu
 returns one element at a time. Map transforms RDD of length N into another RDD of length N.
 
 
-Scala>>`val data = sc.read.textFile("~/abc.txt").rdd
-val transData = data.map(line => line.toUpperCase())`
+`data = sc.read.textFile("~/abc.txt").rdd
+ transData = data.map(lambda line: line.toUpperCase())`
 
 The map function would convert the data rdd into upper case. 
 
 FlatMap: A FlatMap function takes one element as input process it according to custom code (specified by the developer) 
 and returns 0 or more element at a time. flatMap() transforms an RDD of length N into another RDD of length M.
 
-Scala>>`val data = sc.read.textFile("~/abc.txt").rdd
-val words = data.map(line => line.split(" "))`
+`data = sc.read.textFile("~/abc.txt").rdd
+ words = data.map(lambda line : line.split(" "))`
 
 The flatMap function would split the lines in data RDD into words in words RDD.
 
@@ -274,7 +274,9 @@ Union: returns new dataset that contains union of the elements of the source and
 df2 = spark.range(20)
 df3 = df1.union(df2)`
 
-#####Wide Transformations: 
+
+##### Wide Transformations: 
+
 A wide dependency [or wide transformation] style transformation will have multiple input 
 partitions contributing to one or many output partitions. This if often referred as shuffle.
 Examples: Intersection, Distinct, ReduceByKey, GroupByKey, Join, Cartesian, Repartition, Coalesce.
@@ -345,7 +347,7 @@ getNumPartitions: Returns the number of partitions of RDD.
 
 SaveAsTextFile, SaveAsSequenceFile, SaveAsObjectFile: This functions saves the elements of rdd into files.
 
-#####Partitioning
+##### Partitioning
 Partition basically is a logical chunk of a large distributed data set. It provides the possibility to distribute the 
 work across the cluster, divide the task into smaller parts, and reduce memory requirements for each node. Partition is 
 the main unit of parallelism in Apache Spark.
@@ -405,7 +407,8 @@ situation, the solution will be to repartition DataFrame into more partitions be
  
 Refer to rddPartitions.py example. 
  
-#####RDD Persistence
+##### RDD Persistence
+ 
 One of the most important capabilities in Spark is persisting (or caching) a dataset in memory across operations. 
 When you persist an RDD, each node stores any slices of it that it computes in memory and reuses them in other actions 
 on that dataset (or datasets derived from it). This allows future actions to be much faster (often by more than 10x). 
@@ -429,7 +432,8 @@ MEMORY_AND_DISK_SER	Similar to MEMORY_ONLY_SER, but spill partitions that don't 
 DISK_ONLY	Store the RDD partitions only on disk.
 MEMORY_ONLY_2, MEMORY_AND_DISK_2, etc.	Same as the levels above, but replicate each partition on two cluster nodes.
 
-#####Which Storage Level to Choose?
+##### Which Storage Level to Choose?
+ 
 Spark’s storage levels are meant to provide different tradeoffs between memory usage and CPU efficiency. 
 We recommend going through the following process to select one:
 
@@ -442,14 +446,16 @@ the data. Otherwise, recomputing a partition is about as fast as reading it from
 - Use the replicated storage levels if you want fast fault recovery (e.g. if using Spark to serve requests from a web 
 application). All the storage levels provide full fault tolerance by recomputing lost data, but the replicated ones let you continue running tasks on the RDD without waiting to recompute a lost partition.
 
-#####Shared Variables
+##### Shared Variables
+ 
 Normally, when a function passed to a Spark operation (such as map or reduce) is executed on a remote cluster node, 
 it works on separate copies of all the variables used in the function. These variables are copied to each machine, and 
 no updates to the variables on the remote machine are propagated back to the driver program. Supporting general, 
 read-write shared variables across tasks would be inefficient. However, Spark does provide two limited types of 
 shared variables for two common usage patterns: broadcast variables and accumulators.
 
-#####Broadcast Variables
+##### Broadcast Variables
+
 Broadcast variables allow the programmer to keep a read-only variable cached on each machine rather than shipping a copy
  of it with tasks. They can be used, for example, to give every node a copy of a large input dataset in an efficient 
 manner. Spark also attempts to distribute broadcast variables using efficient broadcast algorithms to reduce 
@@ -459,20 +465,21 @@ Broadcast variables are created from a variable v by calling SparkContext.broadc
 wrapper around v, and its value can be accessed by calling the value method. The interpreter session below shows this:
 
 `
-scala> val broadcastVar = sc.broadcast(Array(1, 2, 3))
-broadcastVar: spark.Broadcast[Array[Int]] = spark.Broadcast(b5c40191-a864-4c7d-b9bf-d87e1a4e787c)
+>>> broadcastVar = sc.broadcast([1, 2, 3])
+<pyspark.broadcast.Broadcast object at 0x102789f10>
+
+>>> broadcastVar.value
+[1, 2, 3]
 `
 
-`scala> broadcastVar.value 
-res0: Array[Int] = Array(1, 2, 3)
-`
 
 After the broadcast variable is created, it should be used instead of the value v in any functions run on the cluster so
  that v is not shipped to the nodes more than once. In addition, the object v should not be modified after it is 
 broadcast in order to ensure that all nodes get the same value of the broadcast variable (e.g. if the variable is 
 shipped to a new node later).
 
-#####Accumulators
+##### Accumulators
+ 
 Accumulators are variables that are only “added” to through an associative operation and can therefore be efficiently 
 supported in parallel. They can be used to implement counters (as in MapReduce) or sums. Spark natively supports 
 accumulators of type Int and Double, and programmers can add support for new types.
@@ -483,15 +490,18 @@ accumulator’s value, using its value method.
 
 The interpreter session below shows an accumulator being used to add up the elements of an array:
 
-`scala> val accum = sc.accumulator(0)
-accum: spark.Accumulator[Int] = 0
-`
+`>>> accum = sc.accumulator(0)
+>>> accum
+Accumulator<id=0, value=0>
 
-`scala> sc.parallelize(Array(1, 2, 3, 4)).foreach(x => accum += x)
-scala> accum.value
-res2: Int = 10 `
+>>> sc.parallelize([1, 2, 3, 4]).foreach(lambda x: accum.add(x))
+...
+10/09/29 18:41:08 INFO SparkContext: Tasks finished in 0.317106 s
 
-##Spark SQL
+>>> accum.value
+10`
+
+## Spark SQL
 
 Apache Spark SQL integrates relational processing with Sparks functional programming. It is Spark module for structured 
 data processing. Spark SQL blurs the line between RDD and relational table. It also offers much tighter integration 
@@ -513,7 +523,7 @@ Apache Spark SQL Interfaces:
 - JDBC Sources
 - Catalyst Optimizer
 
-#####DataFrames
+##### DataFrames
 DataFrame is a distributed collection of data organized into named columns.In dataframes, view of data is organized as 
 columns with column name and types info. It is conceptually equivalent to a table in a relational database or a data 
 frame in R/Python, but with richer optimizations under the hood. DataFrames can be
@@ -522,7 +532,7 @@ or existing RDDs.
 As similar as RDD, execution in dataframe too is lazy triggered. Moreover, to allow efficient processing datasets is 
 structure as a distributed collection of data. Spark also uses catalyst optimizer along with dataframes.
 
-#####DataSets
+##### DataSets
 A Dataset is a distributed collection of data. Dataset is a new interface added in Spark 1.6 that provides the benefits 
 of RDDs (strong typing, ability to use powerful lambda functions) with the benefits of Spark SQL’s optimized execution 
 engine. A Dataset can be constructed from JVM objects and then manipulated using functional transformations 
@@ -530,9 +540,9 @@ engine. A Dataset can be constructed from JVM objects and then manipulated using
  Dataset API. But due to Python’s dynamic nature, many of the benefits of the Dataset API are already available (i.e. 
 you can access the field of a row by name naturally row.columnName). The case for R is similar.
 
-#####Key differences between datasets and dataframes: 
+##### Key differences between datasets and dataframes: 
 
-######Data Formats
+###### Data Formats
 
 - DataFrame- Dataframes organizes the data in the named column. Basically, dataframes can efficiently process
  unstructured and structured data. Also, allows the Spark to manage schema.
@@ -540,7 +550,7 @@ you can access the field of a row by name naturally row.columnName). The case fo
 - DataSets- As similar as dataframes, it also efficiently processes unstructured and structured data. Also, represents 
 data in the form of a collection of row object or JVM objects of row. Through encoders, is represented in tabular forms.
 
-######Data Representation
+###### Data Representation
 
 - DataFrame- In dataframe data is organized into named columns. Basically, it is as same as a table in a relational 
 database.
@@ -548,75 +558,75 @@ database.
 - DataSets- As we know, it is an extension of dataframe API, which provides the functionality of type-safe, 
 object-oriented programming interface of the RDD API. Also, performance benefits of the Catalyst query optimizer.
 
-######Compile-time type safety
+###### Compile-time type safety
 
 DataFrame- There is a case if we try to access the column which is not on the table. Then, dataframe APIs does not 
 support compile-time error.
 
 DataSets- Datasets offers compile-time type safety.
 
-######Data Sources API
+###### Data Sources API
 
 - DataFrame- It allows data processing in different formats, for example, AVRO, CSV, JSON, and storage system HDFS, HIVE tables, MySQL.
 
 - DataSets- It also supports data from different sources.
 
-######Immutability and Interoperability
+###### Immutability and Interoperability
 
 - DataFrame- Once transforming into dataframe, we cannot regenerate a domain object.
 
 - DataSets- Datasets overcomes this drawback of dataframe to regenerate the RDD from dataframe. It also allows us to convert our existing RDD and dataframes into datasets.
 
-######Efficiency/Memory use
+###### Efficiency/Memory use
 
 - DataFrame- By using off-heap memory for serialization, reduce the overhead.
 
 - DataSets- It allows to perform an operation on serialized data. Also, improves memory usage.
 
-######Serialization
+###### Serialization
 
 - DataFrame- In dataframe, can serialize data into off-heap storage in binary format. Afterwards, it performs many transformations directly on this off-heap memory.
 
 - DataSets- In Spark, dataset API has the concept of an encoder. Basically, it handles conversion between JVM objects to tabular representation. Moreover, by using spark internal tungsten binary format it stores, tabular representation. Also, allows to perform an operation on serialized data and also improves memory usage.
 
-######Lazy Evolution
+###### Lazy Evolution
 
 - DataFrame- As same as RDD, Spark evaluates dataframe lazily too.
 
 - DataSets- As similar to RDD, and Dataset it also evaluates lazily.
 
-######Optimization
+###### Optimization
 
 - DataFrame- Through spark catalyst optimizer, optimization takes place in dataframe. 
 
 - DataSets- For optimizing query plan, it offers the concept of dataframe catalyst optimizer.
 
-######Schema Projection
+###### Schema Projection
 
 - DataFrame- Through the Hive meta store, it auto-discovers the schema. We do not need to specify the schema manually.
 
 - DataSets- Because of using spark SQL engine, it auto discovers the schema of the files.
 
-######Programming Language Support
+###### Programming Language Support
 
 - DataFrame- In 4 languages like Java, Python, Scala, and R dataframes are available.
 
 - DataSets- Only available in Scala and Java
 
-#####SQLContext
+##### SQLContext
 It’s the entry point for working with structured data (rows and columns) in Apache Spark. It Allows the creation of 
 DataFrame objects as well as the execution of SQL queries.
 
-#####Hive Context
+##### Hive Context
 Working with Hive tables, a descendant of SQLContext. Hive Context is more battle-tested and provides a richer 
 functionality than SQLContext.
 
-#####JDBC Datasource
+##### JDBC Datasource
 In Apache Spark, JDBC data source can read data from relational databases using JDBC API. It has preference over the RDD
  because the data source returns the results as a DataFrame, can be handled in Spark SQL or joined beside other data 
 sources.
 
-#####Catalyst Optimizer
+##### Catalyst Optimizer
 It is a functional programming construct in Scala. It is the newest and most technical component of Spark SQL. 
 A catalyst is a query plan optimizer. It provides a general framework for transforming trees, which performs 
 analysis/evaluation, optimization, planning, and runtime code spawning. Catalyst supports cost based optimization and 
@@ -674,7 +684,7 @@ Tungsten’s internal memory representation using Encoders. As a result, Tungste
 serialize/deserialize JVM objects as well as generate compact bytecode that can execute at superior speeds. 
 
 
-####When should I use DataFrames or Datasets?
+#### When should I use DataFrames or Datasets?
 - If you want rich semantics, high-level abstractions, and domain specific APIs, use DataFrame or Dataset.
 - If your processing demands high-level expressions, filters, maps, aggregation, averages, sum, SQL queries, columnar 
 access and use of lambda functions on semi-structured data, use DataFrame or Dataset.
@@ -688,9 +698,9 @@ Note that you can always seamlessly interoperate or convert from DataFrame and/o
 call '.rdd'. 
 
 
-#####Performance tuning for spark sql
+##### Performance tuning for spark sql
 
-######Caching Data In Memory: 
+###### Caching Data In Memory: 
 Spark SQL can cache tables using an in-memory columnar format by calling spark.catalog.cacheTable("tableName") or 
 dataFrame.cache(). Then Spark SQL will scan only required columns and will automatically tune compression to minimize 
 memory usage and GC pressure. You can call spark.catalog.uncacheTable("tableName") to remove the table from memory.
@@ -703,7 +713,8 @@ automatically select a compression codec for each column based on statistics of 
 - `spark.sql.inMemoryColumnarStorage.batchSize`: The default value is 10000. Controls the size of batches for columnar 
 caching. Larger batch sizes can improve memory utilization and compression, but risk OOMs when caching data.
 
-#######Other Configuration Options:
+ 
+###### Other Configuration Options:
 
 The following options can also be used to tune the performance of query execution. It is possible that these options 
 will be deprecated in future release as more optimizations are performed automatically.
@@ -722,7 +733,7 @@ COMPUTE STATISTICS noscan has been run.
 - `spark.sql.shuffle.partitions`: The default is 200. Configures the number of partitions to use when shuffling data for
  joins or aggregations.
  
-##Spark Streaming
+## Spark Streaming
 
 Table of content:
 - Intro & overview
@@ -754,7 +765,7 @@ Spark Streaming provides a high-level abstraction called discretized stream or D
 stream of data. DStreams can be created either from input data streams from sources such as Kafka, and Kinesis, or by 
 applying high-level operations on other DStreams. Internally, a DStream is represented as a sequence of RDDs.
 
-#####Discretized Streams (DStreams)
+##### Discretized Streams (DStreams)
 
 Discretized Stream or DStream is the basic abstraction provided by Spark Streaming. It represents a continuous stream of
 data, either the input data stream received from source, or the processed data stream generated by transforming the 
@@ -774,7 +785,7 @@ These underlying RDD transformations are computed by the Spark engine. The DStre
  and provide the developer with a higher-level API for convenience. These operations are discussed in detail in later 
 sections.
 
-#####Input DStreams and Receivers
+##### Input DStreams and Receivers
 Input DStreams represent the input data stream received from streaming sources. Except file stream, each input DStream 
 is linked with a receiver object that stores the data received from a source. 
 
@@ -792,7 +803,7 @@ it occupies one of the cores allocated to the Spark Streaming application. There
 a Spark Streaming application needs to be allocated enough cores (or threads, if running locally) to process the 
 received data, as well as to run the receiver(s).
 
-######Points to remember
+###### Points to remember
 - When running a Spark Streaming program locally, do not use “local” or “local[1]” as the master URL. Either of these 
 means that only one thread will be used for running tasks locally. If you are using an input DStream based on a receiver
  (e.g. sockets, Kafka, etc.), then the single thread will be used to run the receiver, leaving no thread for processing 
@@ -802,7 +813,7 @@ means that only one thread will be used for running tasks locally. If you are us
 - Extending the logic to running on a cluster, the number of cores allocated to the Spark Streaming application must be 
 more than the number of receivers. Otherwise the system will receive data, but not be able to process it.
 
-#####Basic Sources
+##### Basic Sources
 File streams:
 For reading data from files on any file system compatible with the HDFS API (that is, HDFS, S3, NFS, etc.), a DStream
 can be created as via StreamingContext.fileStream[KeyClass, ValueClass, InputFormatClass].
@@ -813,7 +824,7 @@ Syntax:
 `streamingContext.fileStream[keyClass, ValueClass](dataDirectory)` 
 `streamingContext.textFileStream(dataDirectory)`
 
-######How Directories are Monitored
+###### How Directories are Monitored
 Spark Streaming will monitor the directory dataDirectory and process any files created in that directory.
 - A simple directory can be monitored, such as "hdfs://namenode:8040/logs/". All files directly under such a path will 
 be processed as they are discovered.
@@ -830,7 +841,7 @@ directory to match the path will add the directory to the list of monitored dire
 - Calling FileSystem.setTimes() to fix the timestamp is a way to have the file picked up in a later window, even if its 
 contents have not changed.
 
-######Using Object Stores as a source of data
+###### Using Object Stores as a source of data
 “Full” Filesystems such as HDFS tend to set the modification time on their files as soon as the output stream is 
 created. When a file is opened, even before data has been completely written, it may be included in the DStream - after 
 which updates to the file within the same window will be ignored. That is: changes may be missed, and data omitted from
@@ -848,15 +859,15 @@ Careful testing is needed against the target object store to verify that the tim
 consistent with that expected by Spark Streaming. It may be that writing directly into a destination directory is the 
 appropriate strategy for streaming data via the chosen object store.
 
-######Streams based on Custom Receivers
+###### Streams based on Custom Receivers
 DStreams can be created with data streams received through custom receivers. 
 
-######Queue of RDDs as a Stream
+###### Queue of RDDs as a Stream
 For testing a Spark Streaming application with test data, one can also create a DStream based on a queue of RDDs, 
 using streamingContext.queueStream(queueOfRDDs). Each RDD pushed into the queue will be treated as a batch of data in 
 the DStream, and processed like a stream.
 
-#####Advance Sources
+##### Advance Sources
 This category of sources requires interfacing with external non-Spark libraries, some of them with complex dependencies 
 (e.g., Kafka). Hence, to minimize issues related to version conflicts of dependencies, the functionality to create 
 DStreams from these sources has been moved to separate libraries that can be linked to explicitly when necessary.
@@ -872,7 +883,7 @@ Some of these advanced sources are as follows.
 - Flume
 - Twitter
 
-#####Receiver Reliability
+##### Receiver Reliability
 There can be two kinds of data sources based on their reliability. Sources (like Kafka) allow the transferred data to be
  acknowledged. If the system receiving data from these reliable sources acknowledges the received data correctly,
 it can be ensured that no data will be lost due to any kind of failure. This leads to two kinds of receivers:
@@ -883,7 +894,7 @@ received and stored in Spark with replication.
 that do not support acknowledgment, or even for reliable sources when one does not want or need to go into the 
 complexity of acknowledgment.
 
-#####Transformations on DStreams
+##### Transformations on DStreams
 Transformations on DStreams are similar to those of RDD's. A few of the common transformations on DStreams are given in
 the table below:
 
@@ -891,13 +902,13 @@ the table below:
 
 ![Transformations on Dstreams2](resources/transformation2.png)
 
-#####Output operations on DStreams
+##### Output operations on DStreams
 Output operations on DStreams let the data of DStreams to be pushed to external systems. They trigger the real 
 executions of all the Dstreams transformations. These are given in the table below: 
 
 ![output operations on Dstreams](resources/transformation3.png)
 
-#####DataFrame and SQL Operations
+##### DataFrame and SQL Operations
 We easily use DataFrames and SQL operations on streaming data. We have to create a SparkSession using the 
 SparkContext that the StreamingContext is using. Furthermore, this has to done such that it can be restarted on driver 
 failures. This is done by creating a lazily instantiated singleton instance of SparkSession. This is shown in the 
@@ -965,7 +976,7 @@ will delete off old streaming data before the query can complete. For example, i
 but your query can take 5 minutes to run, then call streamingContext.remember(Minutes(5)) 
 (in Scala, or equivalent in other languages). 
 
-#####Caching / Persistence
+##### Caching / Persistence
 Similar to RDDs, DStreams also allow developers to persist the stream’s data in memory. That is, using the persist() 
 method on a DStream will automatically persist every RDD of that DStream in memory. This is useful if the data in the 
 DStream will be computed multiple times (e.g., multiple operations on the same data). For window-based operations like 
@@ -976,7 +987,7 @@ calling persist().
 For input streams that receive data over the network (such as, Kafka, sockets, etc.), the default persistence level is 
 set to replicate the data to two nodes for fault-tolerance.   
 
-#####Checkpointing
+##### Checkpointing
 A streaming application must operate 24/7 and hence must be resilient to failures unrelated to the application logic 
 (e.g., system failures, JVM crashes, etc.). For this to be possible, Spark Streaming needs to checkpoint enough 
 information to a fault- tolerant storage system such that it can recover from failures. There are two types of data 
@@ -998,7 +1009,7 @@ HDFS. This is used to recover from failure of the node running the driver of the
 To summarize, metadata checkpointing is primarily needed for recovery from driver failures, whereas data or RDD 
 checkpointing is necessary even for basic functioning if stateful transformations are used. 
 
-######When to enable Checkpointing
+###### When to enable Checkpointing
 Checkpointing must be enabled for applications with any of the following requirements:
 
 - Usage of stateful transformations - If either updateStateByKey or reduceByKeyAndWindow (with inverse function) is 
@@ -1006,12 +1017,12 @@ used in the application, then the checkpoint directory must be provided to allow
 - Recovering from failures of the driver running the application - Metadata checkpoints are used to recover with 
 progress information.
 
-#####Window operations
+##### Window operations
 Window operations let you implement transformations over a sliding window of data.
 
 ![Sliding window](resources/SlidingWindow.png)
 
-######Type of window operations
+###### Type of window operations
 Some of the general window operations are listed in the below table. All these operations take window length and slide 
 interval as parameters.
 
@@ -1019,7 +1030,7 @@ interval as parameters.
 
 ![Sliding window Operations](resources/SlidingWindowOperations2.png)
 
-#####Performance Tuning
+##### Performance Tuning
 Getting the best performance out of a Spark Streaming application on a cluster requires a bit of tuning. This section 
 explains a number of the parameters and configurations that can be tuned to improve the performance of you application. 
 At a high level, you need to consider two things:
@@ -1033,7 +1044,7 @@ At details level, one has to consider the following parameters and configuration
 
 ![Performance Tuning](resources/PerformanceTuning.png)
 
-##Sparks Graphs/GraphX
+## Sparks Graphs/GraphX
 
 Table of Content:
 - Intro & overview
@@ -1050,7 +1061,7 @@ support graph computation, GraphX exposes a set of fundamental operators (e.g., 
 aggregateMessages) as well as an optimized variant of the Pregel API. In addition, GraphX includes a growing collection 
 of graph algorithms and builders to simplify graph analytics tasks.
 
-###Property Graph
+### Property Graph
 The property graph is a directed multigraph with user defined objects attached to each vertex and edge. A directed 
 multigraph is a directed graph with potentially multiple parallel edges sharing the same source and destination vertex. 
 The ability to support parallel edges simplifies modeling scenarios where there can be multiple relationships 
@@ -1092,13 +1103,13 @@ The classes VertexRDD[VD] and EdgeRDD[ED] extend and are optimized versions of R
 respectively. Both VertexRDD[VD] and EdgeRDD[ED] provide additional functionality built around graph computation and 
 leverage internal optimizations.
 
-###Graph Operators
+### Graph Operators
 Just as RDDs have basic operations like map, filter, and reduceByKey, property graphs also have a collection of basic 
 operators that take user defined functions and produce new graphs with transformed properties and structure. 
 The core operators that have optimized implementations are defined in Graph and convenient operators that are expressed 
 as a compositions of the core operators are defined in GraphOps.
 
-######Summary List of Operators
+###### Summary List of Operators
 
        `/** Summary of the functionality in the property graph */
     class Graph[VD, ED] {
@@ -1159,13 +1170,13 @@ as a compositions of the core operators are defined in GraphOps.
       def stronglyConnectedComponents(numIter: Int): Graph[VertexId, ED]
     }` 
 
-#####Neighborhood Aggregation
+##### Neighborhood Aggregation
 A key step in many graph analytics tasks is aggregating information about the neighborhood of each vertex. For example,
 we might want to know the number of followers each user has or the average age of the followers of each user. Many 
 iterative graph algorithms (e.g., PageRank, Shortest Path, and connected components) repeatedly aggregate properties of 
 neighboring vertices (e.g., current PageRank Value, shortest path to the source, and smallest reachable vertex id).
 
-######Aggregate Messages (aggregateMessages)
+###### Aggregate Messages (aggregateMessages)
 The core aggregation operation in GraphX is aggregateMessages. This operator applies a user defined sendMsg function to 
 each edge triplet in the graph and then uses the mergeMsg function to aggregate those messages at their destination 
 vertex.
@@ -1178,7 +1189,7 @@ vertex.
          : VertexRDD[Msg]
      }`
   
-######Map Reduce Triplets Transition Guide (Legacy)
+###### Map Reduce Triplets Transition Guide (Legacy)
 In earlier versions of GraphX neighborhood aggregation was accomplished using the mapReduceTriplets operator:
 
 `class Graph[VD, ED] {
@@ -1188,7 +1199,7 @@ In earlier versions of GraphX neighborhood aggregation was accomplished using th
     : VertexRDD[Msg]
 }`   
 
-#####Caching and Uncaching
+##### Caching and Uncaching
 In Spark, RDDs are not persisted in memory by default. To avoid recomputation, they must be explicitly cached when using
  them multiple times (see the Spark Programming Guide). Graphs in GraphX behave the same way. When using a graph 
 multiple times, make sure to call Graph.cache() on it first.
@@ -1202,7 +1213,7 @@ uncaching all other datasets, and only using the materialized dataset in future 
 composed of multiple RDDs, it can be difficult to unpersist them correctly. For iterative computation we recommend using
 the Pregel API, which correctly unpersists intermediate results.
 
-##Spark MLib
+## Spark MLib
 
 Table of content:
 - Basic statistics
@@ -1230,7 +1241,7 @@ high level, it provides tools such as:
 - Persistence: saving and load algorithms, models, and Pipelines
 - Utilities: linear algebra, statistics, data handling, etc.
 
-#####Basic Statistics
+##### Basic Statistics
 
 - Correlation: Calculating the correlation between two series of data is a common operation in Statistics. In spark.ml 
 we provide the flexibility to calculate pairwise correlations among many series. The supported correlation methods are 
@@ -1304,7 +1315,7 @@ column-wise max, min, mean, sum, variance, std, and number of nonzeros, as well 
     # compute statistics for single metric "mean" without weight
     df.select(Summarizer.mean(df.features)).show(truncate=False)`
     
-#####Data sources
+##### Data sources
 Besides some general data sources such as Parquet, CSV, JSON and JDBC, spark Mlib also provide some specific data 
 sources for ML.
 
@@ -1361,12 +1372,12 @@ sources for ML.
     +-----+--------------------+
     only showing top 10 rows
     
-#####ML Pipelines:
+##### ML Pipelines:
 
 ML Pipelines provide a uniform set of high-level APIs built on top of DataFrames that help users create and tune 
 practical machine learning pipelines.
 
-#####Main concepts in Pipelines
+##### Main concepts in Pipelines
 MLlib standardizes APIs for machine learning algorithms to make it easier to combine multiple algorithms into a single 
 pipeline, or workflow. This section covers the key concepts introduced by the Pipelines API, where the pipeline concept 
 is mostly inspired by the scikit-learn project.
@@ -1384,13 +1395,13 @@ algorithm is an Estimator which trains on a DataFrame and produces a model.
 
 Parameter: All Transformers and Estimators now share a common API for specifying parameters
 
-#####DataFrame
+##### DataFrame
 Machine learning can be applied to a wide variety of data types, such as vectors, text, images, and structured data. 
 This API adopts the DataFrame from Spark SQL in order to support a variety of data types. DataFrame supports many basic 
 and structured types; A DataFrame can be created either implicitly or explicitly from a regular RDD. Columns in a 
 DataFrame are named. The code examples below use names such as “text”, “features”, and “label”.
 
-#####Pipeline components
+##### Pipeline components
 
 - Transformers: A Transformer is an abstraction that includes feature transformers and learned models. Technically, a 
 Transformer implements a method transform(), which converts one DataFrame into another, generally by appending one or 
@@ -1412,7 +1423,7 @@ via alternative concepts.
 
 Each instance of a Transformer or Estimator has a unique ID, which is useful in specifying parameters
 
-#####Pipeline
+##### Pipeline
 In machine learning, it is common to run a sequence of algorithms to process and learn from data. E.g., a simple text 
 document processing workflow might include several stages:
 
@@ -1424,7 +1435,7 @@ MLlib represents such a workflow as a Pipeline, which consists of a sequence of 
 Estimators) to be run in a specific order.
 
 
-######How it works
+###### How it works
 A Pipeline is specified as a sequence of stages, and each stage is either a Transformer or an Estimator. These stages 
 are run in order, and the input DataFrame is transformed as it passes through each stage. For Transformer stages, 
 the transform() method is called on the DataFrame. For Estimator stages, the fit() method is called to produce a 
@@ -1458,7 +1469,7 @@ the data are passed through the fitted pipeline in order. Each stage’s transfo
 
 Pipelines and PipelineModels help to ensure that training and test data go through identical feature processing steps.
 
-######Details
+###### Details
 - DAG Pipelines: A Pipeline’s stages are specified as an ordered array. The examples given here are all for linear 
 Pipelines, i.e., Pipelines in which each stage uses data produced by the previous stage. It is possible to create 
 non-linear Pipelines as long as the data flow graph forms a Directed Acyclic Graph (DAG). This graph is currently 
@@ -1474,7 +1485,7 @@ checking is done using the DataFrame schema, a description of the data types of 
  myHashingTF1 and myHashingTF2 (both of type HashingTF) can be put into the same Pipeline since different instances 
  will be created with different IDs.
 
-######Parameters
+###### Parameters
 MLlib Estimators and Transformers use a uniform API for specifying parameters.
 
 A Param is a named parameter with self-contained documentation. A ParamMap is a set of (parameter, value) pairs.
