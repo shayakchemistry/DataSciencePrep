@@ -423,38 +423,94 @@ One of the key ideas behind ggplot2 is that it allows you to easily iterate, bui
 
 ##### Statistical Transformations
 
-
+The Statistical transformation (stat) is often useful to transform your data before plotting, and that's what statistical transformations do. They are used in tandem with Geom (geometric objects) that describe the type of plot produced. Every geom function has a default statistic like geom_histogram = stat_bin + bar, geom_smooth = stat_smooth + ribbon and geom_density = stat_density + ribbon. 
 
 ##### Using Facets
 
+The facet approach partitions a plot into a matrix of panels. Each panel shows a different subset of the data. There are two main functions for faceting :
+
+- facet_grid(): Use this function to partition into multiple panels by levels of the group
+- facet_wrap(): Facets can be placed side by side using this function
+
 ##### Coordinates
+
+The coordinate system of a plot refers to the space on which the data is plotted. The coordinate system of a plot, together with the x and y position scale, determines the location of geoms. Below are the available coordinate options:
+
+- coord_cartesian: This is the default coordinate system (x horizontal from left to right, y vertical from bottom to top)
+- coord_flip: Flipped cartesian coordinate system (x vertical from bottom to top, y horizontal from left to right)
+- coord_trans: Used to to transform the coordinate system. We, i.e., substitute traditional axes with logarithmic axes and then present the values and statistics
+- coord_equal: Ensures the units are equally scaled on the x-axis and on the y-axis
+- coord_polar: Polar coordinate system; the x (or y) scale is mapped to the angle (theta)
+- coord_map: Various map projections
 
 ##### Adding Themes
 
+ggplot2 is remarkably extensible and customizable both through specific graphical components (geom_, scale_, aes, etc) or by theme components (grid lines, background colors, fonts, etc). There is also the concept of fully established themes which change many theme components at once. You can change the entire appearance of a plot by using a custom theme. Jeffrey Arnold has implemented the library ggthemes containing several custom themes. To use these themes install and load ggthemes package.
 
 
+### Advanced R programming
+
+In this section, we will discuss some helpful topics that we could be useful. They are discussed below.
+
+##### stringr
+
+Strings are not glamorous, high-profile components of R, but they do play a big role in many data cleaning and preparation tasks. The stringr package provide a cohesive set of functions designed to make working with strings as easy as possible. stringr is built on top of stringi, which uses the ICU C library to provide fast, correct implementations of common string manipulations. stringr focusses on the most important and commonly used string manipulation functions whereas stringi provides a comprehensive set covering almost everything.
 
 
+##### Implementing efficinet  Functions
+
+It is very important to have efficient functions. Each of these blocks do incrementally add up to make a performance impact specially if they are called multiple times. In R, there is a function microbenchmark() that could be used to measure benchmark. It is effective if you do this on a large dataset so that the difference is effectively different.
+
+##### Local and global namespace
+
+Data objects assigned within the body of a function are temporary.  That is, they are local to the function only.  Local objects have no effect outside the function, and they disappear when function evaluation is complete. Local objects are stored in a frame in virtual memory (e.g. RAM). Frame 0 is called the session frame or “global environment” and exists as long as R is operational.  Frame 1 and higher are created to support function execution only.  Each of these frames contain a list of R objects with names and values.  Objects stored in Frame 1 and higher are erased when flow control returns to the Console.  The temporary use of virtual memory implies that functions offer an efficiency advantage over scripts as functions make little to no use of disk or virtual storage.
+
+Data objects that are global are stored in the .Data directory.  As a result, they persist until they are explicitly removed (or the search path is altered).  Scripts the contain no functions and expressions defined in the Console create global objects, they rely on hard disk storage, and they are fundamentally slower to process.
+
+Local objects within functions become permanent or global objects only through the use of the assign() function or the infix operator <<-.  Explicit assignment transfers an object from RAM or virtual memory to the hard-drive.
+
+##### Debugging techniques
+
+A grammatically correct program may give us incorrect results due to logical errors. In case, if such errors (i.e. bugs) occur, we need to find out why and where they occur so that you can fix them. The procedure to identify and fix bugs is called “debugging”. There are a number of R debug functions, such as:
+
+- traceback()
+- debug()
+- browser()
+- trace()
+- recover()
 
 
-Advanced R programming
-Intro to stringr
-04:54
-Sentences, punctuations, strings
-05:41
-Writing effective functions
-06:53
-Local and global namespace
-12:22
-Debugging techniques
-##### Memory pre-allocation tactics
+##### Error handling
 
-09:14
-Error handling
-07:19
-Understanding apply
-08:25
-lapply, sapply, vapply
-04:03
-mapply
+It’s often the case that where we want to write an R script that loops over multiple datasets, or different subsets of a large dataset, running the same procedure over them: generating plots, or fitting a model, perhaps. We set the script running and turn to another task, only to come back later and find the loop has crashed partway through, on an unanticipated error. There are two ways to do this. They are listed below:
+
+- try block
+- tryCatch block
+
+##### Understanding apply
+
+The apply command in R allows us to apply a function across an array, matrix or data frame. The apply in R function can be feed with many functions to perform redundant application on a collection of object (data frame, list, vector, etc.). The purpose of apply() is primarily to avoid explicit uses of loop constructs. They can be used for an input list, matrix or array and apply a function. Any function can be passed into apply(). There are some functions derived from this and are given below.
+
+*lapply*
+
+lapply() function is useful for performing operations on list objects and returns a list object of same length of original set. lappy() returns a list of the similar length as input list object, each element of which is the result of applying FUN to the corresponding element of list. Lapply in R takes list, vector or data frame as input and gives output in list.
+
+*sapply*
+
+sapply() function takes list, vector or data frame as input and gives output in vector or matrix. It is useful for operations on list objects and returns a list object of same length of original set. Sapply function in R does the same job as lapply() function but returns a vector.
+
+*vapply*
+
+The vapply function is very similar compared to the sapply function, but when using vapply you need to specify the output type explicitly.
+
+*tapply*
+
+The tapply function is another command of the apply family, which is used for vector inputs.
+
+*mapply*
+
+The mapply() function is a multivariate apply of sorts which applies a function in parallel over a set of arguments. As lapply() iterates over a single R object but if there is a want to iterate over multiple R objects in parallel then mapply() is the function to be needed. mapply gives us a way to call a non-vectorized function in a vectorized way. It is a multivariate version of sapply.
+
+
+_Please do let me know if I have missed something_
 
