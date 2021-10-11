@@ -397,3 +397,43 @@ Also P[X ≥ 3] = 1 − P[X < 3] =
 We can approximate the Binomial with Poisson. The approximation is better the smaller the p and the larger the n.
 
 #### The Normal distribution  
+
+Normal distribution is a continuous probability distribution. It is also called Gaussian distribution.
+The normal distribution density function f(z) is called the Bell Curve because it has the shape that resembles a bell.
+Standard normal distribution table is used to find the area under the f(z) function in order to find the probability of 
+a specified range of distribution.
+
+When random variable X has normal distribution,
+
+![Normal distribution function](resources/normalDistributionFunction.png)
+
+The probability density function and cumulative distribution function of the normal distribution:
+
+###### Probability density function
+
+The probability density function is given by:
+
+![probability density function](resources/probabilityDensityFunction.png)
+
+###### Cumulative distribution function
+
+![cumulative distribution function](resources/CumulativeDistributionFunction.png)
+
+###### Standard normal distribution function
+
+![Standard normal distribution function](resources/StandardNormaDistributionFunction.png)
+
+Then the probability density function and cumulative distribution function of the standard normal distribution:
+
+###### Probability density function
+
+![Probability density function](resources/probabiltiDensityFunction2.png)
+
+###### Cumulative distribution function
+
+![Cumulative distribution function](resources/cumulativeDistributionFunction.png)
+
+
+###### Standard normal distribution table 
+
+![Standard normal distribution table](resources/StandardNormalDistributionTable.png)
