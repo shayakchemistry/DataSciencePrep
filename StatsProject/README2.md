@@ -84,7 +84,7 @@ For sample covariance, the formula looks like:
 
 ![Covariance sample](resources/covariance_sample.png)
 
-![Covariance Ref](resources/covariance_ref.PNG)
+![Covariance Ref](resources/covarience_ref.PNG)
 
 ##### Analysis of Variance (ANOVA)
 
@@ -173,30 +173,116 @@ Mediation analyses are employed to understand a known relationship by exploring 
 
 Let's consider an example where we consider that a previous studies have suggested that higher grades predict higher happiness: X (grades) → Y (happiness). It can be shown be the following illustration:
 
-mediation_ex1
+![Mediation example 1](resources\mediation_ex1.png)
 
-I think, however, grades are not the real reason that happiness increases. I hypothesize that good grades boost one’s self-esteem and then high self-esteem boosts one’s happiness: X (grades) → M (self-esteem) → Y (happiness).
+However, grades are not the real reason that happiness increases. We can hypothesize that good grades boost one’s self-esteem and then high self-esteem boosts one’s happiness: X (grades) → M (self-esteem) → Y (happiness).
 
-mediation_ex2
+![Mediation example 2](resources\mediation_ex2.png)
 
 This is a typical case of mediation analysis. Self-esteem is a mediator that explains the underlying mechanism of the relationship between grades (IV) and happiness (DV).
 
-
-
 ##### Moderation
 
+In statistics, moderation occurs when the relationship between two variables depends on a third variable. The third variable is referred to as the moderator variable or simply the moderator. The effect of a moderating variable is characterized statistically as an interaction; that is, a categorical (e.g., sex, ethnicity, class) or quantitative (e.g., level of reward) variable that affects the direction and/or strength of the relation between dependent and independent variables. Specifically within a correlational analysis framework, a moderator is a third variable that affects the zero-order correlation between two other variables, or the value of the slope of the dependent variable on the independent variable. In analysis of variance (ANOVA) terms, a basic moderator effect can be represented as an interaction between a focal independent variable and a factor that specifies the appropriate conditions for its operation.
 
+To illustrate this, we start with a bivariate relationship between an input variable X and an outcome variable Y. For example, X could be the number of training sessions (training intensity) and Y could be math test score. We can hypothesize that there is a relationship between them such that the number of training sessions predicts math test performance. Using the diagram, we can portray the relationship below:
 
+![Moderation 1](resources\moderation1.png)
 
+The above path diagram can be expressed using a regression model as
 
-Measuring how data is spread out: calculating variance
-Standard deviation and coefficient of variation
-Calculating and understanding covariance
-correlation
-coefficient
+Y=β0+β1∗X+ϵ
+
+where β0 is the intercept and β1 is the slope.
+
+A moderator variable Z is a variable that alters the strength of the relationship between X
+and Y. In other words, the effect of X on Y depends on the levels of the moderator Z. For instance, if male students (Z=0) benefit more (or less) from training than female students (Z=1), then gender can be considered as a moderator. Using the diagram, if the coefficient a is different b, there is a moderation effect.
+
+![Moderation 2](resources\moderation2.png)
+
+To summarize, a moderator Z is a variable that alters the direction and/or strength of the relation between a predictor X and an outcome Y. Questions involving moderators address “when” or “for whom” a variable most strongly predicts or causes an outcome variable. Using a path diagram, we can express the moderation effect as:
+
+![Moderation 3](resources\moderation3.png)
 
 ### Estimation
-8.1 The estimation game . . . . . . . . . . . . . . . . . . . . . . 105
+Statistical inference is the process by which we infer population properties from sample properties. We can do it either by estimations or by hypothesis testing. We will discuss hypothesis testing in the next section. In statistics, estimation refers to the process by which one makes inferences about a population (or parameters of a distribution), based on information obtained from a sample. There are two forms of estimation:
+
+- Point estimation (maximally likely value for parameter)
+- Interval estimation (also called confidence interval for parameter)
+
+We will discuss them in the following sub-subsections:
+
+##### Point Estimate
+
+Point estimates are single points that are used to infer parameters directly. For example,  
+
+- Sample proportion p̂ (“p hat”) is the point estimator of p
+- Sample mean x̄  (“x bar”) is the point estimator of μ  
+- Sample standard deviation s is the point estimator of σ
+
+where we consider:
+
+- Binomial probability of “success” p (also called “the population proportion”)
+- Expected value μ (also called “the population mean”)
+- Standard deviation σ (also called the “population standard deviation”)
+
+Point estimates has the following important properties:
+
+- Point estimates are calculated from the data; parameters are not.
+- Point estimates vary from study to study; parameters do not.
+- Point estimates are random variables: parameters are constants.   
+
+Point estimate is illustrated by the following diagram.
+
+![Point Estimate](resources\point_estimate.PNG)
+
+##### Interval Estimate
+
+An interval estimator draws inferences about a population by estimating the value of an unknown parameter using an interval. Here, we try to construct an interval that “covers” the true population parameter with a specified probability. This is illustrated by the following diagram.
+
+![Interval Estimate](resources\interval_estimate.PNG)
+
+##### Quality of Estimators
+
+The desirability of an estimator is judged by its characteristics. Three important criteria are:
+
+- Unbiasedness
+- Consistency
+- Efficiency
+
+ They are discussed in details below.
+
+*Unbiasedness*
+
+An unbiased estimator of a population parameter is an estimator whose expected value is equal to that parameter. Formally, an estimator ˆμ for parameter μ is said to be unbiased if:
+
+E(ˆμ) = μ
+
+For example the sample mean x̄ is an unbiased estimator for the population mean μ, since
+
+E(x̄) = μ
+
+It is important to realize that other estimators for the population mean exist: maximum value in a sample, minimum value in a sample, average of the maximum and the minimum values in a sample, etc. Being unbiased is a minimal requirement for an estimator. For example, the maximum value in a sample is not unbiased, and hence should not be used as an estimator for μ.
+
+*Consistency*
+
+An unbiased estimator is said to be consistent if the difference between the estimator and the target population parameter becomes smaller as we increase the sample size. Formally, an unbiased estimator ˆμ for parameter μ is said to be consistent if V (ˆμ) approaches zero as n →∞. Note that being unbiased is a precondition for an estimator to be consistent.
+
+Let's take an example where the variance of the sample mean  ̄X is σ^2/n, which decreases to zero as we increase the sample size n. Hence, the sample mean is a consistent estimator for μ.
+
+Let's take another example where the variance of the average of two randomly-selected values in a sample does not decrease to zero as we increase n. This variance in fact stays constant.
+
+*Efficiency*
+
+Suppose we are given two unbiased estimators for a parameter. Then, we say that the estimator with a smaller variance is more efficient.
+
+For example, for a normally distributed population, it can be shown that the sample median is an unbiased estimator for μ. It can also be shown, however, that the sample median has a greater variance than that of the sample mean, for the same sample size. Hence,  ̄X is a more efficient estimator than sample median.
+
+Let's consider example where we consider the following estimator. First, a random portion of a sample is discarded from an original sample; then, the mean of the retained values in the sample is taken as an estimate for μ. This estimator is unbiased, but is not as efficient as using the entire sample. The intuitive reasoning is that we are not fully utilizing available information, and hence the resulting estimator has a greater variance.
+
+NEED TO COMPLETE THIS
+
+1 The estimation game . . . . . . . . . . . . . . . . . . . . . . 105
 8.2 Guess the variance . . . . . . . . . . . . . . . . . . . . . . . 107
 8.3 Sampling distributions . . . . . . . . . . . . . . . . . . . . . 109
 8.4 Sampling bias . . . . . . . . . . . . . . . . . . . . . . . . . . 112
@@ -204,33 +290,245 @@ coefficient
 8.6 Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 115
 8.7 Glossary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 116
 
+estimation: The process of inferring the parameters of a distribution
+from a sample.
+ estimator: A statistic used to estimate a parameter.
+ mean squared error (MSE): A measure of estimation error.
+ root mean squared error (RMSE): The square root of MSE, a
+more meaningful representation of typical error magnitude.
+ maximum likelihood estimator (MLE): An estimator that com-
+putes the point estimate most likely to be correct.
+ bias (of an estimator): The tendency of an estimator to be above or
+below the actual value of the parameter, when averaged over repeated
+experiments.
+ sampling error: Error in an estimate due to the limited size of the
+sample and variation due to chance.
+ sampling bias: Error in an estimate due to a sampling process that
+is not representative of the population.
+ measurement error: Error in an estimate due to inaccuracy collect-
+ing or recording data.
+ sampling distribution: The distribution of a statistic if an experi-
+ment is repeated many times.
+ standard error: The RMSE of an estimate, which quanties variabil-
+ity due to sampling error (but not other sources of error).
+ condence interval: An interval that represents the expected range
+of an estimator if an experiment is repeated many times.
+
 ### Hypothesis testing
-9.1 Classical hypothesis testing . . . . . . . . . . . . . . . . . . . 117
-9.2 HypothesisTest . . . . . . . . . . . . . . . . . . . . . . . . . 119
-9.3 Testing a difference in means . . . . . . . . . . . . . . . . . . 121
-9.4 Other test statistics . . . . . . . . . . . . . . . . . . . . . . . 123
-9.5 Testing a correlation . . . . . . . . . . . . . . . . . . . . . . 124
-9.6 Testing proportions . . . . . . . . . . . . . . . . . . . . . . . 125
-9.7 Chi-squared tests . . . . . . . . . . . . . . . . . . . . . . . . 127
-9.8 First babies again . . . . . . . . . . . . . . . . . . . . . . . . 128
-9.9 Errors . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 130
-9.10 Power . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 130
-9.11 Replication . . . . . . . . . . . . . . . . . . . . . . . . . . . . 132
-9.12 Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 133
-9.13 Glossary . . . . . . . . . .
+
+Hypothesis testing in statistics is a way for us to test the results of a survey or experiment to see if we have meaningful results. Basically we are testing whether our results are valid by figuring out the odds that the results have happened by chance. If the results may have happened by chance, the experiment won’t be repeatable and so has little use. Hypothesis testing can be one of the most confusing aspects because before we can even perform a test, we have to know what our null hypothesis is. We discuss this in details in the following subsections.
+
+##### Classical hypothesis testing
+
+Classical statistical hypothesis testing involves the test of a null hypothesis against an alternative hypothesis. The procedure consists of five steps, the first four of which are completed before the data to be used for the test are gathered, and relate to probabilistic calculations that set up the statistical inference process. It involves the following steps:
+
+*Step 1*
+
+The first step in a hypothesis testing procedure is to declare the relevant null hypothesis H<sub>0</sub> and the relevant alternative hypothesis H<sub>1</sub>. The choice of null and alternative hypotheses should be made before the data are seen. To decide on a hypothesis as a result of the data is to introduce a bias into the procedure, invalidating any conclusion that might be drawn from it. Our aim is eventually to accept or to reject the null hypothesis as the result of an objective statistical procedure, using data in our decision.
+
+It is important to clarify the meaning of the expression “the null hypothesis is accepted.” In the conservative approach to statistical hypothesis testing as outlined below, this expression means that there is no statistically significant evidence for rejecting the null hypothesis in favor of the alternative hypothesis. For reasons discussed below, the null hypothesis is often a particular case of the alternative hypothesis, and when it is, the alternative hypothesis must explain the data at least as well as the null hypothesis. Despite this, the null hypothesis might well be accepted, in the above sense, in that the alternative hypothesis might not explain the data significantly better than does the null hypothesis. A better expression for “accepting” is thus "not rejecting".
+
+It is important to note the words “in favor of the alternative hypothesis” in the above. Suppose that the null hypothesis is that the probability of success p in a binomial distribution is 1/2 and the alternative is that this parameter exceeds 1/2. Suppose further that in 1,000 trials, only 348 successes are observed. The null hypothesis is accepted in favor of the alternative since the alternative hypothesis does not explain this result significantly better than does the null hypothesis - in fact it explains it less well than does the null hypothesis. Nevertheless, it would be unreasonable to believe that the null hypothesis is true: the data clearly suggest that p < 1/2 . Thus accepting a null hypothesis in favor of some alternative does not necessarily imply in an absolute sense that the null hypothesis provides a reasonable explanation for the data observed.
+
+A hypothesis can be simple or composite. A simple hypothesis specifies the numerical values of all unknown parameters in the probability distribution of interest. In the above example, both null and alternative hypotheses are simple. A composite alternative does not specify all numerical values of all the unknown parameters. Suppose you have a hypothesis that specifies a distribution with only one parameter p. The hypothesis "p = 0.5" is simple. The hypothesis "p exceeds 0.25" is composite. It is also one−sided (p > 0.25) as opposed to two −sided (p ≠ 0.25).
+
+However, for technical reasons associated with the hypothesis testing theory, it is often advantageous to make the null hypothesis a particular case of the alternative hypothesis. If this is done, then in the example of the previous paragraph, the one-sided alternative p > 0.25 would be replaced by p ≥ 0.25 and the two-sided alternative p ≠ 0.25 would be replaced by “p unspecified.” In practice there is no change to the testing procedures if the null hypothesis is nested within the alternative hypothesis in this way, and we shall freely use both the nested notation such as p ≥ 0.25 and the non-nested notation such as p > 0.25 interchangeably.
+
+Hypotheses usually involve the value of some unknown parameter (or parameters). We generically denote the parameter of interest by θ, although in some cases we use a more specific notation (such as μ for a mean). The nature of the alternative hypothesis is determined by the context of the test, in particular whether it is one-sided up (that is the unknown parameter θ exceeds some specified value θ<sub>0</sub>), one-sided down (θ < θ<sub>0</sub>), or two-sided (θ ≠ θ<sub>0</sub>). In many cases in bioinformatics the natural alternative is both composite and one-sided.
+
+*Step 2 (Type I error and Type II error)*
+
+Step 2 of the hypothesis testing procedure consists in choosing the numerical value for the Type I error. Since the decision to accept or reject H<sub>0</sub> will be made on the basis of data derived from some random process, it is possible that an incorrect decision will be made, that is,
+
+- to reject H<sub>0</sub> when it is true – a Type I error ), or
+- to accept H0 when it is false – a Type II error ).
+
+When testing a null hypothesis against an alternative it is not possible to ensure that the probabilities of making a Type I error and a Type II error are both arbitrarily small unless we are able to make the number of observations as large as we please. In practice we are seldom able to do this.
+
+This dilemma is resolved in practice by observing that there is often an asymmetry in the implications of making the two types of error. For example, there might be more concern about making the false positive claim and less concern about making the false negative conclusion.
+For this reason, a frequently adopted procedure is to focus on the Type I error, and to fix the numerical value α of this error at some acceptably low level (usually 1% or 5%), and not to attempt to control the numerical value of the Type II error. The choice of the values 1% and 5% is reasonable, but is also clearly arbitrary. The choice 1% is a more conservative one than the choice 5%.
+
+*Step 3 (Determining the Test Statistic)*
+
+The third step in the hypothesis testing procedure consists in determining a test statistic. This is the quantity calculated from the data whose numerical value leads to acceptance or rejection of the null hypothesis. Although sometime there are reasonable choices for test
+statistics that are usually used, in more complicated cases the choice of a test statistic is not straightforward.
+
+The main problem is that of deriving test statistics that, for a given Type I error, minimize the probability of our making a Type II error, given the number of observations to be made. There is a substantial body of statistical theory associated with such an optimal choice of a test statistic.
+
+*Step 4 (Determining the Significance Point K)*
+
+The next step in the procedure consists in determining those observed values of the test statistic that lead to rejection of H<sub>0</sub>. This choice is made so as to ensure that the test has the numerical value for the Type I error chosen in Step 2. Suppose that the null hypothesis is p = 0.25. Suppose that the alternative hypothesis is simple e.g., “p = 0.35” or the alternative hypothesis is composite "p ≥ 0.25"
+
+Suppose we choose a test statistic as the value observed for a numerical random variable Y whose value the larger and is more away from the Null Hypothesis. Then the Null Hypothesis p = 0.25 is rejected in favor of the alternative when the observed value y of Y is sufficiently large, that is if y is greater than or equal to a significance point K.
+
+If for example the Type I error is chosen as 5%, K is found from the requirement
+
+Prob (null hypothesis is rejected when it is true) = Prob(Y ≥ K | p = 0.25) = 0.05
+
+In practice, when discrete random variables are involved, it may be impossible to arrive at a procedure having exactly the Type I error chosen. This difficulty arises here: It is impossible to find a value of K such that the above equation is satisfied exactly. In practice, the choice of K is made by a conservative procedure. This difficulty is to be taken as understood in all testing procedures when the test statistic is a discrete random variable.
+
+In the above example the null hypothesis is rejected if Y is sufficiently large. If the alternative hypothesis had specified a value of p that is less than 0.25, then the null hypothesis would be rejected for sufficiently small Y. In many test procedures the null hypothesis does not specify the numerical values of all the parameters involved in the distribution of the random variables involved in the test
+procedure. In such a case problems can arise in the testing procedure since there might be no unique significance point (such as K above) having the property that the probability that the test statistic exceeds K is equal to the Type I error no matter what the values of the parameters not specified by the null hypothesis.
+
+*Step 5*
+
+The final step in the testing procedure is to obtain the data, and to determine whether the observed value of the test statistic is
+equal to or more extreme than the significance point calculated in Step 4, and do the following:
+
+- to reject the null hypothesis if it is.
+- Otherwise the null hypothesis is accepted.
+
+##### Hypothesis Testing using P-Value Approach
+
+The P-value approach involves determining "likely" or "unlikely" by determining the probability — assuming the null hypothesis were true — of observing a more extreme test statistic in the direction of the alternative hypothesis than the one observed. If the P-value is small, say less than (or equal to) α, then it is "unlikely." And, if the P-value is large, say more than α, then it is "likely."
+
+If the P-value is less than (or equal to) α, then the null hypothesis is rejected in favor of the alternative hypothesis. And, if the P-value is greater than α, then the null hypothesis is not rejected. Specifically, the four steps involved in using the P-value approach to conducting any hypothesis test are:
+
+- Specify the null and alternative hypotheses.
+- Using the sample data and assuming the null hypothesis is true, calculate the value of the test statistic. Again, to conduct the hypothesis test for the population mean μ, we use the t-statistic
+![t-statistic](resources\t-statistic.PNG)
+which follows a t-distribution with n - 1 degrees of freedom.
+- Using the known distribution of the test statistic, calculate the P-value: "If the null hypothesis is true, what is the probability that we'd observe a more extreme test statistic in the direction of the alternative hypothesis than we did?" (Note how this question is equivalent to the question answered in criminal trials: "If the defendant is innocent, what is the chance that we'd observe such extreme criminal evidence?")
+- Set the significance level α, the probability of making a Type I error to be small — 0.01, 0.05, or 0.10. Compare the P-value to α. If the P-value is less than (or equal to) α, reject the null hypothesis in favor of the alternative hypothesis. If the P-value is greater than α, do not reject the null hypothesis.
+
+##### Testing a difference in means
+
+This section explains how to conduct a hypothesis test for the difference between two means. The test procedure, called the two-sample t-test, is appropriate when the following conditions are met:
+
+- The sampling method for each sample is simple random sampling.
+- The samples are independent.
+- Each population is at least 20 times larger than its respective sample.
+- The sampling distribution is approximately normal, which is generally the case if any of the following conditions apply.
+ - The population distribution is normal.
+ - The population data are symmetric, unimodal, without outliers, and the sample size is 15 or less.
+ - The population data are slightly skewed, unimodal, without outliers, and the sample size is 16 to 40.
+ - The sample size is greater than 40, without outliers.
+
+In this test we will perform the following steps:
+
+*State the Hypotheses*
+
+Every hypothesis test requires the analyst to state a null hypothesis and an alternative hypothesis. The hypotheses are stated in such a way that they are mutually exclusive. That is, if one is true, the other must be false; and vice versa. The table below shows three sets of null and alternative hypotheses. Each makes a statement about the difference d between the mean of one population μ<sub>1</sub> and the mean of another population μ<sub>2</sub>. (In the table, the symbol ≠ means " not equal to ".)
+
+| Set | Null hypothesis | Alternative hypothesis | Number of tails |
+|:----|:---------------:|:----------------------:|:---------------:|
+|   1 |   μ<sub>1</sub> - μ<sub>2</sub> = d   |       μ<sub>1</sub> - μ<sub>2</sub> ≠ d      |      2          |
+|   2 |   μ<sub>1</sub> - μ<sub>2</sub> > d   |       μ<sub>1</sub> - μ<sub>2</sub> < d      |      1          |
+|   3 |   μ<sub>1</sub> - μ<sub>2</sub> < d   |       μ<sub>1</sub> - μ<sub>2</sub> > d      |      1          |
+
+The first set of hypotheses (Set 1) is an example of a two-tailed test, since an extreme value on either side of the sampling distribution would cause a researcher to reject the null hypothesis. The other two sets of hypotheses (Sets 2 and 3) are one-tailed tests, since an extreme value on only one side of the sampling distribution would cause a researcher to reject the null hypothesis. When the null hypothesis states that there is no difference between the two population means (i.e., d = 0), the null and alternative hypothesis are often stated in the following form.
+
+H<sub>o</sub>: μ<sub>1</sub> = μ<sub>2</sub>
+
+H<sub>a</sub>: μ<sub>1</sub> ≠ μ<sub>2</sub>
+
+*Formulate an Analysis Plan*
+
+The analysis plan describes how to use sample data to accept or reject the null hypothesis. It should specify the following elements.
+
+- Significance level: Often, researchers choose significance levels equal to 0.01, 0.05, or 0.10; but any value between 0 and 1 can be used.
+- Test method: Use the two-sample t-test to determine whether the difference between means found in the sample is significantly different from the hypothesized difference between means.
+
+*Analyze Sample Data*
+
+Using sample data, find the standard error, degrees of freedom, test statistic, and the P-value associated with the test statistic. Standard error. Compute the standard error (SE) of the sampling distribution.
+
+        SE = sqrt[ (s<sub>1</sub><sup>2</sup>/n<sub>1</sub>) + (s<sub>2</sub><sup>2</sup>/n<sub>2</sub>) ]
+
+where s<sub>1</sub> is the standard deviation of sample 1, s<sub>2</sub> is the standard deviation of sample 2, n<sub>1</sub> is the size of sample 1, and n<sub>2</sub> is the size of sample 2.
+
+Degrees of freedom. The degrees of freedom (DF) is:
+
+        DF = (s<sub>1</sub><sup>2</sup>/n<sub>1</sub> + s<sub>2</sub><sup>2</sup>/n<sub>2</sub>)<sup>2</sup> / { [ (s<sub>1</sub><sup>2</sup> / n<sub>1</sub>)<sup>2</sup> / (n<sub>1<sub> - 1) ] + [ (s<sub>2</sub><sup>2</sup> / n<sub>2</sub>)<sup>2</sup> / (n<sub>2</sub> - 1) ] }
+
+If DF does not compute to an integer, round it off to the nearest whole number. Some texts suggest that the degrees of freedom can be approximated by the smaller of n<sub>1</sub> - 1 and n<sub>2</sub> - 1; but the above formula gives better results.
+
+Test statistic: The test statistic is a t statistic (t) defined by the following equation.
+
+        t = [ (x<sub>1</sub> - x<sub>2</sub>) - d ] / SE
+
+where x<sub>1</sub> is the mean of sample 1, x<sub>2</sub> is the mean of sample 2, d is the hypothesized difference between population means, and SE is the standard error. P-value. The P-value is the probability of observing a sample statistic as extreme as the test statistic. Since the test statistic is a t statistic, use the t Distribution Calculator to assess the probability associated with the t statistic, having the degrees of freedom computed above.
+
+*Interpret Results*
+
+If the sample findings are unlikely, given the null hypothesis, the researcher rejects the null hypothesis. Typically, this involves comparing the P-value to the significance level, and rejecting the null hypothesis when the P-value is less than the significance level.
+
+##### Power Analysis
+
+Consider a research experiment where the p-value computed from the data was 0.12. As a result, one would fail to reject the null hypothesis because this p-value is larger than α = 0.05. However, there still exist two possible cases for which we failed to reject the null hypothesis:
+
+- the null hypothesis is a reasonable conclusion,
+- the sample size is not large enough to either accept or reject the null hypothesis, i.e., additional samples might provide additional evidence.
+
+Power analysis is the procedure that researchers can use to determine if the test contains enough power to make a reasonable conclusion. From another perspective power analysis can also be used to calculate the number of samples required to achieve a specified level of power
+
+##### Test of Proportion
+
+Let us consider the parameter p of population proportion. For instance, we might want to know the proportion of males within a total population of adults when we conduct a survey. A test of proportion will assess whether or not a sample from a population represents the true proportion from the entire population. We can perform test of proportion using the following two approaches:
+
+*Critical Value Approach*
+
+The steps to perform a test of proportion using the critical value approval are as follows:
+
+1. State the null hypothesis H0 and the alternative hypothesis HA.
+2. Calculate the test statistic:
+
+![top_critical_val](resources\top_critical_val.PNG)
+
+3. Determine the critical region.
+4. Make a decision. Determine if the test statistic falls in the critical region. If it does, reject the null hypothesis. If it does not, do not reject the null hypothesis.
+
+*p-value Approach*
+
+Next, let's state the procedure in terms of performing a proportion test using the p-value approach. The basic procedure is:
+
+1. State the null hypothesis H0 and the alternative hypothesis HA.
+2. Set the level of significance
+3. Calculate the test statistic:
+![top_p_val](resources\top_p_val.PNG)
+4. Calculate the p-value.
+5. Make a decision. Check whether to reject the null hypothesis by comparing p-value to . If the p-value < then reject ; otherwise do not reject .
 
 
 ### Analytic methods
 
-14.1 Normal distributions . . . . . . . . . . . . . . . . . . . . . . 217
-14.2 Sampling distributions . . . . . . . . . . . . . . . . . . . . . 219
-14.3 Representing normal distributions . . . . . . . . . . . . . . . 220
-14.4 Central limit theorem . . . . . . . . . . . . . . . . . . . . . . 221
-14.5 Testing the CLT . . . . . . . . . . . . . . . . . . . . . . . . . 222
-14.6 Applying the CLT . . . . . . . . . . . . . . . . . . . . . . . . 227
-14.7 Correlation test . . . . . . . . . . . . . . . . . . . . . . . . . 228
-14.8 Chi-squared test . . . . . . . . .
+In Data Science we have been focused on computational methods like simulation and resampling to solve a problem, but some of the problems we solved have analytic solutions that can be much faster. In this section, we present ways to do that and can be further used for integrating computational and analytic methods for exploratory data analysis.
 
-### Statistic in ML model accuracy
+Let's take the following example: Suppose you are a scientist studying gorillas in a wildlife preserve. Having weighed 9 gorillas, you find sample mean x̄ = 90 kg and sample standard deviation, S = 7:5 kg. If you use x̄ to estimate the population mean, what is the standard error of the estimate?
 
-kappa, chi sqare, f measure ....
+To answer that question, we need the sampling distribution of x̄. We approximated this distribution by simulating the experiment (weighing 9 gorillas), computing x̄ for each simulated experiment, and accumulating the distribution of estimates. The result is an approximation of the sampling distribution. Then we use the sampling distribution to compute standard errors and confidence intervals:
+
+1. The standard deviation of the sampling distribution is the standard error of the estimate; in the example, it is about 2.5 kg.
+2. The interval between the 5th and 95th percentile of the sampling distribution is a 90% confidence interval. If we run the experiment many times, we expect the estimate to fall in this interval 90% of the time. In the example, the 90% CI is (86, 94) kg.
+
+Now we'll do the same calculation analytically. We take advantage of the fact that the weights of adult female gorillas are roughly normally distributed. Normal distributions have two properties that make them amenable for analysis: they are "closed" under linear transformation and addition. To explain what that means, we need some notation. If the distribution of a quantity, X, is normal with parameters μ and σ, we can write:
+
+X ~ N(μ , σ<sup>2</sup>)
+
+where the symbol ~ means "is distributed" and the script letter N stands for "normal."
+
+Now we have everything we need to compute the sampling distribution of x̄. Remember that we compute x̄ by weighing n gorillas, adding up the total weight, and dividing by n. Assuming that the distribution of gorilla weights, X, is approximately normal:
+
+X ~ N(μ , σ<sup>2</sup>)
+
+If we weigh n gorillas, the total weight, Y , is distributed
+
+Y ~ N(nμ , nσ<sup>2</sup>)
+
+using the previous equation. And if we divide by n, the sample mean, Z, is distributed as:
+
+Z ~ N(μ , σ<sup>2</sup>/n)
+
+using the first equation with a = 1=n. The distribution of Z is the sampling distribution of x̄. The mean of Z is μ, which shows that x̄ is an unbiased estimate of μ. The variance of the sampling distribution is σ<sup>2</sup>/n. So the standard deviation of the sampling distribution, which is the standard error of the estimate, is σ / sqrt(n). In the example, σ is 7.5 kg and n is 9, so the standard error is 2.5 kg. That result is consistent with what we estimated by simulation, but much faster to compute.
+
+In the previous paragraph, we have seen that if we add values drawn from normal distributions, the distribution of the sum is normal. Most other distributions don't have this property; if we add values drawn from other distributions, the sum does not generally have an analytic distribution. But if we add up n values from almost any distribution, the distribution of the sum converges to normal as n increases. More specically, if the distribution of the values has mean and standard deviation μ and σ, the distribution of the sum is approximately N(nμ , nσ<sup>2</sup>).
+
+This result is the Central Limit Theorem (CLT). It is one of the most useful tools for statistical analysis. The central limit theorem states that if you have a population with mean μ and standard deviation σ and take sufficiently large random samples from the population with replacement, then the distribution of the sample means will be approximately normally distributed. This will hold true regardless of whether the source population is normal or skewed, provided the sample size is sufficiently large (usually n > 30). If the population is normal, then the theorem holds true even for samples smaller than 30. In fact, this also holds true even if the population is binomial, provided that min(np, n(1-p))> 5, where n is the sample size and p is the probability of success in the population. This means that we can use the normal probability model to quantify uncertainty when making inferences about a population mean based on the sample mean.
+
+For the random samples we take from the population, we can compute the mean of the sample means:
+
+              μ<sub>x̄</sub> = μ
+
+and the standard deviation of the sample means:
+
+              σ<sub>x̄</sub> = σ / sqrt(n)
