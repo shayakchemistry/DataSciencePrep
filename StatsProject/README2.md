@@ -521,14 +521,14 @@ Z ~ N(μ , σ<sup>2</sup>/n)
 
 using the first equation with a = 1=n. The distribution of Z is the sampling distribution of x̄. The mean of Z is μ, which shows that x̄ is an unbiased estimate of μ. The variance of the sampling distribution is σ<sup>2</sup>/n. So the standard deviation of the sampling distribution, which is the standard error of the estimate, is σ / sqrt(n). In the example, σ is 7.5 kg and n is 9, so the standard error is 2.5 kg. That result is consistent with what we estimated by simulation, but much faster to compute.
 
-In the previous paragraph, we have seen that if we add values drawn from normal distributions, the distribution of the sum is normal. Most other distributions don't have this property; if we add values drawn from other distributions, the sum does not generally have an analytic distribution. But if we add up n values from almost any distribution, the distribution of the sum converges to normal as n increases. More specically, if the distribution of the values has mean and standard deviation μ and σ, the distribution of the sum is approximately N(nμ , nσ<sup>2</sup>).
+In the previous paragraph, we have seen that if we add values drawn from normal distributions, the distribution of the sum is normal. Most other distributions don't have this property; if we add values drawn from other distributions, the sum does not generally have an analytic distribution. But if we add up n values from almost any distribution, the distribution of the sum converges to normal as n increases. More specifically, if the distribution of the values has mean and standard deviation μ and σ, the distribution of the sum is approximately N(nμ , nσ<sup>2</sup>).
 
 This result is the Central Limit Theorem (CLT). It is one of the most useful tools for statistical analysis. The central limit theorem states that if you have a population with mean μ and standard deviation σ and take sufficiently large random samples from the population with replacement, then the distribution of the sample means will be approximately normally distributed. This will hold true regardless of whether the source population is normal or skewed, provided the sample size is sufficiently large (usually n > 30). If the population is normal, then the theorem holds true even for samples smaller than 30. In fact, this also holds true even if the population is binomial, provided that min(np, n(1-p))> 5, where n is the sample size and p is the probability of success in the population. This means that we can use the normal probability model to quantify uncertainty when making inferences about a population mean based on the sample mean.
 
 For the random samples we take from the population, we can compute the mean of the sample means:
 
-              μ<sub>x̄</sub> = μ
+μ<sub>x̄</sub> = μ
 
 and the standard deviation of the sample means:
 
-              σ<sub>x̄</sub> = σ / sqrt(n)
+σ<sub>x̄</sub> = σ / sqrt(n)
