@@ -59,6 +59,20 @@ Measurement of skewness is also important. There are several ways to measure ske
 
 ![Pearson Skewness](resources/PearsonSkewness.PNG)
 
+The interpretation of skewness measure can be given as:
+
+- If skew = 0, then the data is not skewed
+- If skew > 0, then the data is left skewed and if skew > 1 then the data is highly left skewed
+- If skew < 0, then the data is right skewed and if skew < -1 then the data is highly right skewed
+
+##### Kurtosis
+
+Kurtosis is a statistical measure that defines how heavily the tails of a distribution differ from the tails of a normal distribution. In other words, kurtosis identifies whether the tails of a given distribution contain extreme values. A large kurtosis is associated high variability with a extremely large and extremely small values. On the other hand, a small kurtosis signals a moderate variability because the probabilities of extreme values are relatively low. The types of kurtosis are determined by the excess kurtosis of a particular distribution. The excess kurtosis can take positive or negative values, as well as values close to zero. They are given as
+
+- Mesokurtic: Data that follows a mesokurtic distribution shows an excess kurtosis of zero or close to zero. This means that if the data follows a normal distribution, it follows a mesokurtic distribution.
+- Leptokurtic: Leptokurtic indicates a positive excess kurtosis. The leptokurtic distribution shows heavy tails on either side, indicating large outliers.
+-  Platykurtic: A platykurtic distribution shows a negative excess kurtosis. The kurtosis reveals a distribution with flat tails. The flat tails indicate the small outliers in a distribution.
+
 ### Relationship with variables
 
 When we consider relationships among variables we take into account, we generally consider that there is atleast a predictor X and a response Y. This relationship can take on different forms, of course, like a line or a curve, but there’s really only one relationship here to measure. In this we measure how the data is spread out and relation among variables that are present in the dataset with various measures. They are given in the following subsections.
@@ -173,11 +187,11 @@ Mediation analyses are employed to understand a known relationship by exploring 
 
 Let's consider an example where we consider that a previous studies have suggested that higher grades predict higher happiness: X (grades) → Y (happiness). It can be shown be the following illustration:
 
-![Mediation example 1](resources\mediation_ex1.png)
+![Mediation example 1](resources/mediation_ex1.png)
 
 However, grades are not the real reason that happiness increases. We can hypothesize that good grades boost one’s self-esteem and then high self-esteem boosts one’s happiness: X (grades) → M (self-esteem) → Y (happiness).
 
-![Mediation example 2](resources\mediation_ex2.png)
+![Mediation example 2](resources/mediation_ex2.png)
 
 This is a typical case of mediation analysis. Self-esteem is a mediator that explains the underlying mechanism of the relationship between grades (IV) and happiness (DV).
 
@@ -187,7 +201,7 @@ In statistics, moderation occurs when the relationship between two variables dep
 
 To illustrate this, we start with a bivariate relationship between an input variable X and an outcome variable Y. For example, X could be the number of training sessions (training intensity) and Y could be math test score. We can hypothesize that there is a relationship between them such that the number of training sessions predicts math test performance. Using the diagram, we can portray the relationship below:
 
-![Moderation 1](resources\moderation1.png)
+![Moderation 1](resources/moderation1.png)
 
 The above path diagram can be expressed using a regression model as
 
@@ -198,121 +212,203 @@ where β0 is the intercept and β1 is the slope.
 A moderator variable Z is a variable that alters the strength of the relationship between X
 and Y. In other words, the effect of X on Y depends on the levels of the moderator Z. For instance, if male students (Z=0) benefit more (or less) from training than female students (Z=1), then gender can be considered as a moderator. Using the diagram, if the coefficient a is different b, there is a moderation effect.
 
-![Moderation 2](resources\moderation2.png)
+![Moderation 2](resources/moderation2.png)
 
 To summarize, a moderator Z is a variable that alters the direction and/or strength of the relation between a predictor X and an outcome Y. Questions involving moderators address “when” or “for whom” a variable most strongly predicts or causes an outcome variable. Using a path diagram, we can express the moderation effect as:
 
-![Moderation 3](resources\moderation3.png)
+![Moderation 3](resources/moderation3.png)
+
+### Central Limit Theorem
+
+In this section, we will mostly discuss about Central Limit Theorem and bit on normal distribution. We will start first with normal distribution. It is given in the section below:
+
+##### Normal Distribution
+
+A normal distribution is a continuous, symmetric, bell-shaped distribution of a variable. The theoretical shape of a normal distribution is given by the mathematical formula:
+
+![Normal Distribution](resources/probabilityDensityFunction.png)
+
+The shape of a normal distribution is fully characterized by its mean μ and standard deviation σ.
+
+- μ specifies the location of the distribution.
+- σ specifies the spread/shape of the distribution
+
+![Normal Distribution Plot 1](resources/normalDistPlot1.PNG)
+
+![Normal Distribution Plot 2](resources/normalDistPlot2.PNG)
+
+All normally distributed variables can be transformed into a standard normally distributed variable using the formula for the standard score (z-score):
+
+![Z Score](resources/z-score.PNG)
+
+The z-score for an observation is the number of standard deviations the observation lies from the mean. The letter Z is used to denote a standard normal random variable.
+
+##### Central Limit Theorem
+
+If we took numerous random samples and calculated the sample means, what distribution would the sample means
+have?  This distribution is known as the sampling distribution of the sample means.
+
+*Sampling distribution of sample means* – The distribution of the sample means calculated from all possible random samples of size n from a population.
+
+If the samples are randomly selected, the sample means will be somewhat different from the population mean μ. These differences are due to sampling error.
+
+*Sampling error* - The difference between the sample measure and the corresponding population measure due to the fact that the sample is not a perfect representation of the population.
+
+*Properties of the Distribution of Sample Means:*  
+
+When all possible samples of a specific size are selected with replacement from a population, the distribution of the sample means for a variable has three important properties:  
+- The mean of the sample means will be the same as the population mean and is given by
+
+![Mean](resources/CLT-mean.PNG)
+
+- The standard deviation of the sample means (known as the standard error of the mean) is given by
+
+![STD](resources/CLT-std.PNG)
+
+*Central Limit Theorem:*  The distribution of the sample mean gets closer and closer to a normal distribution as the sample size increases. This distribution has a mean ![Mean](resources/CLT-mean.PNG) and a standard deviation ![STD](resources/CLT-std.PNG)
+
+Even when we don’t know the distribution of the population, if the sample size is sufficiently large, then we can use the properties of the normal distribution to make statistical inference about the population mean!  So essentially, if the sample size is large enough we can make statistical inference about the population mean even if we don’t know anything else about the population.
+
+If the population size is really large, then the results about the sampling distribution of the mean are approximately correct even if sampling without replacement. When the sample size is sufficiently large (30+), the central limit theorem can be used to answer questions about sample means in the same way that a normal distribution can be used to answer questions about individual data.  However, our z-score formula changes slightly to
+
+![Z formula](resources/CLT-z.PNG)
 
 ### Estimation
 Statistical inference is the process by which we infer population properties from sample properties. We can do it either by estimations or by hypothesis testing. We will discuss hypothesis testing in the next section. In statistics, estimation refers to the process by which one makes inferences about a population (or parameters of a distribution), based on information obtained from a sample. There are two forms of estimation:
 
-- Point estimation (maximally likely value for parameter)
-- Interval estimation (also called confidence interval for parameter)
+- Point estimation: A specific numerical value used as an estimation of a parameter
+  - A point estimate uses a specific value to estimate a population parameter.
+  - Example: The sample mean is often the best point estimate of the population mean μ since the means of samples often vary less than sample medians or modes
+- Interval estimation: An interval or a range of values used to estimate an parameter
+  - The interval may or may not contain the true value of the parameter (but we hope it does).
+  - We can use statistical knowledge to assign a degree of confidence that our interval contains the true value of the population parameter.
+  - An interval estimate uses an interval of likely values to estimate the value of the population parameter
 
-We will discuss them in the following sub-subsections:
+They are illustrated as:
 
-##### Point Estimate
+Point estimate:
 
-Point estimates are single points that are used to infer parameters directly. For example,  
+![Point Estimate](resources/point_estimate.PNG)
 
-- Sample proportion p̂ (“p hat”) is the point estimator of p
-- Sample mean x̄  (“x bar”) is the point estimator of μ  
-- Sample standard deviation s is the point estimator of σ
+Interval estimate:
 
-where we consider:
-
-- Binomial probability of “success” p (also called “the population proportion”)
-- Expected value μ (also called “the population mean”)
-- Standard deviation σ (also called the “population standard deviation”)
-
-Point estimates has the following important properties:
-
-- Point estimates are calculated from the data; parameters are not.
-- Point estimates vary from study to study; parameters do not.
-- Point estimates are random variables: parameters are constants.   
-
-Point estimate is illustrated by the following diagram.
-
-![Point Estimate](resources\point_estimate.PNG)
-
-##### Interval Estimate
-
-An interval estimator draws inferences about a population by estimating the value of an unknown parameter using an interval. Here, we try to construct an interval that “covers” the true population parameter with a specified probability. This is illustrated by the following diagram.
-
-![Interval Estimate](resources\interval_estimate.PNG)
-
-##### Quality of Estimators
+![Interval Estimate](resources/interval_estimate.PNG)
 
 The desirability of an estimator is judged by its characteristics. Three important criteria are:
 
-- Unbiasedness
-- Consistency
-- Efficiency
+- The estimator should be an *unbiased estimator*.
+  - The mean of the point estimates obtained from all samples of a given size is equal to the parameter being estimated.
+- The estimator should be a *consistent estimator*.
+  - As the sample size increases, the value of the estimator should approach the value of the parameter being estimated.
+- The estimator should be *relatively efficient*.
+  - The variance of the estimator should be the smallest of all comparable estimators.
 
- They are discussed in details below.
+*Confidence level* – The proportion of interval estimates that will contain the true value of the population parameter when we consider all possible samples of a fixed size n from the population. This number doesn’t refer to a specific interval, but to the proportion of intervals that will contain the population parameter.  We can actually choose this number and construct our  interval accordingly.  The number is typically chosen to
+be close to 1, most commonly 0.95 or 95% .
 
-*Unbiasedness*
+*Confidence interval* – A specific interval estimate of a parameter determined by using data obtained from a sample and by using the specific confidence level of the estimate.
 
-An unbiased estimator of a population parameter is an estimator whose expected value is equal to that parameter. Formally, an estimator ˆμ for parameter μ is said to be unbiased if:
+Now the question arises that how can we construct a confidence interval? Suppose we have a population with a normal distribution or we select samples with at least 30 observations.  What do we know about the distribution of the sample means? Let's Central Limit Theorem to estimate properties of the sample mean. We will use z-score to estimate the mean. The formula looks like:
 
-E(ˆμ) = μ
+![Z formula](resources/CLT-z.PNG)
 
-For example the sample mean x̄ is an unbiased estimator for the population mean μ, since
+Now, if we need estimate with 95% confidence that the interval we need to refer to the table where we know the z-score value when we are 95% confident. The table is given below:
 
-E(x̄) = μ
+![Z value table](resources/z-values.PNG)
 
-It is important to realize that other estimators for the population mean exist: maximum value in a sample, minimum value in a sample, average of the maximum and the minimum values in a sample, etc. Being unbiased is a minimal requirement for an estimator. For example, the maximum value in a sample is not unbiased, and hence should not be used as an estimator for μ.
+With reference to the table we can get that at 95% confidence the z-score would be 1.96. Now, we modify the z-score to estimate mean μ as:
 
-*Consistency*
+![Formula 1](resources/ConfidenceIntervalFormula1.PNG)
 
-An unbiased estimator is said to be consistent if the difference between the estimator and the target population parameter becomes smaller as we increase the sample size. Formally, an unbiased estimator ˆμ for parameter μ is said to be consistent if V (ˆμ) approaches zero as n →∞. Note that being unbiased is a precondition for an estimator to be consistent.
+![Formula 2](resources/ConfidenceIntervalFormula2.PNG)
 
-Let's take an example where the variance of the sample mean  ̄X is σ^2/n, which decreases to zero as we increase the sample size n. Hence, the sample mean is a consistent estimator for μ.
+The above interval will contain the value of the population mean. 95% of the intervals constructed using this method from random samples of the population will contain the mean.  A specific interval either will contain the population parameter or it will not. The probability of making an error is 5%. If we want a 90% confidence interval or a 99% confidence interval then we should change 1.96 to the appropriate number.
 
-Let's take another example where the variance of the average of two randomly-selected values in a sample does not decrease to zero as we increase n. This variance in fact stays constant.
+Let Z<sub>α/2</sub> be the percentile such that P(Z ≤ Z<sub>α/2</sub> ) = 1 - α/2 (which is the same as P(Z >  Z<sub>α/2</sub> ) = α/2.  i.e., Z<sub>α/2</sub> is the (1 α/2) × 100% percentile of the standard normal distribution.
 
-*Efficiency*
+Now we can formulate for the Confidence Interval of the Mean when σ is known with the following assumptions:
 
-Suppose we are given two unbiased estimators for a parameter. Then, we say that the estimator with a smaller variance is more efficient.
+- Our sample is a random sample from some population.
+- The population from which the sample came is normally distributed or the sample size n ≥ 30
+- The standard deviation σ is known.
 
-For example, for a normally distributed population, it can be shown that the sample median is an unbiased estimator for μ. It can also be shown, however, that the sample median has a greater variance than that of the sample mean, for the same sample size. Hence,  ̄X is a more efficient estimator than sample median.
+Then the formula can be given by:
 
-Let's consider example where we consider the following estimator. First, a random portion of a sample is discarded from an original sample; then, the mean of the retained values in the sample is taken as an estimate for μ. This estimator is unbiased, but is not as efficient as using the entire sample. The intuitive reasoning is that we are not fully utilizing available information, and hence the resulting estimator has a greater variance.
+![Formula 3](resources/ConfidenceIntervalFormula3.PNG)
 
-NEED TO COMPLETE THIS
+Often, we need to decide how big of a sample we need to make a precise estimate of the population parameter.  This answer relies on 3 things namely:
 
-1 The estimation game . . . . . . . . . . . . . . . . . . . . . . 105
-8.2 Guess the variance . . . . . . . . . . . . . . . . . . . . . . . 107
-8.3 Sampling distributions . . . . . . . . . . . . . . . . . . . . . 109
-8.4 Sampling bias . . . . . . . . . . . . . . . . . . . . . . . . . . 112
-8.5 Exponential distributions . . . . . . . . . . . . . . . . . . . . 113
-8.6 Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 115
-8.7 Glossary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 116
+- the maximum error of estimate
+- the population standard deviation, and
+- the degree of confidence.
 
-estimation: The process of inferring the parameters of a distribution
-from a sample.
- estimator: A statistic used to estimate a parameter.
- mean squared error (MSE): A measure of estimation error.
- root mean squared error (RMSE): The square root of MSE, a
-more meaningful representation of typical error magnitude.
- maximum likelihood estimator (MLE): An estimator that com-
-putes the point estimate most likely to be correct.
- bias (of an estimator): The tendency of an estimator to be above or
-below the actual value of the parameter, when averaged over repeated
-experiments.
- sampling error: Error in an estimate due to the limited size of the
-sample and variation due to chance.
- sampling bias: Error in an estimate due to a sampling process that
-is not representative of the population.
- measurement error: Error in an estimate due to inaccuracy collect-
-ing or recording data.
- sampling distribution: The distribution of a statistic if an experi-
-ment is repeated many times.
- standard error: The RMSE of an estimate, which quanties variabil-
-ity due to sampling error (but not other sources of error).
- condence interval: An interval that represents the expected range
-of an estimator if an experiment is repeated many times.
+So, formula for the Minimum Sample Size needed for an Interval Estimate of the Population Mean is given by:
+
+![Formula 4](resources/ConfidenceIntervalFormula4.PNG)
+
+If the answer is not a whole number be sure to round up to the next whole number (never round down).
+There are some important concept about confidence level and is given below:
+
+- It is NOT the probability that our interval contains the population parameter.  A specific interval either does contain the parameter or it does not.  
+- It IS the proportion of all intervals constructed using this mechanism that will contain the population parameter.
+
+Till now we have discussed the estimation of mean when the population is normally distributed and σ is known with atleast 30 samples. Now, when σ is unknown, we can no longer use the standard normal distribution, but instead we will use a t-distribution.
+
+The t distribution is similar to the standard normal distribution in these ways:
+
+- It is bell-shaped
+- It is symmetric about the mean
+- The mean, median, and mode are equal to 0 and are located at the center of the distribution
+- The curve never touches the x-axis
+
+The t distribution differs from the standard normal distribution in the following ways:
+
+- The variance is greater than 1 (i.e., the t distribution has more variability than a standard normal distribution).
+- The t distribution is actually a family of curves based on the concept of degrees of freedom, which is
+related to sample size.
+- The shape of the t curve changes depending on the degrees of freedom.
+- As the sample size increases, the t distribution becomes more and more liked the standard normal distribution.
+
+*Degrees of freedom (df)* - the number of values that are free to vary after a sample statistic has been computed.
+
+The degrees of freedom for a confidence interval for the mean when σ is unknown is found by
+
+Sample size - 1 OR n - 1
+
+So, tht formula for a Specific Confidence Interval for the Mean when σ is unknown is given by
+
+![Formula 5](resources/ConfidenceIntervalFormula5.PNG)
+
+where s is sample standard deviation and t<sub>α/2</sub> is the 1 - α/2 quantile of a t distribution with n - 1 degrees of freedom.
+
+##### Test of proportions
+
+*Definitions*
+
+- The population proportion will be denoted by the letter p.
+- The point estimate of the population proportion is the sample proportion.
+- We will symbolize the sample proportion by p̂ , called p hat.
+- For large random samples, the central limit theorem tells us that the sampling distribution of the sample proportion is approximately normal.
+- The distribution will have mean p and a standard deviation of
+
+Now we formulate for a Confidence Interval for a Proportion with the following assumptions:  
+
+- The data are a random sample from the population.
+- Both np̂ and nˆq are each greater than or equal to 5.
+
+So the formula is:
+
+![Formula 6](resources/ConfidenceIntervalFormula6.PNG)
+
+*Rounding Rule for a confidence interval for a proportion:* round to 3 decimal places.
+
+Now we can determine the sample size necessary to achieve the desired precision of a confidence interval as:
+
+![Formula 7](resources/ConfidenceIntervalFormula7.PNG)
+
+where E is the desired level of precision. If necessary, round up to obtain a whole number.
+
+If an estimate of the proportion isn’t given, use p̂ = 0.5  since this is the worst case scenario (we will have to sample the most subjects to obtain the desired precision).
 
 ### Hypothesis testing
 
@@ -341,7 +437,7 @@ Hypotheses usually involve the value of some unknown parameter (or parameters). 
 Step 2 of the hypothesis testing procedure consists in choosing the numerical value for the Type I error. Since the decision to accept or reject H<sub>0</sub> will be made on the basis of data derived from some random process, it is possible that an incorrect decision will be made, that is,
 
 - to reject H<sub>0</sub> when it is true – a Type I error ), or
-- to accept H0 when it is false – a Type II error ).
+- to accept H<sub>0</sub> when it is false – a Type II error ).
 
 When testing a null hypothesis against an alternative it is not possible to ensure that the probabilities of making a Type I error and a Type II error are both arbitrarily small unless we are able to make the number of observations as large as we please. In practice we are seldom able to do this.
 
@@ -386,7 +482,7 @@ If the P-value is less than (or equal to) α, then the null hypothesis is reject
 
 - Specify the null and alternative hypotheses.
 - Using the sample data and assuming the null hypothesis is true, calculate the value of the test statistic. Again, to conduct the hypothesis test for the population mean μ, we use the t-statistic
-![t-statistic](resources\t-statistic.PNG)
+![t-statistic](resources/t-statistic.PNG)
 which follows a t-distribution with n - 1 degrees of freedom.
 - Using the known distribution of the test statistic, calculate the P-value: "If the null hypothesis is true, what is the probability that we'd observe a more extreme test statistic in the direction of the alternative hypothesis than we did?" (Note how this question is equivalent to the question answered in criminal trials: "If the defendant is innocent, what is the chance that we'd observe such extreme criminal evidence?")
 - Set the significance level α, the probability of making a Type I error to be small — 0.01, 0.05, or 0.10. Compare the P-value to α. If the P-value is less than (or equal to) α, reject the null hypothesis in favor of the alternative hypothesis. If the P-value is greater than α, do not reject the null hypothesis.
@@ -473,7 +569,7 @@ The steps to perform a test of proportion using the critical value approval are 
 1. State the null hypothesis H0 and the alternative hypothesis HA.
 2. Calculate the test statistic:
 
-![top_critical_val](resources\top_critical_val.PNG)
+![top_critical_val](resources/top_critical_val.PNG)
 
 3. Determine the critical region.
 4. Make a decision. Determine if the test statistic falls in the critical region. If it does, reject the null hypothesis. If it does not, do not reject the null hypothesis.
@@ -485,50 +581,13 @@ Next, let's state the procedure in terms of performing a proportion test using t
 1. State the null hypothesis H0 and the alternative hypothesis HA.
 2. Set the level of significance
 3. Calculate the test statistic:
-![top_p_val](resources\top_p_val.PNG)
+![top_p_val](resources/top_p_val.PNG)
 4. Calculate the p-value.
 5. Make a decision. Check whether to reject the null hypothesis by comparing p-value to . If the p-value < then reject ; otherwise do not reject .
 
 
-### Analytic methods
+##### Reference
 
-In Data Science we have been focused on computational methods like simulation and resampling to solve a problem, but some of the problems we solved have analytic solutions that can be much faster. In this section, we present ways to do that and can be further used for integrating computational and analytic methods for exploratory data analysis.
-
-Let's take the following example: Suppose you are a scientist studying gorillas in a wildlife preserve. Having weighed 9 gorillas, you find sample mean x̄ = 90 kg and sample standard deviation, S = 7:5 kg. If you use x̄ to estimate the population mean, what is the standard error of the estimate?
-
-To answer that question, we need the sampling distribution of x̄. We approximated this distribution by simulating the experiment (weighing 9 gorillas), computing x̄ for each simulated experiment, and accumulating the distribution of estimates. The result is an approximation of the sampling distribution. Then we use the sampling distribution to compute standard errors and confidence intervals:
-
-1. The standard deviation of the sampling distribution is the standard error of the estimate; in the example, it is about 2.5 kg.
-2. The interval between the 5th and 95th percentile of the sampling distribution is a 90% confidence interval. If we run the experiment many times, we expect the estimate to fall in this interval 90% of the time. In the example, the 90% CI is (86, 94) kg.
-
-Now we'll do the same calculation analytically. We take advantage of the fact that the weights of adult female gorillas are roughly normally distributed. Normal distributions have two properties that make them amenable for analysis: they are "closed" under linear transformation and addition. To explain what that means, we need some notation. If the distribution of a quantity, X, is normal with parameters μ and σ, we can write:
-
-X ~ N(μ , σ<sup>2</sup>)
-
-where the symbol ~ means "is distributed" and the script letter N stands for "normal."
-
-Now we have everything we need to compute the sampling distribution of x̄. Remember that we compute x̄ by weighing n gorillas, adding up the total weight, and dividing by n. Assuming that the distribution of gorilla weights, X, is approximately normal:
-
-X ~ N(μ , σ<sup>2</sup>)
-
-If we weigh n gorillas, the total weight, Y , is distributed
-
-Y ~ N(nμ , nσ<sup>2</sup>)
-
-using the previous equation. And if we divide by n, the sample mean, Z, is distributed as:
-
-Z ~ N(μ , σ<sup>2</sup>/n)
-
-using the first equation with a = 1=n. The distribution of Z is the sampling distribution of x̄. The mean of Z is μ, which shows that x̄ is an unbiased estimate of μ. The variance of the sampling distribution is σ<sup>2</sup>/n. So the standard deviation of the sampling distribution, which is the standard error of the estimate, is σ / sqrt(n). In the example, σ is 7.5 kg and n is 9, so the standard error is 2.5 kg. That result is consistent with what we estimated by simulation, but much faster to compute.
-
-In the previous paragraph, we have seen that if we add values drawn from normal distributions, the distribution of the sum is normal. Most other distributions don't have this property; if we add values drawn from other distributions, the sum does not generally have an analytic distribution. But if we add up n values from almost any distribution, the distribution of the sum converges to normal as n increases. More specifically, if the distribution of the values has mean and standard deviation μ and σ, the distribution of the sum is approximately N(nμ , nσ<sup>2</sup>).
-
-This result is the Central Limit Theorem (CLT). It is one of the most useful tools for statistical analysis. The central limit theorem states that if you have a population with mean μ and standard deviation σ and take sufficiently large random samples from the population with replacement, then the distribution of the sample means will be approximately normally distributed. This will hold true regardless of whether the source population is normal or skewed, provided the sample size is sufficiently large (usually n > 30). If the population is normal, then the theorem holds true even for samples smaller than 30. In fact, this also holds true even if the population is binomial, provided that min(np, n(1-p))> 5, where n is the sample size and p is the probability of success in the population. This means that we can use the normal probability model to quantify uncertainty when making inferences about a population mean based on the sample mean.
-
-For the random samples we take from the population, we can compute the mean of the sample means:
-
-μ<sub>x̄</sub> = μ
-
-and the standard deviation of the sample means:
-
-σ<sub>x̄</sub> = σ / sqrt(n)
+https://math.ucdenver.edu/~ssantori/MATH2830SP13/
+https://databasetown.com/types-probability-distribution-characteristics-examples/
+https://online.stat.psu.edu/stat415/lesson/1/1.2

@@ -100,9 +100,12 @@ Interdependence techniques are a type of relationship that variables cannot be c
 
 https://www.mygreatlearning.com/blog/introduction-to-multivariate-analysis/
 
+Skewness and kurtosis
+Now, as we know that skewness is bad for our data and many machine learning algorithms prefer or perform better when numerical data has a normal distribution we need a way to remove this skewness, to do so in python most frequently used methods are PowerTransformer and QuantileTransformer. Both these methods are used to get a normal or Gaussian-like distribution. Now let us see how to use these methods with an example:
+
 ### Data Cleaning
 
-
+https://scikit-learn.org/stable/modules/preprocessing.html#preprocessing
 
 ##### Remove Noise
 ##### Missing Values
@@ -144,7 +147,7 @@ D. Variable Transformation:
     Factorization
     Other Data Type
 
-
+Residual Sum of Square
 
     Correlation of Continuous Variables
     Two-Way Table or Stacked Columns for Categorical
