@@ -529,13 +529,13 @@ The analysis plan describes how to use sample data to accept or reject the null 
 
 Using sample data, find the standard error, degrees of freedom, test statistic, and the P-value associated with the test statistic. Standard error. Compute the standard error (SE) of the sampling distribution.
 
-        SE = sqrt[ (s<sub>1</sub><sup>2</sup>/n<sub>1</sub>) + (s<sub>2</sub><sup>2</sup>/n<sub>2</sub>) ]
+SE = sqrt[ (s<sub>1</sub><sup>2</sup>/n<sub>1</sub>) + (s<sub>2</sub><sup>2</sup>/n<sub>2</sub>) ]
 
 where s<sub>1</sub> is the standard deviation of sample 1, s<sub>2</sub> is the standard deviation of sample 2, n<sub>1</sub> is the size of sample 1, and n<sub>2</sub> is the size of sample 2.
 
 Degrees of freedom. The degrees of freedom (DF) is:
 
-        DF = (s<sub>1</sub><sup>2</sup>/n<sub>1</sub> + s<sub>2</sub><sup>2</sup>/n<sub>2</sub>)<sup>2</sup> / { [ (s<sub>1</sub><sup>2</sup> / n<sub>1</sub>)<sup>2</sup> / (n<sub>1<sub> - 1) ] + [ (s<sub>2</sub><sup>2</sup> / n<sub>2</sub>)<sup>2</sup> / (n<sub>2</sub> - 1) ] }
+DF = (s<sub>1</sub><sup>2</sup>/n<sub>1</sub> + s<sub>2</sub><sup>2</sup>/n<sub>2</sub>)<sup>2</sup> / { [ (s<sub>1</sub><sup>2</sup> / n<sub>1</sub>)<sup>2</sup> / (n<sub>1<sub> - 1) ] + [ (s<sub>2</sub><sup>2</sup> / n<sub>2</sub>)<sup>2</sup> / (n<sub>2</sub> - 1) ] }
 
 If DF does not compute to an integer, round it off to the nearest whole number. Some texts suggest that the degrees of freedom can be approximated by the smaller of n<sub>1</sub> - 1 and n<sub>2</sub> - 1; but the above formula gives better results.
 
