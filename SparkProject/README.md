@@ -221,7 +221,7 @@ FlatMap: A FlatMap function takes one element as input process it according to c
 and returns 0 or more element at a time. flatMap() transforms an RDD of length N into another RDD of length M.
 
 `data = sc.read.textFile("~/abc.txt").rdd
- words = data.map(lambda line : line.split(" "))`
+ words = data.flatMap(lambda line : line.split(" "))`
 
 The flatMap function would split the lines in data RDD into words in words RDD.
 
